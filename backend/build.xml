@@ -28,7 +28,7 @@
     </target>	
     
 	<target name="server" depends="build" description="Runs the Server">
-		<java classname="src.dataAcces.server.Server" classpath="${classpath}" fork="true">
+		<java classname="dataAccess.rmi.server.Server" classpath="${classpath}" fork="true">
 			<jvmarg value="-Djava.rmi.server.codebase=file:${build.dir}/"/>
 			<jvmarg value="-Djava.security.policy=${policy.file}"/>			
         	<arg value="${server.IP}"/> 
