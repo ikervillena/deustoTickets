@@ -40,4 +40,11 @@ public class Espacio {
         this.eventos = eventos;
     }
 
+    @Override
+    public String toString() {
+        return "Espacio{" +
+                "nombre='" + nombre + '\'' +
+                ", direccion='" + direccion + '\'' +
+                '}';
+    }
 }
