@@ -24,7 +24,14 @@
 	<target name="build" description="Builds the project">
 		<delete dir="${build.dir}"/>
 		<mkdir dir="${build.dir}"/>
-		<javac srcdir="${source.dir}" destdir="${build.dir}" classpath="${classpath}" deprecation="true" fork="true" includeAntRuntime="no"/>
+		<path id="lib.path">
+			<fileset dir="lib" includes="**/*.jar"/>
+		</path>
+		<javac srcdir="${source.dir}" destdir="${build.dir}" classpath="${classpath}" deprecation="true" fork="true" includeAntRuntime="no">
+			<classpath>
+				<path refid="lib.path"/>
+			</classpath>
+		</javac>
     </target>
 
 	<target name="client" depends="build" description="Runs the Client">
