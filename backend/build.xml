@@ -5,10 +5,10 @@
    	<property name="build.dir" location="bin"/>
 	<property name="dist.dir" location="dist"/>
 	<property name="classpath" location="bin"/>
-	<property name="server.portUsuario" value="1099"/>
-	<property name="server.portStaff" value="1099"/>
+	<property name="server.port" value="1099"/>
 	<property name="server.IP" value="127.0.0.1"/>
-	<property name="server.Name" value="HelloServer"/>
+	<property name="server.NameStaff" value="ServerStaff"/>
+	<property name="server.NameUsuario" value="ServerUsuario"/>
 	<property name="export.file" value="helloServer.jar"/>
 	<property name="policy.file" location="security/java.policy"/>	
 
@@ -40,8 +40,8 @@
 			<jvmarg value="-Djava.rmi.server.codebase=file:${build.dir}/"/>
 			<jvmarg value="-Djava.security.policy=${policy.file}"/>			
         	<arg value="${server.IP}"/> 
-	 		<arg value="${server.portStaff}"/>
-			<arg value="${server.Name}"/> 
+	 		<arg value="${server.port}"/>
+			<arg value="${server.NameStaff}"/>
         </java>
     </target>
 
@@ -50,8 +50,8 @@
 			<jvmarg value="-Djava.rmi.server.codebase=file:${build.dir}/"/>
 			<jvmarg value="-Djava.security.policy=${policy.file}"/>
 			<arg value="${server.IP}"/>
-			<arg value="${server.portUsuario}"/>
-			<arg value="${server.Name}"/>
+			<arg value="${server.port}"/>
+			<arg value="${server.NameUsuario}"/>
 		</java>
 	</target>
 

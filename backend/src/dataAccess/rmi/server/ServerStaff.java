@@ -26,17 +26,13 @@ public class ServerStaff extends UnicastRemoteObject implements IServerStaff {
     {
         cont++;
         System.out.println(" * Client number: " + cont);
-        return "Hello World!";
+        return "Hello World! It works correctly";
     }
 
     @Override
     public ArrayList<Evento> getEventos() throws IOException, RemoteException {
-        System.out.println("\n\n\nA continuacion se ejecuta getEventos():\n\n\n");
-        ArrayList<Evento> eventos = RestClient.getEventos();
-        for(Evento e : eventos) {
-            System.out.println(e);
-        }
-        return eventos;
+        //PENDIENTE
+        return null;
     }
 
 

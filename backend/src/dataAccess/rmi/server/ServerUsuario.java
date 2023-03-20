@@ -24,14 +24,13 @@ public class ServerUsuario extends UnicastRemoteObject implements IServerUsuario
     {
         cont++;
         System.out.println(" * Client number: " + cont);
-        return "Hello World!";
+        return "Hello World! It works correctly";
     }
 
     @Override
     public ArrayList<Evento> getEventos() throws RemoteException {
-        ArrayList<Evento> eventos = new ArrayList<>();
-        System.out.println("size: "+eventos.size());
-        return eventos;
+        //PENDIENTE
+        return null;
     }
 
     @Override

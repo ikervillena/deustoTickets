@@ -32,12 +32,6 @@ public class Client {
             //stubServer = (IServer) java.rmi.Naming.lookup(name);
             stubServer = (IServerStaff) registry.lookup(name);
             System.out.println("* Message coming from the server: '" + stubServer.sayHello() + "'");
-
-            System.out.println("\n\n\nA continuacion se ejecuta getEventos():\n\n\n");
-            System.out.println("Lista de eventos:");
-            for(Evento e : stubServer.getEventos()) {
-                System.out.println(e);
-            }
         }
         catch (Exception e)
         {

@@ -7,7 +7,7 @@
 	<property name="classpath" location="bin"/>
 	<property name="server.port" value="1099"/> 
 	<property name="server.IP" value="127.0.0.1"/> 
-	<property name="server.Name" value="HelloServer"/>
+	<property name="server.Name" value="ServerUsuario"/>
 	<property name="policy.file" location="security/java.policy"/>	
 
     <path id="full.classpath">
@@ -39,7 +39,7 @@
 			<jvmarg value="-Djava.security.policy=${policy.file}"/>			
         	<arg value="${server.IP}"/> 
 	 		<arg value="${server.port}"/> 
-			<arg value="${server.Name}"/> 
+			<arg value="${server.Name}"/>
         </java>
     </target>
 </project>
