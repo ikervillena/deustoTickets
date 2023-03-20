@@ -3,6 +3,7 @@ package dataAccess.rmi.server;
 import business.Evento;
 import business.Staff;
 
+import java.io.IOException;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ public interface IServerStaff extends Remote {
      * @return ArrayList con los eventos guardados en el servidor REST
      * @throws RemoteException
      */
-    ArrayList<Evento> getEventos() throws RemoteException;
+    ArrayList<Evento> getEventos() throws IOException, RemoteException;
 
     /**
      * Gestiona el inicio de sesion de un miembro del Staff

@@ -1,19 +1,19 @@
 package business;
 
-import javax.jdo.annotations.Persistent;
-import java.util.ArrayList;
+//import javax.jdo.annotations.Persistent;
 
 public class Espacio {
 
     String nombre;
     String direccion;
+    /**
     @Persistent(mappedBy="espacios")
     ArrayList<Evento> eventos;
+    */
 
-    public Espacio(String nombre, String direccion, ArrayList<Evento> eventos) {
+    public Espacio(String nombre, String direccion) {
         this.nombre = nombre;
         this.direccion = direccion;
-        this.eventos = eventos;
     }
 
     public String getNombre() {
@@ -32,12 +32,11 @@ public class Espacio {
         this.direccion = direccion;
     }
 
-    public ArrayList<Evento> getEventos() {
-        return eventos;
+    @Override
+    public String toString() {
+        return "Espacio{" +
+                "nombre='" + nombre + '\'' +
+                ", direccion='" + direccion + '\'' +
+                '}';
     }
-
-    public void setEventos(ArrayList<Evento> eventos) {
-        this.eventos = eventos;
-    }
-
 }

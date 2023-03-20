@@ -4,6 +4,7 @@ import business.Evento;
 import business.Staff;
 import dataAccess.rest.client.RestClient;
 
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -29,9 +30,12 @@ public class ServerStaff extends UnicastRemoteObject implements IServerStaff {
     }
 
     @Override
-    public ArrayList<Evento> getEventos() throws RemoteException {
-        ArrayList<Evento> eventos = new ArrayList<>();
-        System.out.println("size: "+eventos.size());
+    public ArrayList<Evento> getEventos() throws IOException, RemoteException {
+        System.out.println("\n\n\nA continuacion se ejecuta getEventos():\n\n\n");
+        ArrayList<Evento> eventos = RestClient.getEventos();
+        for(Evento e : eventos) {
+            System.out.println(e);
+        }
         return eventos;
     }
 

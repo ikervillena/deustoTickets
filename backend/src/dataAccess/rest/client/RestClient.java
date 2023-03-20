@@ -68,7 +68,7 @@ public class RestClient {
             }
             int aforo = atributos.getInt("aforo");
 
-            Evento evento = new Evento(titulo, descripcion, fecha, aforo, new Espacio("nombre", "direccion", new ArrayList<Evento>()));
+            Evento evento = new Evento(titulo, descripcion, fecha, aforo);
             eventos.add(evento);
         }
 

@@ -9,15 +9,16 @@ public class Evento {
     String descripcion;
     Date fecha;
     int aforo;
-    //@Column(name="espacios_id")
+    /**
+    @Column(name="espacios_id")
     Espacio espacio;
+    */
 
-    public Evento(String titulo, String descripcion, Date fecha, int aforo, Espacio espacio) {
+    public Evento(String titulo, String descripcion, Date fecha, int aforo) {
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.fecha = fecha;
         this.aforo = aforo;
-        this.espacio = espacio;
     }
 
     public String getTitulo() {
@@ -52,21 +53,12 @@ public class Evento {
         this.aforo = aforo;
     }
 
-    public Espacio getEspacio() {
-        return espacio;
-    }
-
-    public void setEspacio(Espacio espacio) {
-        this.espacio = espacio;
-    }
-
     @Override
     public String toString() {
         return "Evento{" +
                 "titulo='" + titulo + '\'' +
                 ", fecha=" + fecha +
                 ", aforo=" + aforo +
-                ", espacio=" + espacio +
                 '}';
     }
 }

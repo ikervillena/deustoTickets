@@ -7,13 +7,14 @@ public class Espacio {
 
     String nombre;
     String direccion;
-    //@Persistent(mappedBy="espacios")
+    /**
+    @Persistent(mappedBy="espacios")
     ArrayList<Evento> eventos;
+    */
 
-    public Espacio(String nombre, String direccion, ArrayList<Evento> eventos) {
+    public Espacio(String nombre, String direccion) {
         this.nombre = nombre;
         this.direccion = direccion;
-        this.eventos = eventos;
     }
 
     public String getNombre() {
@@ -30,14 +31,6 @@ public class Espacio {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
-    }
-
-    public ArrayList<Evento> getEventos() {
-        return eventos;
-    }
-
-    public void setEventos(ArrayList<Evento> eventos) {
-        this.eventos = eventos;
     }
 
     @Override
