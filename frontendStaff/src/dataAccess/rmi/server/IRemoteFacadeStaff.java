@@ -8,7 +8,8 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-public interface IServerStaff extends Remote {
+//Esta interfaz define la API del Servidor. Representa el patron de diseño "Remote Facade"
+public interface IRemoteFacadeStaff extends Remote {
 
     /**
      * Test message to say hello to client

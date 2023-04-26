@@ -36,7 +36,7 @@
     </target>	
     
 	<target name="serverstaff" depends="build" description="Runs the Server for the staff">
-		<java classname="dataAccess.rmi.server.ServerStaff" classpath="${classpath}" fork="true">
+		<java classname="dataAccess.rmi.server.RemoteFacadeStaff" classpath="${classpath}" fork="true">
 			<jvmarg value="-Djava.rmi.server.codebase=file:${build.dir}/"/>
 			<jvmarg value="-Djava.security.policy=${policy.file}"/>			
         	<arg value="${server.IP}"/> 
@@ -46,7 +46,7 @@
     </target>
 
 	<target name="serverusuario" depends="build" description="Runs the Server for the users">
-		<java classname="dataAccess.rmi.server.ServerUsuario" classpath="${classpath}" fork="true">
+		<java classname="dataAccess.rmi.server.RemoteFacadeUsuario" classpath="${classpath}" fork="true">
 			<jvmarg value="-Djava.rmi.server.codebase=file:${build.dir}/"/>
 			<jvmarg value="-Djava.security.policy=${policy.file}"/>
 			<arg value="${server.IP}"/>

@@ -1,20 +1,23 @@
 package dataAccess.rmi.server;
 
-import business.*;
-import dataAccess.rest.client.RestClient;
+import business.Evento;
+import business.Staff;
 
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
-public class ServerUsuario extends UnicastRemoteObject implements IServerUsuario {
+public class RemoteFacadeStaff extends UnicastRemoteObject implements IRemoteFacadeStaff{
 
     private static final long serialVersionUID = 1L;
     private int cont = 0;
 
-    protected ServerUsuario() throws RemoteException
+    //private XAppService xAppService = new XAppService();
+
+    protected RemoteFacadeStaff() throws RemoteException
     {
         super();
     }
@@ -28,55 +31,20 @@ public class ServerUsuario extends UnicastRemoteObject implements IServerUsuario
     }
 
     @Override
-    public ArrayList<Evento> getEventos() throws RemoteException {
+    public ArrayList<Evento> getEventos() throws IOException, RemoteException {
+        //PENDIENTE
+        return null;
+    }
+
+
+    @Override
+    public Staff iniciarSesionStaff(String usuario, String contrasenya) throws RemoteException {
         //PENDIENTE
         return null;
     }
 
     @Override
-    public ArrayList<Artista> getArtistas(Evento e) throws RemoteException {
-        //PENDIENTE
-        return null;
-    }
-
-    @Override
-    public ArrayList<Precio> getPrecios(Evento e) throws RemoteException {
-        //PENDIENTE
-        return null;
-    }
-
-    @Override
-    public boolean comprarEntrada(Entrada e) throws RemoteException {
-        //PENDIENTE
-        return false;
-    }
-
-    @Override
-    public boolean enviarEmailConfirmacion(Entrada e) throws RemoteException {
-        //PENDIENTE
-        return false;
-    }
-
-    @Override
-    public ArrayList<Entrada> getEntradas(Cliente c) throws RemoteException {
-        //PENDIENTE
-        return null;
-    }
-
-    @Override
-    public Cliente iniciarSesion(String usuario, String contrasenya) throws RemoteException {
-        //PENDIENTE
-        return null;
-    }
-
-    @Override
-    public boolean registrar(Cliente c) throws RemoteException {
-        //PENDIENTE
-        return false;
-    }
-
-    @Override
-    public boolean actualizarDatos(Cliente cAntiguo, Cliente cNuevo) throws RemoteException {
+    public boolean comprobarQR(String qr, Evento e) throws RemoteException {
         //PENDIENTE
         return false;
     }
@@ -96,7 +64,7 @@ public class ServerUsuario extends UnicastRemoteObject implements IServerUsuario
 
         try
         {
-            IServerUsuario objServer = new ServerUsuario();
+            IRemoteFacadeStaff objServer = new RemoteFacadeStaff();
             Registry registry = LocateRegistry.createRegistry((Integer.valueOf(args[1])));
             //Naming.rebind(name, objServer);
             registry.rebind(name, objServer);
