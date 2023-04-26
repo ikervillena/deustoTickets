@@ -1,13 +1,11 @@
 package dataAccess.rest.client;
 
-import business.Espacio;
-import business.Evento;
-
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import business.Evento;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -19,21 +17,24 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class RestClient {
+public class TicketProviderGateway implements ITicketProviderGateway {
+    private CloseableHttpClient httpClient;
+    private String token = "258c263f485581b788b509f2499f49418c640fa412a19ae2a96a7d93a38354f1b06e577ec301a213027acbcde59a9a8ce709862b8e8e6f59c90dbbe6f2a4c43582fa58f384bd7c45016bcd1e61c25358c0e3a9d592dc5e39d60b5825b931ec77ccb228ce133e1360902eb3ec8948aa13ba66bbd8f92df5e1cc5acd00848f1cce";
 
-    public static ArrayList<Evento> getEventos() throws IOException {
-        // Crear un cliente HTTP
-        CloseableHttpClient httpclient = HttpClients.createDefault();
+    public TicketProviderGateway() {
+        this.httpClient = HttpClients.createDefault();
+    }
 
+    public ArrayList<Evento> getEventos() throws IOException {
         // URL del servidor REST
         String url = "https://deusto-api.arambarri.eus/api/eventos";
 
         // Crear una solicitud GET con encabezado de autenticación
         HttpGet httpGet = new HttpGet(url);
-        httpGet.addHeader("Authorization", "Bearer 258c263f485581b788b509f2499f49418c640fa412a19ae2a96a7d93a38354f1b06e577ec301a213027acbcde59a9a8ce709862b8e8e6f59c90dbbe6f2a4c43582fa58f384bd7c45016bcd1e61c25358c0e3a9d592dc5e39d60b5825b931ec77ccb228ce133e1360902eb3ec8948aa13ba66bbd8f92df5e1cc5acd00848f1cce");
+        httpGet.addHeader("Authorization", "Bearer " + token);
 
         // Ejecutar la solicitud y obtener la respuesta
-        CloseableHttpResponse response = httpclient.execute(httpGet);
+        CloseableHttpResponse response = httpClient.execute(httpGet);
 
         ArrayList<Evento> eventos = new ArrayList<>();
         try {
@@ -48,7 +49,7 @@ public class RestClient {
         return eventos;
     }
 
-    private static ArrayList<Evento> parsearRespuesta(String respuesta) throws JSONException {
+    private ArrayList<Evento> parsearRespuesta(String respuesta) throws JSONException {
         ArrayList<Evento> eventos = new ArrayList<>();
 
         JSONObject obj = new JSONObject(respuesta);
@@ -74,6 +75,4 @@ public class RestClient {
 
         return eventos;
     }
-
-
 }

@@ -7,7 +7,8 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) throws IOException {
 
-        ArrayList<Evento> eventos = RestClient.getEventos();
+        TicketProviderGateway gateway = new TicketProviderGateway();
+        ArrayList<Evento> eventos = gateway.getEventos();
 
         System.out.println("Lista de eventos:");
 
