@@ -1,6 +1,6 @@
 import business.Evento;
-import dataAccess.rest.client.RestClient;
 
+import dataAccess.rest.client.TicketProviderGateway;
 import java.io.IOException;
 import java.util.ArrayList;
 
