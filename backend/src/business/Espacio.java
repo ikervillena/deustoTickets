@@ -2,36 +2,19 @@ package business;
 
 //import javax.jdo.annotations.Persistent;
 import java.util.ArrayList;
+import java.util.Date;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Column;
+import lombok.*;
 
+@NoArgsConstructor
+@AllArgsConstructor
+@PersistenceCapable
 public class Espacio {
 
-    String nombre;
-    String direccion;
-    /**
-    @Persistent(mappedBy="espacios")
-    ArrayList<Evento> eventos;
-    */
-
-    public Espacio(String nombre, String direccion) {
-        this.nombre = nombre;
-        this.direccion = direccion;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
+    @Getter @Setter private String nombre;
+    @Getter @Setter private String direccion;
+    
 
     @Override
     public String toString() {
