@@ -1,7 +1,7 @@
 package dataAccess.rmi.client;
 
-import business.controller.LoginController;
-import presentation.gui.LoginView;
+import business.controller.Controller;
+import presentation.gui.InicioView;
 
 public class Client {
 
@@ -15,9 +15,9 @@ public class Client {
 
         serviceLocator.setService(args[0], args[1], args[2]);
 
-        LoginController loginController = new LoginController(serviceLocator);
-        LoginView loginView = new LoginView(loginController);
-        loginView.setVisible(true);
+        Controller controller = new Controller(serviceLocator);
+        InicioView inicio = new InicioView(controller);
+        inicio.setVisible(true);
     }
 
 }

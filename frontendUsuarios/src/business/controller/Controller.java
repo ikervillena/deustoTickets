@@ -6,12 +6,12 @@ import dataAccess.rmi.client.ServiceLocator;
 import java.rmi.RemoteException;
 
 //Esta clase implementa el patron de diseño "Controller"
-public class LoginController {
+public class Controller {
 
     //Referencia a Service Locator
     private ServiceLocator serviceLocator;
 
-    public LoginController(ServiceLocator serviceLocator) {
+    public Controller(ServiceLocator serviceLocator) {
         this.serviceLocator = serviceLocator;
     }
 

@@ -1,9 +1,8 @@
 package presentation.gui;
 
-import business.controller.LoginController;
+import business.controller.Controller;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -25,7 +24,7 @@ public class LoginView extends JFrame {
     /**
      * Create the frame.
      */
-    public LoginView(LoginController loginController) {
+    public LoginView(Controller loginController) {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 878, 587);
         contentPane = new JPanel();
