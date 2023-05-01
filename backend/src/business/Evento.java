@@ -26,4 +26,13 @@ public class Evento {
             this.fecha = fecha;
             this.aforo = aforo;
         }
+
+    @Override
+    public String toString() {
+        return "Evento{" +
+                "titulo='" + titulo + '\'' +
+                ", fecha=" + fecha +
+                ", aforo=" + aforo +
+                '}';
+    }
 }

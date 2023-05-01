@@ -1,78 +1,70 @@
 package dataAccess.rest.client;
 
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 
 import business.Evento;
-import org.apache.http.HttpEntity;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.util.EntityUtils;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
+import java.net.URL;
+import java.util.ArrayList;
 
 public class TicketProviderGateway implements ITicketProviderGateway {
-    private CloseableHttpClient httpClient;
+
+    private String baseURL = "https://deusto-api.arambarri.eus/api/";
     private String token = "258c263f485581b788b509f2499f49418c640fa412a19ae2a96a7d93a38354f1b06e577ec301a213027acbcde59a9a8ce709862b8e8e6f59c90dbbe6f2a4c43582fa58f384bd7c45016bcd1e61c25358c0e3a9d592dc5e39d60b5825b931ec77ccb228ce133e1360902eb3ec8948aa13ba66bbd8f92df5e1cc5acd00848f1cce";
 
     public TicketProviderGateway() {
-        this.httpClient = HttpClients.createDefault();
     }
 
-    public ArrayList<Evento> getEventos() throws IOException {
+    private String consultarAPI(String tabla) throws MalformedURLException {
+
         // URL del servidor REST
-        String url = "https://deusto-api.arambarri.eus/api/eventos";
+        URL url = new URL(baseURL + tabla);
+
+        //Abrir conexión a la URL
+        HttpURLConnection connection = null;
+        try {
+            connection = (HttpURLConnection) url.openConnection();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
         // Crear una solicitud GET con encabezado de autenticación
-        HttpGet httpGet = new HttpGet(url);
-        httpGet.addHeader("Authorization", "Bearer " + token);
+        try {
+            connection.setRequestMethod("GET");
+        } catch (ProtocolException e) {
+            throw new RuntimeException(e);
+        }
+        connection.setRequestProperty("Authorization", "Bearer " + token);
 
         // Ejecutar la solicitud y obtener la respuesta
-        CloseableHttpResponse response = httpClient.execute(httpGet);
-
-        ArrayList<Evento> eventos = new ArrayList<>();
+        BufferedReader reader = null;
+        String respuesta;
         try {
-            // Obtener el contenido de la respuesta como cadena de texto
-            HttpEntity entity = response.getEntity();
-            String respuesta = EntityUtils.toString(entity);
-            eventos = parsearRespuesta(respuesta);
-        } finally {
-            // Cerrar la respuesta
-            response.close();
+            reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            StringBuilder sb = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                sb.append(line);
+            }
+            String responseContent = sb.toString();
+            respuesta = responseContent;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
-        return eventos;
+
+        //Cerrar conexion
+        connection.disconnect();
+
+        return respuesta;
     }
 
-    private ArrayList<Evento> parsearRespuesta(String respuesta) throws JSONException {
-        ArrayList<Evento> eventos = new ArrayList<>();
-
-        JSONObject obj = new JSONObject(respuesta);
-        JSONArray data = obj.getJSONArray("data");
-
-        for (int i = 0; i < data.length(); i++) {
-            JSONObject atributos = data.getJSONObject(i).getJSONObject("attributes");
-
-            String titulo = atributos.getString("titulo");
-            String descripcion = atributos.getString("descripcion");
-            Date fecha;
-            try{
-                SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
-                fecha = formato.parse(atributos.getString("fecha"));
-            } catch (Exception e) {
-                fecha = new Date(2,2,2);
-            }
-            int aforo = atributos.getInt("aforo");
-
-            Evento evento = new Evento(titulo, descripcion, fecha, aforo);
-            eventos.add(evento);
-        }
-
-        return eventos;
+    @Override
+    public ArrayList<Evento> getEventos() throws IOException {
+        return JsonResponseParser.getEventos(consultarAPI("eventos"));
     }
 }
