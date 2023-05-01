@@ -20,5 +20,10 @@ public class Evento {
     @Persistent(mappedBy = "evento")
 	    @Getter @Setter private Entrada entrada;
 
-    
+        public Evento(String titulo, String descripcion, Date fecha, int aforo) {
+            this.titulo = titulo;
+            this.descripcion = descripcion;
+            this.fecha = fecha;
+            this.aforo = aforo;
+        }
 }
