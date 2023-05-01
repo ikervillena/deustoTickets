@@ -1,9 +1,10 @@
-package business;
+package business.clases;
 
-import java.util.Date;
-import java.util.ArrayList;
+import java.io.Serializable;
 import java.util.Date;
 import javax.jdo.annotations.PersistenceCapable;
+
+import business.clases.Entrada;
 import lombok.*;
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.Persistent;
@@ -11,7 +12,7 @@ import javax.jdo.annotations.Persistent;
 @NoArgsConstructor
 @AllArgsConstructor
 @PersistenceCapable
-public class Evento {
+public class Evento implements Serializable {
 
     @Getter @Setter private String titulo;
     @Getter @Setter private String descripcion;

@@ -1,12 +1,8 @@
 package dataAccess.rmi.server;
 
-import business.Evento;
-import dataAccess.rest.client.TicketProviderGateway;
-
 import java.io.IOException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
-import java.util.ArrayList;
 
 public class Server {
 
@@ -41,7 +37,7 @@ public class Server {
             System.err.println("- Exception running the server: " + e.getMessage());
             e.printStackTrace();
         }
-         
+
     }
 
 }

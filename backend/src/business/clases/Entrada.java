@@ -1,9 +1,10 @@
-package business;
+package business.clases;
 
-import java.util.Date;
-import java.util.ArrayList;
+import java.io.Serializable;
 import java.util.Date;
 import javax.jdo.annotations.PersistenceCapable;
+
+import business.clases.Cliente;
 import lombok.*;
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.Persistent;
@@ -12,7 +13,7 @@ import javax.jdo.annotations.Persistent;
 @AllArgsConstructor
 @PersistenceCapable
 
-public class Entrada{
+public class Entrada implements Serializable {
     @Getter @Setter private String nombre;
     @Getter @Setter private int precio;
     @Getter @Setter private Date fecCompra;

@@ -1,4 +1,5 @@
-package business;
+package business.clases;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.Date;
@@ -11,7 +12,7 @@ import javax.jdo.annotations.Persistent;
 @AllArgsConstructor
 @PersistenceCapable
 
-public class Precio {
+public class Precio implements Serializable {
     @Getter @Setter private String nombre;
     @Getter @Setter private int precio;
     @Getter @Setter private int disponibles;

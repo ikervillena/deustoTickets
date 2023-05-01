@@ -1,11 +1,9 @@
 package dataAccess.rmi.server;
 
-import business.*;
 import business.appService.LoginAppService;
+import business.clases.Artista;
 
 import java.rmi.RemoteException;
-import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
@@ -29,55 +27,55 @@ public class RemoteFacadeUsuario extends UnicastRemoteObject implements IRemoteF
     }
 
     @Override
-    public ArrayList<Evento> getEventos() throws RemoteException {
+    public ArrayList<business.clases.Evento> getEventos() throws RemoteException {
         //PENDIENTE
         return null;
     }
 
     @Override
-    public ArrayList<Artista> getArtistas(Evento e) throws RemoteException {
+    public ArrayList<Artista> getArtistas(business.clases.Evento e) throws RemoteException {
         //PENDIENTE
         return null;
     }
 
     @Override
-    public ArrayList<Precio> getPrecios(Evento e) throws RemoteException {
+    public ArrayList<business.clases.Precio> getPrecios(business.clases.Evento e) throws RemoteException {
         //PENDIENTE
         return null;
     }
 
     @Override
-    public boolean comprarEntrada(Entrada e) throws RemoteException {
+    public boolean comprarEntrada(business.clases.Entrada e) throws RemoteException {
         //PENDIENTE
         return false;
     }
 
     @Override
-    public boolean enviarEmailConfirmacion(Entrada e) throws RemoteException {
+    public boolean enviarEmailConfirmacion(business.clases.Entrada e) throws RemoteException {
         //PENDIENTE
         return false;
     }
 
     @Override
-    public ArrayList<Entrada> getEntradas(Cliente c) throws RemoteException {
+    public ArrayList<business.clases.Entrada> getEntradas(business.clases.Cliente c) throws RemoteException {
         //PENDIENTE
         return null;
     }
 
     @Override
-    public Cliente iniciarSesion(String usuario, String contrasenya) throws RemoteException {
+    public business.clases.Cliente iniciarSesion(String usuario, String contrasenya) throws RemoteException {
         //PENDIENTE
         return loginAppService.iniciarSesion(usuario, contrasenya);
     }
 
     @Override
-    public boolean registrar(Cliente c) throws RemoteException {
+    public boolean registrar(business.clases.Cliente c) throws RemoteException {
         //PENDIENTE
         return false;
     }
 
     @Override
-    public boolean actualizarDatos(Cliente cAntiguo, Cliente cNuevo) throws RemoteException {
+    public boolean actualizarDatos(business.clases.Cliente cAntiguo, business.clases.Cliente cNuevo) throws RemoteException {
         //PENDIENTE
         return false;
     }

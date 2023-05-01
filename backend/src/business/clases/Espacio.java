@@ -1,6 +1,7 @@
-package business;
+package business.clases;
 
 //import javax.jdo.annotations.Persistent;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.jdo.annotations.PersistenceCapable;
@@ -10,7 +11,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @PersistenceCapable
-public class Espacio {
+public class Espacio implements Serializable {
 
     @Getter @Setter private String nombre;
     @Getter @Setter private String direccion;

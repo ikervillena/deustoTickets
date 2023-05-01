@@ -1,4 +1,4 @@
-import business.Evento;
+import business.clases.Evento;
 
 import dataAccess.rest.client.TicketProviderGateway;
 import java.io.IOException;

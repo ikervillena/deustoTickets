@@ -1,4 +1,4 @@
-package business;
+package business.clases;
 
 import java.util.ArrayList;
 import java.util.Date;
