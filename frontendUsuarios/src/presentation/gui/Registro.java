@@ -1,7 +1,7 @@
 package presentation.gui;
 
 import business.controller.Controller;
-
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.EventQueue;
@@ -20,38 +20,20 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
 
-public class RegistroView extends JFrame {
+public class Registro extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textCorreo;
-	private JTextField textContrasenya;
+	private JTextField textContraseña;
 	private JTextField textoApellido;
 	private JTextField textNombre;
 	private JTextField textUsuario;
 	private JTextField textFechaNac;
 	private JTextField textDni;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					RegistroView frame = new RegistroView(null);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
-	/**
-	 * Create the frame.
-	 */
-	public RegistroView(Controller controller) {
+	public Registro(Controller controller) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 831, 569);
@@ -62,7 +44,7 @@ public class RegistroView extends JFrame {
 		
 		JLabel label = new JLabel("");
 		label.setBounds(-6, 0, 820, 513);
-		ImageIcon imageIcon = new ImageIcon("C:\\workspace\\imagenes\\fotofiesta.jpg");
+		ImageIcon imageIcon = new ImageIcon("C:\\Users\\ALUMNO\\Desktop\\deustoTickets\\deustoTickets\\frontendUsuarios\\resources\\images\\fotofiesta.jpg");
 		Image image = imageIcon.getImage().getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH);
 		
 		JButton button = new JButton("Nuevo Usuario");
@@ -71,12 +53,15 @@ public class RegistroView extends JFrame {
 		button.setBackground(new Color(255, 215, 0));
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				MenuCliente ventana = new MenuCliente(Controller controller);
+				ventana.setVisible(true);
+				Registro.this.dispose();;
 			}
 		});
 		button.setBorder(BorderFactory.createEmptyBorder());
 		button.setContentAreaFilled(false);
         button.setOpaque(true);
-		button.setBounds(518, 437, 276, 40);
+		button.setBounds(518, 436, 276, 40);
 		contentPane.add(button);
 		
 		JLabel lblUsuario = new JLabel("NOMBRE");
@@ -87,13 +72,13 @@ public class RegistroView extends JFrame {
 		lblUsuario.setBounds(25, 288, 185, 40);
 		contentPane.add(lblUsuario);
 		
-		JLabel lblContrasenya = new JLabel("Contrase\u00F1a");
-		lblContrasenya.setHorizontalAlignment(SwingConstants.CENTER);
-		lblContrasenya.setForeground(new Color(255, 215, 0));
-		lblContrasenya.setFont(new Font("Stencil", Font.BOLD, 25));
-		lblContrasenya.setBackground(new Color(255, 255, 255));
-		lblContrasenya.setBounds(15, 239, 209, 40);
-		contentPane.add(lblContrasenya);
+		JLabel lblContrasea = new JLabel("Contrase\u00F1a");
+		lblContrasea.setHorizontalAlignment(SwingConstants.CENTER);
+		lblContrasea.setForeground(new Color(255, 215, 0));
+		lblContrasea.setFont(new Font("Stencil", Font.BOLD, 25));
+		lblContrasea.setBackground(new Color(255, 255, 255));
+		lblContrasea.setBounds(15, 239, 209, 40);
+		contentPane.add(lblContrasea);
 		
 		JLabel lblApellidos = new JLabel("APELLIDOS");
 		lblApellidos.setHorizontalAlignment(SwingConstants.CENTER);
@@ -137,9 +122,9 @@ public class RegistroView extends JFrame {
 		lblNuevoUsuario.setBounds(181, 105, 424, 92);
 		contentPane.add(lblNuevoUsuario);
 		
-		textContrasenya = new JTextField();
-		textContrasenya.setBounds(223, 246, 146, 26);
-		contentPane.add(textContrasenya);
+		textContraseña = new JTextField();
+		textContraseña.setBounds(223, 246, 146, 26);
+		contentPane.add(textContraseña);
 		
 		textoApellido = new JTextField();
 		textoApellido.setBounds(223, 342, 146, 26);

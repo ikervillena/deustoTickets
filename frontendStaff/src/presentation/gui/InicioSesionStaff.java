@@ -2,6 +2,7 @@ package presentation.gui;
 
 import business.controller.Controller;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.EventQueue;
@@ -10,37 +11,29 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.*;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.UIManager;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.SoftBevelBorder;
 
-public class InicioView extends JFrame {
+import Cliente.InfoEntradas;
+import Cliente.Inicio;
+import Cliente.MenuCliente;
+import Cliente.Registro;
+
+public class InicioSesionStaff extends JFrame {
 
 	private JPanel contentPane;
-	private JPasswordField passwordField;
-	private JTextField textField;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					InicioView frame = new InicioView(null);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	public InicioView(Controller controller) {
+	public InicioSesionStaff(Controller controller) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 831, 569);
 		contentPane = new JPanel();
@@ -50,7 +43,7 @@ public class InicioView extends JFrame {
 		
 		JLabel label = new JLabel("");
 		label.setBounds(0, 0, 820, 513);
-		ImageIcon imageIcon = new ImageIcon("C:\\workspace\\imagenes\\fotofiesta.jpg");
+		ImageIcon imageIcon = new ImageIcon("C:\\Users\\ALUMNO\\Desktop\\deustoTickets\\deustoTickets\\frontendUsuarios\\resources\\images\\fotofiesta.jpg");
 		Image image = imageIcon.getImage().getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH);
 		
 		JButton btnNewButton = new JButton("Inicio Sesion");
@@ -60,7 +53,11 @@ public class InicioView extends JFrame {
 		btnNewButton.setBackground(new Color(255, 215, 0));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				JOptionPane.showMessageDialog(null, "Iniciar sesion");
+				MenuStaff ventana = new MenuStaff();
+				ventana.setVisible(true);
+				InicioSesionStaff.this.dispose();
+			
+			
 			}
 		});
 		btnNewButton.setBounds(645, 397, 149, 33);
@@ -77,30 +74,14 @@ public class InicioView extends JFrame {
 		lblDeustoTickets.setBounds(-16, 16, 836, 228);
 		contentPane.add(lblDeustoTickets);
 		
-		passwordField = new JPasswordField();
+		JPasswordField passwordField = new JPasswordField();
 		passwordField.setBounds(412, 299, 282, 43);
 		contentPane.add(passwordField);
 		
-		textField = new JTextField();
+		JTextField textField = new JTextField();
 		textField.setBounds(412, 234, 282, 40);
 		contentPane.add(textField);
 		textField.setColumns(10);
-		
-		JButton btnNuevoUsuario = new JButton("Nuevo Usuario");
-		btnNuevoUsuario.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				RegistroView ventanaRegistro = new RegistroView(controller);
-				InicioView.this.setVisible(false);
-				ventanaRegistro.setVisible(true);
-				
-			}
-		});
-		btnNuevoUsuario.setForeground(Color.WHITE);
-		btnNuevoUsuario.setFont(new Font("Stencil", Font.PLAIN, 20));
-		btnNuevoUsuario.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		btnNuevoUsuario.setBackground(new Color(255, 215, 0));
-		btnNuevoUsuario.setBounds(469, 397, 161, 33);
-		contentPane.add(btnNuevoUsuario);
 		
 		JLabel lblUsuario = new JLabel("Usuario");
 		lblUsuario.setBackground(new Color(255, 215, 0));
@@ -119,6 +100,4 @@ public class InicioView extends JFrame {
 		contentPane.add(lblContrasea);
 		label.setIcon(new ImageIcon(image));
 		contentPane.add(label);
-		
-	}	
-}
+}}
