@@ -2,6 +2,7 @@ package dataAccess.rmi.server;
 
 import business.clases.*;
 
+import java.io.IOException;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ public interface IRemoteFacadeUsuario extends Remote {
      * @return ArrayList con los eventos guardados en el servidor REST
      * @throws RemoteException
      */
-    ArrayList<Evento> getEventos() throws RemoteException;
+    ArrayList<Evento> getEventos() throws IOException;
 
     ArrayList<Artista> getArtistas(Evento e) throws RemoteException;
 

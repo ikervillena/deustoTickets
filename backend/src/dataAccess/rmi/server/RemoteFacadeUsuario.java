@@ -1,8 +1,10 @@
 package dataAccess.rmi.server;
 
 import business.appService.LoginAppService;
+import business.appService.UsuarioAppService;
 import business.clases.Artista;
 
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
@@ -27,9 +29,8 @@ public class RemoteFacadeUsuario extends UnicastRemoteObject implements IRemoteF
     }
 
     @Override
-    public ArrayList<business.clases.Evento> getEventos() throws RemoteException {
-        //PENDIENTE
-        return null;
+    public ArrayList<business.clases.Evento> getEventos() throws RemoteException, IOException {
+        return UsuarioAppService.getEventos();
     }
 
     @Override

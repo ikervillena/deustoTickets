@@ -2,12 +2,14 @@ package business.clases;
 
 import java.io.Serializable;
 import java.util.Date;
+import lombok.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
 
 public class Evento implements Serializable {
 
+    @Getter @Setter private String qr;
     @Getter @Setter private String titulo;
     @Getter @Setter private String descripcion;
     @Getter @Setter private Date fecha;

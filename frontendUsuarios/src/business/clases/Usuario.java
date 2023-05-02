@@ -1,6 +1,7 @@
 package business.clases;
 
 import java.util.Date;
+import lombok.*;
 
 public abstract class Usuario {
 	@Getter @Setter private String nombre;

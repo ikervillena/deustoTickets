@@ -14,6 +14,7 @@ import javax.jdo.annotations.Persistent;
 @PersistenceCapable
 
 public class Entrada implements Serializable {
+    @Getter @Setter private String qr;
     @Getter @Setter private String nombre;
     @Getter @Setter private int precio;
     @Getter @Setter private Date fecCompra;

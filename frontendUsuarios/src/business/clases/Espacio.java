@@ -1,6 +1,7 @@
 package business.clases;
 
 import java.io.Serializable;
+import lombok.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
