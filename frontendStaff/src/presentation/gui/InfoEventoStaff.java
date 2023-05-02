@@ -21,11 +21,6 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import Cliente.InfoCliente;
-import Cliente.InfoEntradas;
-import Cliente.InfoEvento;
-import Cliente.MenuCliente;
-
 public class InfoEventoStaff extends JFrame {
 
 	private JPanel contentPane;
@@ -106,7 +101,7 @@ public class InfoEventoStaff extends JFrame {
 		JButton btnNewButton_1 = new JButton("SCANEAR ENTRADAS");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Scanear ventana = new Scanear(Controller controller);
+				Scanear ventana = new Scanear(controller);
 				ventana.setVisible(true);
 				InfoEventoStaff.this.dispose();
 			}
@@ -124,7 +119,7 @@ public class InfoEventoStaff extends JFrame {
 		JButton btnBack = new JButton("BACK");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MenuStaff ventana = new MenuStaff(Controller controller);
+				MenuStaff ventana = new MenuStaff(controller);
 				ventana.setVisible(true);
 				InfoEventoStaff.this.dispose();;
 			}

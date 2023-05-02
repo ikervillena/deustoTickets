@@ -22,29 +22,10 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.SoftBevelBorder;
 
-import Cliente.Inicio;
-import Cliente.InicioSesion;
-import Cliente.Registro;
 
 public class InicioStaff extends JFrame {
 
 	private JPanel contentPane;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					InicioStaff frame = new InicioStaff(Controller controller);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
@@ -69,7 +50,7 @@ public class InicioStaff extends JFrame {
 		btnNewButton.setBackground(new Color(255, 215, 0));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				InicioSesionStaff ventana = new InicioSesionStaff(Controller controller);
+				InicioSesionStaff ventana = new InicioSesionStaff(controller);
 				ventana.setVisible(true);
 				InicioStaff.this.dispose();;
 			}

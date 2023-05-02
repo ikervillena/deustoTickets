@@ -22,11 +22,6 @@ import javax.swing.JSpinner;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import Cliente.InfoCliente;
-import Cliente.InfoEntradas;
-import Cliente.InfoEvento;
-import Cliente.MenuCliente;
-
 public class Scanear extends JFrame {
 
 	private JPanel contentPane;
@@ -86,7 +81,7 @@ public class Scanear extends JFrame {
 		JButton btnBack = new JButton("BACK");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MenuStaff ventana = new MenuStaff(Controller controller);
+				MenuStaff ventana = new MenuStaff(controller);
 				ventana.setVisible(true);
 				Scanear.this.dispose();
 			}

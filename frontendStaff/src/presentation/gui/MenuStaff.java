@@ -21,10 +21,6 @@ import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Cliente.InfoCliente;
-import Cliente.InfoEntradas;
-import Cliente.InfoEvento;
-import Cliente.MenuCliente;
 
 public class MenuStaff extends JFrame {
 
@@ -78,7 +74,7 @@ public class MenuStaff extends JFrame {
 		btnNewButton_1.setFont(new Font("Stencil", Font.PLAIN, 50));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				InfoEventoStaff ventana = new InfoEventoStaff(Controller controller);
+				InfoEventoStaff ventana = new InfoEventoStaff(controller);
 				ventana.setVisible(true);
 				MenuStaff.this.dispose();
 

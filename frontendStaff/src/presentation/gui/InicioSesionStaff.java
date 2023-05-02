@@ -24,11 +24,6 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.SoftBevelBorder;
 
-import Cliente.InfoEntradas;
-import Cliente.Inicio;
-import Cliente.MenuCliente;
-import Cliente.Registro;
-
 public class InicioSesionStaff extends JFrame {
 
 	private JPanel contentPane;
