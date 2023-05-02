@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.jdo.annotations.PersistenceCapable;
 
 import business.clases.Cliente;
+import business.clases.Evento;
 import lombok.*;
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.Persistent;
@@ -18,6 +19,7 @@ public class Entrada implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Getter @Setter private String qr;
+    @Getter @Setter private int codigo;
     @Getter @Setter private String nombre;
     @Getter @Setter private int precio;
     @Getter @Setter private Date fecCompra;

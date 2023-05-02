@@ -8,6 +8,8 @@ import business.clases.Entrada;
 import lombok.*;
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.Persistent;
+import java.util.ArrayList;
+
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -21,7 +23,7 @@ public class Evento implements Serializable {
     @Getter @Setter private Date fecha;
     @Getter @Setter private int aforo;
     @Persistent(mappedBy = "evento")
-	    @Getter @Setter private Entrada entrada;
+	    @Getter @Setter private ArrayList<Entrada> entradas;
 
         public Evento(String titulo, String descripcion, Date fecha, int aforo) {
             this.titulo = titulo;
