@@ -1,12 +1,10 @@
 package dataAccess.rmi.server;
 
-import business.Evento;
-import business.Staff;
+import business.clases.Evento;
+import business.clases.Staff;
 
 import java.io.IOException;
 import java.rmi.RemoteException;
-import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 

@@ -1,6 +1,6 @@
 package dataAccess.rest.client;
 
-import business.Evento;
+import business.clases.Evento;
 
 import java.io.IOException;
 import java.util.ArrayList;

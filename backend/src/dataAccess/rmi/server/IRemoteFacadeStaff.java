@@ -1,7 +1,7 @@
 package dataAccess.rmi.server;
 
-import business.Evento;
-import business.Staff;
+import business.clases.Evento;
+import business.clases.Staff;
 
 import java.io.IOException;
 import java.rmi.Remote;

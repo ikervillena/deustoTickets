@@ -1,6 +1,6 @@
 package dataAccess.rmi.server;
 
-import business.*;
+import business.clases.Artista;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
@@ -22,22 +22,22 @@ public interface IRemoteFacadeUsuario extends Remote {
      * @return ArrayList con los eventos guardados en el servidor REST
      * @throws RemoteException
      */
-    ArrayList<Evento> getEventos() throws RemoteException;
+    ArrayList<business.clases.Evento> getEventos() throws RemoteException;
 
-    ArrayList<Artista> getArtistas(Evento e) throws RemoteException;
+    ArrayList<Artista> getArtistas(business.clases.Evento e) throws RemoteException;
 
-    ArrayList<Precio> getPrecios(Evento e) throws RemoteException;
+    ArrayList<business.clases.Precio> getPrecios(business.clases.Evento e) throws RemoteException;
 
-    boolean comprarEntrada(Entrada e) throws RemoteException;
+    boolean comprarEntrada(business.clases.Entrada e) throws RemoteException;
 
-    boolean enviarEmailConfirmacion(Entrada e) throws RemoteException;
+    boolean enviarEmailConfirmacion(business.clases.Entrada e) throws RemoteException;
 
-    ArrayList<Entrada> getEntradas(Cliente c) throws RemoteException;
+    ArrayList<business.clases.Entrada> getEntradas(business.clases.Cliente c) throws RemoteException;
 
-    Cliente iniciarSesion(String usuario, String contrasenya) throws RemoteException;
+    business.clases.Cliente iniciarSesion(String usuario, String contrasenya) throws RemoteException;
 
-    boolean registrar(Cliente c) throws RemoteException;
+    boolean registrar(business.clases.Cliente c) throws RemoteException;
 
-    boolean actualizarDatos(Cliente cAntiguo, Cliente cNuevo) throws RemoteException;
+    boolean actualizarDatos(business.clases.Cliente cAntiguo, business.clases.Cliente cNuevo) throws RemoteException;
 
 }

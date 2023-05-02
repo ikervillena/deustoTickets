@@ -1,7 +1,7 @@
 package dataAccess.rest.client;
 
 
-import business.Evento;
+import business.clases.Evento;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;

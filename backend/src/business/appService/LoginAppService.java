@@ -1,6 +1,6 @@
 package business.appService;
 
-import business.Cliente;
+import business.clases.Cliente;
 
 //Representa el patron de diseño "AppService"
 public class LoginAppService {

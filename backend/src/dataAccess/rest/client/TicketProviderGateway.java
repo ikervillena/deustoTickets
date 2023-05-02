@@ -1,7 +1,7 @@
 package dataAccess.rest.client;
 
 
-import business.Evento;
+import business.clases.Evento;
 
 import java.io.BufferedReader;
 import java.io.IOException;

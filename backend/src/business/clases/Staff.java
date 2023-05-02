@@ -1,16 +1,18 @@
-package business;
+package business.clases;
 
-import java.util.ArrayList;
-import java.util.Date;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Column;
+
+import business.clases.Usuario;
 import lombok.*;
+
+import java.io.Serializable;
 
 @PersistenceCapable
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class Staff extends Usuario {
+public class Staff extends Usuario implements Serializable {
     @Getter @Setter private int dni;
     @Getter @Setter private String email;
 }
