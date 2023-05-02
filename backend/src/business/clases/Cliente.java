@@ -6,6 +6,8 @@ import javax.jdo.annotations.Persistent;
 import java.util.ArrayList;
 
 import business.clases.Usuario;
+import business.clases.Entrada;
+
 import lombok.*;
 
 import java.io.Serializable;
@@ -20,6 +22,6 @@ public class Cliente extends Usuario implements Serializable {
     @Getter @Setter private int dni;
     @Getter @Setter private String email;
     @Persistent(mappedBy="cliente")
-    ArrayList<Entrada> entradas;
+    @Getter @Setter ArrayList<Entrada> entradas;
     
 }

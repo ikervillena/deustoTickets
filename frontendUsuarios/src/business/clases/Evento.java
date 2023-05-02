@@ -3,6 +3,8 @@ package business.clases;
 import java.io.Serializable;
 import java.util.Date;
 import lombok.*;
+import java.util.ArrayList;
+import business.clases.Entrada;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,7 +18,7 @@ public class Evento implements Serializable {
     @Getter @Setter private String descripcion;
     @Getter @Setter private Date fecha;
     @Getter @Setter private int aforo;
-    @Getter @Setter private Entrada entrada;
+    @Getter @Setter private ArrayList<Entrada> entradas;
 
         public Evento(String titulo, String descripcion, Date fecha, int aforo) {
             this.titulo = titulo;

@@ -3,6 +3,7 @@ package business.clases;
 import java.io.Serializable;
 import lombok.*;
 
+
 @NoArgsConstructor
 @AllArgsConstructor
 public class Espacio implements Serializable {
