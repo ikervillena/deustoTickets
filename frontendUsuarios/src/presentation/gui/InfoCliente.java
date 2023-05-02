@@ -127,7 +127,7 @@ public class InfoCliente extends JFrame {
 		contentPane.add(lblMisEntradas);
 		
 		/*For para que aparezcan todas las entradas, modificar el set bounds para que no se solapen
-		 * y el boton debería dirigir al evento*/
+		 * y el boton deberï¿½a dirigir al evento*/
 		 
 		
 		JButton btnNewButton_1 = new JButton("Entrada 1");
@@ -144,7 +144,7 @@ public class InfoCliente extends JFrame {
 		JButton btnNewButton_2 = new JButton("BACK");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MenuCliente ventana = new MenuCliente(Controller controller);
+				MenuCliente ventana = new MenuCliente(controller);
 				ventana.setVisible(true);
 				InfoCliente.this.dispose();
 			}

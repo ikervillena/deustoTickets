@@ -32,22 +32,6 @@ public class InicioSesion extends JFrame {
 	private JLabel label;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					InicioSesion frame = new InicioSesion(Controller controller);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the frame.
 	 */
 	public InicioSesion(Controller controller) {
@@ -70,7 +54,7 @@ public class InicioSesion extends JFrame {
 		btnNewButton.setBackground(new Color(255, 215, 0));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Inicio ventana = new Inicio(Controller controller);
+				Inicio ventana = new Inicio(controller);
 				ventana.setVisible(true);
 				InicioSesion.this.dispose();;
 			}
@@ -85,7 +69,7 @@ public class InicioSesion extends JFrame {
 		button.setBackground(new Color(255, 215, 0));
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MenuCliente ventana1 = new MenuCliente(Controller controller);
+				MenuCliente ventana1 = new MenuCliente(controller);
 				ventana1.setVisible(true);
 				InicioSesion.this.dispose();;
 			}

@@ -49,14 +49,14 @@ public class MenuCliente extends JFrame {
 		Component verticalStrut = Box.createVerticalStrut(0);
 		menuBar.add(verticalStrut);
 		
-		/*Hay que mirar si se ha accedido sin usuario o iniciando sesión*/
+		/*Hay que mirar si se ha accedido sin usuario o iniciando sesiï¿½n*/
 		
 		JButton btnNewButton = new JButton("Usuario");
 		btnNewButton.setBorder(null);
 		btnNewButton.setBorderPainted(false);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				InfoCliente ventana1 = new InfoCliente(Controller controller);
+				InfoCliente ventana1 = new InfoCliente(controller);
 				ventana1.setVisible(true);
 				MenuCliente.this.dispose();
 			}
@@ -81,7 +81,7 @@ public class MenuCliente extends JFrame {
 		btnNewButton_1.setFont(new Font("Stencil", Font.PLAIN, 50));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				InfoEvento ventana = new InfoEvento(Controller controller);
+				InfoEvento ventana = new InfoEvento(controller);
 				ventana.setVisible(true);
 				MenuCliente.this.dispose();;
 				

@@ -51,7 +51,7 @@ public class Inicio extends JFrame {
 		btnNewButton.setBackground(new Color(255, 215, 0));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				MenuCliente ventana = new MenuCliente(Controller controller);
+				MenuCliente ventana = new MenuCliente(controller);
 				ventana.setVisible(true);
 				Inicio.this.dispose();
 			}
@@ -82,7 +82,7 @@ public class Inicio extends JFrame {
 		JButton btnNuevoUsuario = new JButton("Nuevo Usuario");
 		btnNuevoUsuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Registro ventana1 = new Registro(Controller controller);
+				Registro ventana1 = new Registro(controller);
 				ventana1.setVisible(true);
 				Inicio.this.dispose();;
 				

@@ -25,7 +25,7 @@ public class Registro extends JFrame {
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textCorreo;
-	private JTextField textContraseña;
+	private JTextField textContrasenya;
 	private JTextField textoApellido;
 	private JTextField textNombre;
 	private JTextField textUsuario;
@@ -53,7 +53,7 @@ public class Registro extends JFrame {
 		button.setBackground(new Color(255, 215, 0));
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MenuCliente ventana = new MenuCliente(Controller controller);
+				MenuCliente ventana = new MenuCliente(controller);
 				ventana.setVisible(true);
 				Registro.this.dispose();;
 			}
@@ -122,9 +122,9 @@ public class Registro extends JFrame {
 		lblNuevoUsuario.setBounds(181, 105, 424, 92);
 		contentPane.add(lblNuevoUsuario);
 		
-		textContraseña = new JTextField();
-		textContraseña.setBounds(223, 246, 146, 26);
-		contentPane.add(textContraseña);
+		textContrasenya = new JTextField();
+		textContrasenya.setBounds(223, 246, 146, 26);
+		contentPane.add(textContrasenya);
 		
 		textoApellido = new JTextField();
 		textoApellido.setBounds(223, 342, 146, 26);

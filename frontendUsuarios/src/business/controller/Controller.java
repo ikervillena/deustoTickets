@@ -1,6 +1,5 @@
 package business.controller;
 
-import business.Cliente;
 import dataAccess.rmi.client.ServiceLocator;
 
 import java.rmi.RemoteException;

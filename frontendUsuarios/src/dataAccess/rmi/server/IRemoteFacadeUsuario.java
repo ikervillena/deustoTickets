@@ -1,6 +1,6 @@
 package dataAccess.rmi.server;
 
-import business.*;
+import business.clases.*;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;

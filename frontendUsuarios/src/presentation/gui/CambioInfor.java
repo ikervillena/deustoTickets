@@ -48,7 +48,7 @@ public class CambioInfor extends JFrame {
 		button.setBackground(new Color(255, 215, 0));
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				InfoCliente ventana = new InfoCliente(Controller controller);
+				InfoCliente ventana = new InfoCliente(controller);
 				ventana.setVisible(true);
 				CambioInfor.this.dispose();
 			}
@@ -117,9 +117,9 @@ public class CambioInfor extends JFrame {
 		lblNuevoUsuario.setBounds(110, 100, 570, 92);
 		contentPane.add(lblNuevoUsuario);
 		
-		JTextField textContraseña = new JTextField();
-		textContraseña.setBounds(223, 246, 146, 26);
-		contentPane.add(textContraseña);
+		JTextField textContrasenya = new JTextField();
+		textContrasenya.setBounds(223, 246, 146, 26);
+		contentPane.add(textContrasenya);
 		
 		JTextField textoApellido = new JTextField();
 		textoApellido.setBounds(223, 342, 146, 26);
@@ -147,7 +147,7 @@ public class CambioInfor extends JFrame {
 		textFecNac.setBounds(634, 200, 146, 26);
 		contentPane.add(textFecNac);
 		
-		/*Aqui pasamos directamente el usuario para no dar opción a cambiar de nombre usuario*/
+		/*Aqui pasamos directamente el usuario para no dar opciï¿½n a cambiar de nombre usuario*/
 		JLabel lblNewLabel = new JLabel("#Usuario");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setForeground(new Color(255, 215, 0));

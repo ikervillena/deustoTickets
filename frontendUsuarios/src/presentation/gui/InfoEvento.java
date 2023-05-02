@@ -56,7 +56,7 @@ public class InfoEvento extends JFrame {
 		btnNewButton.setBorderPainted(false);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				InfoCliente ventana1 = new InfoCliente(Controller controller);
+				InfoCliente ventana1 = new InfoCliente(controller);
 				ventana1.setVisible(true);
 				InfoEvento.this.dispose();
 			}
@@ -119,7 +119,7 @@ public class InfoEvento extends JFrame {
 		JButton btnNewButton_1 = new JButton("ENTRADAS");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				InfoEntradas ventana = new InfoEntradas(Controller controller);
+				InfoEntradas ventana = new InfoEntradas(controller);
 				ventana.setVisible(true);
 				InfoEvento.this.dispose();
 			}
@@ -137,7 +137,7 @@ public class InfoEvento extends JFrame {
 		JButton btnBack = new JButton("BACK");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MenuCliente ventana = new MenuCliente(Controller controller);
+				MenuCliente ventana = new MenuCliente(controller);
 				ventana.setVisible(true);
 				InfoEvento.this.dispose();;
 			}
