@@ -9,6 +9,8 @@ import lombok.*;
 
 public class Evento implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+
     @Getter @Setter private String qr;
     @Getter @Setter private String titulo;
     @Getter @Setter private String descripcion;

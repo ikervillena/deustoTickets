@@ -7,6 +7,8 @@ import lombok.*;
 @AllArgsConstructor
 public class Espacio implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+
     @Getter @Setter private String nombre;
     @Getter @Setter private String direccion;
     

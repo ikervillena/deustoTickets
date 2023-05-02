@@ -7,6 +7,9 @@ import lombok.*;
 @AllArgsConstructor
 
 public class Precio implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     @Getter @Setter private String nombre;
     @Getter @Setter private int precio;
     @Getter @Setter private int disponibles;

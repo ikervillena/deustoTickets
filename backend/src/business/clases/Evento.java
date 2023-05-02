@@ -14,6 +14,8 @@ import javax.jdo.annotations.Persistent;
 @PersistenceCapable
 public class Evento implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+
     @Getter @Setter private String titulo;
     @Getter @Setter private String descripcion;
     @Getter @Setter private Date fecha;
