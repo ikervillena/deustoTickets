@@ -19,10 +19,7 @@ public class Client {
         // args[2] = Service Name
 
         serviceLocator.setService(args[0], args[1], args[2]);
-
-        System.out.println("\n\nEY\n\n");
         Controller controller = new Controller(serviceLocator);
-        System.out.println("\n\nEY\n\n");
 
         for (Evento e : serviceLocator.getService().getEventos()) {
             System.out.println(e);

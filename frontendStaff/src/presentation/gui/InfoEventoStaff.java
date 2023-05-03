@@ -1,5 +1,6 @@
 package presentation.gui;
 
+import business.clases.Evento;
 import business.controller.Controller;
 
 import java.awt.BorderLayout;
@@ -24,7 +25,7 @@ public class InfoEventoStaff extends JFrame {
 
 	private JPanel contentPane;
 
-	public InfoEventoStaff(Controller controller) {
+	public InfoEventoStaff(Controller controller, Evento evento) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 831, 569);
 		contentPane = new JPanel();
@@ -57,7 +58,7 @@ public class InfoEventoStaff extends JFrame {
 		btnNewButton.setFont(new Font("Stencil", Font.BOLD, 40));
 		menuBar.add(btnNewButton);
 
-		JLabel lblNewLabel_1 = new JLabel("Evento 1");
+		JLabel lblNewLabel_1 = new JLabel(evento.getTitulo());
 		lblNewLabel_1.setBackground(new Color(255, 255, 255));
 		lblNewLabel_1.setFont(new Font("Stencil", Font.BOLD, 40));
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -67,7 +68,7 @@ public class InfoEventoStaff extends JFrame {
 		Image img = icon.getImage().getScaledInstance(100, 60, Image.SCALE_SMOOTH);
 		icon = new ImageIcon(img);
 		lblNewLabel_1.setIcon(icon);
-		lblNewLabel_1.setBounds(187, 95, 423, 63);
+		lblNewLabel_1.setBounds(117, 95, 633, 63);
 		contentPane.add(lblNewLabel_1);
 
 		JLabel lblNewLabel_2 = new JLabel("Acerca del evento");
@@ -77,18 +78,18 @@ public class InfoEventoStaff extends JFrame {
 		lblNewLabel_2.setBounds(83, 172, 245, 33);
 		contentPane.add(lblNewLabel_2);
 
-		JLabel lblDireccin = new JLabel("Direcci\u00F3n del evento");
+		JLabel lblDireccin = new JLabel("Aforo del evento");
 		lblDireccin.setForeground(new Color(255, 215, 0));
 		lblDireccin.setFont(new Font("Stencil", Font.BOLD, 22));
 		lblDireccin.setBackground(new Color(248, 248, 255));
 		lblDireccin.setBounds(462, 172, 271, 33);
 		contentPane.add(lblDireccin);
 
-		JLabel lblDireccinDelEvento = new JLabel("Direcci\u00F3n del evento");
+		JLabel lblDireccinDelEvento = new JLabel("" + evento.getAforo());
 		lblDireccinDelEvento.setBounds(462, 205, 332, 63);
 		contentPane.add(lblDireccinDelEvento);
 
-		JLabel InforEvento = new JLabel("Informaci\u00F3n del evento");
+		JLabel InforEvento = new JLabel(evento.getDescripcion() + evento.getFecha());
 		InforEvento.setBounds(37, 200, 344, 73);
 		contentPane.add(InforEvento);
 

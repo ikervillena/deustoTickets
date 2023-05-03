@@ -71,6 +71,7 @@ public class MenuStaff extends JFrame {
 		int altura = 100;
 
 		for (int i = 0; i < eventos.size(); i++) {
+			Evento evento = eventos.get(i);
 			JButton btnNewButton_1 = new JButton(eventos.get(i).getTitulo());
 			ImageIcon icon = new ImageIcon(
 					"C:\\Users\\ALUMNO\\Desktop\\deustoTickets\\deustoTickets\\frontendUsuarios\\resources\\images\\ENTRADA.png");
@@ -84,7 +85,7 @@ public class MenuStaff extends JFrame {
 			btnNewButton_1.setFont(new Font("Stencil", Font.PLAIN, 50));
 			btnNewButton_1.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					InfoEventoStaff ventana = new InfoEventoStaff(controller);
+					InfoEventoStaff ventana = new InfoEventoStaff(controller, evento);
 					ventana.setVisible(true);
 					MenuStaff.this.dispose();
 				}
