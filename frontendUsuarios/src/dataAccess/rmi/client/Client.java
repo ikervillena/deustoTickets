@@ -20,12 +20,7 @@ public class Client {
 
         Controller controller = new Controller(serviceLocator);
         Inicio inicio = new Inicio(controller);
-
         inicio.setVisible(true);
-
-        for (Evento e : controller.getEventos()) {
-            System.out.println(e);
-        }
 
     }
 

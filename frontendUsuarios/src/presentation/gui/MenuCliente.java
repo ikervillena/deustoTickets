@@ -1,5 +1,6 @@
 package presentation.gui;
 
+import business.clases.Evento;
 import business.controller.Controller;
 
 
@@ -11,6 +12,7 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.Box;
 import javax.swing.JButton;
@@ -66,38 +68,44 @@ public class MenuCliente extends JFrame {
 		btnNewButton.setFont(new Font("Stencil", Font.BOLD, 40));
 		menuBar.add(btnNewButton);
 		
-		/* Hacer un for y que aparezcan los eventos y que por cada uno que entre varie el 
-		 * setBounds para que no se ponga uno encima del otro*/
-		
-		JButton btnNewButton_1 = new JButton("EVENTO 1");
-		ImageIcon icon = new ImageIcon("C:\\Users\\ALUMNO\\Desktop\\deustoTickets\\deustoTickets\\frontendUsuarios\\resources\\images\\ENTRADA.png");
-		Image img = icon.getImage().getScaledInstance(100, 60, Image.SCALE_SMOOTH);
-		icon = new ImageIcon(img);
-		btnNewButton_1.setIcon(icon);
-		btnNewButton_1.setBorder(null);
-		btnNewButton_1.setBorderPainted(false);
-		btnNewButton_1.setBackground(new Color(255, 222, 173));
-		btnNewButton_1.setForeground(new Color(255, 255, 255));
-		btnNewButton_1.setFont(new Font("Stencil", Font.PLAIN, 50));
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				InfoEvento ventana = new InfoEvento(controller);
-				ventana.setVisible(true);
-				MenuCliente.this.dispose();;
-				
-			}
-		});
-		btnNewButton_1.setBounds(61, 118, 709, 76);
-		contentPane.add(btnNewButton_1);
-		
-		
 		/*Para hacer el filtro */
 		
 		JComboBox comboBox = new JComboBox();
 		comboBox.setBounds(630, 86, 140, 26);
 		contentPane.add(comboBox);
-		
-		
+
+		/*
+		 * Hacer un for y que aparezcan los eventos y que por cada uno que entre varie
+		 * el
+		 * setBounds para que no se ponga uno encima del otro
+		 */
+
+		ArrayList<Evento> eventos = controller.getEventos();
+
+		int altura = 100;
+
+		for (int i = 0; i < eventos.size(); i++) {
+			Evento evento = eventos.get(i);
+			JButton btnNewButto = new JButton(eventos.get(i).getTitulo());
+			ImageIcon icon2 = new ImageIcon(
+					"C:\\Users\\ALUMNO\\Desktop\\deustoTickets\\deustoTickets\\frontendUsuarios\\resources\\images\\ENTRADA.png");
+			Image img2 = icon2.getImage().getScaledInstance(100, 60, Image.SCALE_SMOOTH);
+			icon2 = new ImageIcon(img2);
+			btnNewButto.setIcon(icon2);
+			btnNewButto.setBorder(null);
+			btnNewButto.setBorderPainted(false);
+			btnNewButto.setBackground(new Color(255, 222, 173));
+			btnNewButto.setForeground(new Color(255, 255, 255));
+			btnNewButto.setFont(new Font("Stencil", Font.PLAIN, 50));
+			btnNewButto.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					MenuCliente.this.dispose();
+				}
+			});
+			btnNewButto.setBounds(61, altura, 709, 60);
+			contentPane.add(btnNewButto);
+			altura = altura + 70;
+		}
 		
 	}
 

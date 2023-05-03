@@ -20,11 +20,6 @@ public class Client {
 
         serviceLocator.setService(args[0], args[1], args[2]);
         Controller controller = new Controller(serviceLocator);
-
-        for (Evento e : serviceLocator.getService().getEventos()) {
-            System.out.println(e);
-        }
-
         InicioStaff ventana = new InicioStaff(controller);
         ventana.setVisible(true);
     }
