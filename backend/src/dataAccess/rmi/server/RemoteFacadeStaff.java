@@ -1,6 +1,6 @@
 package dataAccess.rmi.server;
 
-import business.appService.UsuarioAppService;
+import business.appService.StaffAppService;
 import business.clases.Evento;
 import business.clases.Staff;
 
@@ -31,7 +31,7 @@ public class RemoteFacadeStaff extends UnicastRemoteObject implements IRemoteFac
 
     @Override
     public ArrayList<Evento> getEventos() throws IOException, RemoteException {
-        return UsuarioAppService.getEventos();
+        return StaffAppService.getEventos();
     }
 
 

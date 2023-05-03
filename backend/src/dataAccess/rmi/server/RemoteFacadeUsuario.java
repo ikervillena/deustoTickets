@@ -3,6 +3,9 @@ package dataAccess.rmi.server;
 import business.appService.LoginAppService;
 import business.appService.UsuarioAppService;
 import business.clases.Artista;
+import business.clases.Cliente;
+
+import dataAccess.dao.ClienteDAO;
 
 import java.io.IOException;
 import java.rmi.RemoteException;
@@ -71,8 +74,7 @@ public class RemoteFacadeUsuario extends UnicastRemoteObject implements IRemoteF
 
     @Override
     public boolean registrar(business.clases.Cliente c) throws RemoteException {
-        //PENDIENTE
-        return false;
+        return UsuarioAppService.registrar(c);
     }
 
     @Override

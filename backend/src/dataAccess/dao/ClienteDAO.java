@@ -46,10 +46,13 @@ public class ClienteDAO {
     }
 
     public void setCliente(Cliente a){
+        
         try {
+            
             PersistenceManagerFactory persistentManagerFactory = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
             PersistenceManager persistentManager = persistentManagerFactory.getPersistenceManager();				
 			Transaction transaction = persistentManager.currentTransaction();
+            
 
             try {
                 transaction.begin();

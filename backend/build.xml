@@ -47,7 +47,7 @@
 		<jar destfile="${dist.dir}/${export.file}" basedir="${build.dir}" excludes="**/Server.class"/>
 	</target>
 
-	<target name="server" depends="build" description="Runs the Server for the users">
+	<target name="server" depends="3.create-db-schema" description="Runs the Server for the users">
 		<java classname="dataAccess.rmi.server.Server" classpathref="classpath2" fork="true">
 			<jvmarg value="-Djava.rmi.server.codebase=file:${build.dir}/"/>
 			<jvmarg value="-Djava.security.policy=${policy.file}"/>

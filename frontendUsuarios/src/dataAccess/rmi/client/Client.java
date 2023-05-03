@@ -19,9 +19,9 @@ public class Client {
         serviceLocator.setService(args[0], args[1], args[2]);
 
         Controller controller = new Controller(serviceLocator);
-        //Inicio inicio = new Inicio(controller);
+        Inicio inicio = new Inicio(controller);
 
-        //inicio.setVisible(true);
+        inicio.setVisible(true);
 
         for (Evento e : controller.getEventos()) {
             System.out.println(e);
