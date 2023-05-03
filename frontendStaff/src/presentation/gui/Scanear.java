@@ -35,21 +35,20 @@ public class Scanear extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBackground(new Color(255, 215, 0));
 		menuBar.setBounds(61, 16, 709, 63);
 		contentPane.add(menuBar);
-		
-			
+
 		JLabel lblNewLabel = new JLabel("Eventos proximos");
 		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setFont(new Font("Stencil", Font.BOLD, 40));
 		menuBar.add(lblNewLabel);
-		
+
 		Component verticalStrut = Box.createVerticalStrut(0);
 		menuBar.add(verticalStrut);
-		
+
 		JButton btnNewButton = new JButton("Usuario");
 		btnNewButton.setBorder(null);
 		btnNewButton.setBorderPainted(false);
@@ -57,27 +56,28 @@ public class Scanear extends JFrame {
 		btnNewButton.setForeground(Color.WHITE);
 		btnNewButton.setFont(new Font("Stencil", Font.BOLD, 40));
 		menuBar.add(btnNewButton);
-		
+
 		JLabel lblNewLabel_1 = new JLabel("Evento 1");
 		lblNewLabel_1.setBackground(new Color(255, 255, 255));
 		lblNewLabel_1.setFont(new Font("Stencil", Font.BOLD, 40));
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setForeground(new Color(255, 215, 0));
-		ImageIcon icon = new ImageIcon("C:\\Users\\ALUMNO\\Desktop\\deustoTickets\\deustoTickets\\frontendUsuarios\\resources\\images\\ENTRADA.png");
+		ImageIcon icon = new ImageIcon(
+				"C:\\Users\\ALUMNO\\Desktop\\deustoTickets\\deustoTickets\\frontendUsuarios\\resources\\images\\ENTRADA.png");
 		Image img = icon.getImage().getScaledInstance(100, 60, Image.SCALE_SMOOTH);
 		icon = new ImageIcon(img);
 		lblNewLabel_1.setIcon(icon);
 		lblNewLabel_1.setBounds(187, 93, 423, 63);
 		contentPane.add(lblNewLabel_1);
-		
+
 		JLabel lbl = new JLabel("New label");
 		lbl.setBounds(238, 172, 320, 323);
-		ImageIcon imageIcon = new ImageIcon("C:\\Users\\ALUMNO\\Desktop\\deustoTickets\\deustoTickets\\frontendUsuarios\\resources\\images\\scan.png");
+		ImageIcon imageIcon = new ImageIcon(
+				"C:\\Users\\ALUMNO\\Desktop\\deustoTickets\\deustoTickets\\frontendUsuarios\\resources\\images\\scan.png");
 		Image image = imageIcon.getImage().getScaledInstance(lbl.getWidth(), lbl.getHeight(), Image.SCALE_SMOOTH);
 		lbl.setIcon(new ImageIcon(image));
 		contentPane.add(lbl);
-	
-		
+
 		JButton btnBack = new JButton("BACK");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -89,12 +89,8 @@ public class Scanear extends JFrame {
 		btnBack.setBackground(new Color(178, 34, 34));
 		btnBack.setForeground(new Color(255, 255, 255));
 		btnBack.setFont(new Font("Stencil", Font.BOLD, 20));
-		btnBack.setIcon(new ImageIcon(InfoEventoStaff.class.getResource("/com/sun/javafx/scene/web/skin/Undo_16x16_JFX.png")));
 		btnBack.setBounds(655, 464, 115, 29);
 		contentPane.add(btnBack);
-		
 
-			
-		
 	}
 }

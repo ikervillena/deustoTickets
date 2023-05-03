@@ -1,6 +1,8 @@
 package presentation.gui;
 
 import business.controller.Controller;
+import business.clases.*;
+import java.util.ArrayList;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -21,7 +23,6 @@ import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-
 public class MenuStaff extends JFrame {
 
 	private JPanel contentPane;
@@ -35,22 +36,22 @@ public class MenuStaff extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBackground(new Color(255, 215, 0));
 		menuBar.setBounds(61, 16, 709, 63);
 		contentPane.add(menuBar);
-		
+
 		JLabel lblNewLabel = new JLabel("Eventos proximos");
 		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setFont(new Font("Stencil", Font.BOLD, 40));
 		menuBar.add(lblNewLabel);
-		
+
 		Component verticalStrut = Box.createVerticalStrut(0);
 		menuBar.add(verticalStrut);
-		
-		/*Cargar el usuario y cambiar el nombre*/
-		
+
+		/* Cargar el usuario y cambiar el nombre */
+
 		JButton btnNewButton = new JButton("Usuario");
 		btnNewButton.setBorder(null);
 		btnNewButton.setBorderPainted(false);
@@ -58,33 +59,40 @@ public class MenuStaff extends JFrame {
 		btnNewButton.setForeground(Color.WHITE);
 		btnNewButton.setFont(new Font("Stencil", Font.BOLD, 40));
 		menuBar.add(btnNewButton);
-		
-		/* Hacer un for y que aparezcan los eventos y que por cada uno que entre varie el 
-		 * setBounds para que no se ponga uno encima del otro*/
-		
-		JButton btnNewButton_1 = new JButton("EVENTO 1");
-		ImageIcon icon = new ImageIcon("C:\\Users\\ALUMNO\\Desktop\\deustoTickets\\deustoTickets\\frontendUsuarios\\resources\\images\\ENTRADA.png");
-		Image img = icon.getImage().getScaledInstance(100, 60, Image.SCALE_SMOOTH);
-		icon = new ImageIcon(img);
-		btnNewButton_1.setIcon(icon);
-		btnNewButton_1.setBorder(null);
-		btnNewButton_1.setBorderPainted(false);
-		btnNewButton_1.setBackground(new Color(255, 222, 173));
-		btnNewButton_1.setForeground(new Color(255, 255, 255));
-		btnNewButton_1.setFont(new Font("Stencil", Font.PLAIN, 50));
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				InfoEventoStaff ventana = new InfoEventoStaff(controller);
-				ventana.setVisible(true);
-				MenuStaff.this.dispose();
 
-			}
-		});
-		btnNewButton_1.setBounds(61, 118, 709, 76);
-		contentPane.add(btnNewButton_1);
-		
+		/*
+		 * Hacer un for y que aparezcan los eventos y que por cada uno que entre varie
+		 * el
+		 * setBounds para que no se ponga uno encima del otro
+		 */
 
-		
+		ArrayList<Evento> eventos = controller.getEventos();
+
+		int altura = 100;
+
+		for (int i = 0; i < eventos.size(); i++) {
+			JButton btnNewButton_1 = new JButton(eventos.get(i).getTitulo());
+			ImageIcon icon = new ImageIcon(
+					"C:\\Users\\ALUMNO\\Desktop\\deustoTickets\\deustoTickets\\frontendUsuarios\\resources\\images\\ENTRADA.png");
+			Image img = icon.getImage().getScaledInstance(100, 60, Image.SCALE_SMOOTH);
+			icon = new ImageIcon(img);
+			btnNewButton_1.setIcon(icon);
+			btnNewButton_1.setBorder(null);
+			btnNewButton_1.setBorderPainted(false);
+			btnNewButton_1.setBackground(new Color(255, 222, 173));
+			btnNewButton_1.setForeground(new Color(255, 255, 255));
+			btnNewButton_1.setFont(new Font("Stencil", Font.PLAIN, 50));
+			btnNewButton_1.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					InfoEventoStaff ventana = new InfoEventoStaff(controller);
+					ventana.setVisible(true);
+					MenuStaff.this.dispose();
+				}
+			});
+			btnNewButton_1.setBounds(61, altura, 709, 60);
+			contentPane.add(btnNewButton_1);
+			altura = altura + 70;
+		}
 	}
 
 }
