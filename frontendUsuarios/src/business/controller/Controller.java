@@ -1,9 +1,11 @@
 package business.controller;
 
 import business.clases.Cliente;
+import business.clases.Evento;
 import dataAccess.rmi.client.ServiceLocator;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 //Esta clase implementa el patron de diseño "Controller"
 public class Controller {
@@ -15,16 +17,10 @@ public class Controller {
         this.serviceLocator = serviceLocator;
     }
 
-    /**
-     * Metodo de inicio de sesion.
-     * @param usuario
-     * @param contrasenya
-     * @return Devuelve el Cliente al que pertenece, o null si no es correcto.
-     */
-    public Cliente login(String usuario, String contrasenya) {
+    public ArrayList<Evento> getEventos() {
         try {
-            return this.serviceLocator.getService().iniciarSesion(usuario, contrasenya);
-        } catch (RemoteException e) {
+            return this.serviceLocator.getService().getEventos();
+        } catch (Exception e) {
             return null;
         }
     }

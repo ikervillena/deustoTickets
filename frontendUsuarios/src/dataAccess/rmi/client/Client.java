@@ -23,7 +23,7 @@ public class Client {
 
         //inicio.setVisible(true);
 
-        for (Evento e : serviceLocator.getService().getEventos()) {
+        for (Evento e : controller.getEventos()) {
             System.out.println(e);
         }
 
