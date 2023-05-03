@@ -48,7 +48,7 @@ public class InicioSesionStaff extends JFrame {
 		btnNewButton.setBackground(new Color(255, 215, 0));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				MenuStaff ventana = new MenuStaff();
+				MenuStaff ventana = new MenuStaff(controller);
 				ventana.setVisible(true);
 				InicioSesionStaff.this.dispose();
 			

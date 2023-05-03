@@ -127,7 +127,7 @@ public class InfoEventoStaff extends JFrame {
 		btnBack.setBackground(new Color(178, 34, 34));
 		btnBack.setForeground(new Color(255, 255, 255));
 		btnBack.setFont(new Font("Stencil", Font.BOLD, 20));
-		btnBack.setIcon(new ImageIcon(InfoEvento.class.getResource("/com/sun/javafx/scene/web/skin/Undo_16x16_JFX.png")));
+		btnBack.setIcon(new ImageIcon(InfoEventoStaff.class.getResource("/com/sun/javafx/scene/web/skin/Undo_16x16_JFX.png")));
 		btnBack.setBounds(655, 464, 115, 29);
 		contentPane.add(btnBack);
 		
