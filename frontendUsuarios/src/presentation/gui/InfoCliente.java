@@ -38,35 +38,35 @@ public class InfoCliente extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel lblNewLabel_1 = new JLabel("Nombre usuario");
 		lblNewLabel_1.setBackground(new Color(255, 255, 255));
 		lblNewLabel_1.setFont(new Font("Stencil", Font.BOLD, 40));
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setForeground(new Color(255, 215, 0));
-		ImageIcon icon = new ImageIcon("C:\\Users\\ALUMNO\\Desktop\\deustoTickets\\deustoTickets\\frontendUsuarios\\resources\\images\\usuario.png");
+		ImageIcon icon = new ImageIcon(
+				"C:\\Users\\ALUMNO\\Desktop\\deustoTickets\\deustoTickets\\frontendUsuarios\\resources\\images\\usuario.png");
 		Image img = icon.getImage().getScaledInstance(100, 60, Image.SCALE_SMOOTH);
 		icon = new ImageIcon(img);
 		lblNewLabel_1.setIcon(icon);
 		lblNewLabel_1.setBounds(153, 34, 493, 67);
 		contentPane.add(lblNewLabel_1);
-		
+
 		JLabel lblNewLabel_2 = new JLabel("Informacion personal");
 		lblNewLabel_2.setBackground(new Color(248, 248, 255));
 		lblNewLabel_2.setForeground(new Color(255, 215, 0));
 		lblNewLabel_2.setFont(new Font("Stencil", Font.BOLD, 22));
 		lblNewLabel_2.setBounds(61, 134, 312, 33);
 		contentPane.add(lblNewLabel_2);
-		
-		
+
 		JLabel lblUsuario = new JLabel("NOMBRE");
-		lblUsuario .setHorizontalAlignment(SwingConstants.CENTER);
-		lblUsuario .setForeground(new Color(210, 180, 140));
-		lblUsuario .setFont(new Font("Stencil", Font.BOLD, 20));
-		lblUsuario .setBackground(new Color(255, 215, 0));
+		lblUsuario.setHorizontalAlignment(SwingConstants.CENTER);
+		lblUsuario.setForeground(new Color(210, 180, 140));
+		lblUsuario.setFont(new Font("Stencil", Font.BOLD, 20));
+		lblUsuario.setBackground(new Color(255, 215, 0));
 		lblUsuario.setBounds(22, 213, 129, 40);
 		contentPane.add(lblUsuario);
-		
+
 		JLabel lblApellidos = new JLabel("APELLIDOS");
 		lblApellidos.setHorizontalAlignment(SwingConstants.CENTER);
 		lblApellidos.setForeground(new Color(210, 180, 140));
@@ -74,7 +74,7 @@ public class InfoCliente extends JFrame {
 		lblApellidos.setBackground(new Color(255, 215, 0));
 		lblApellidos.setBounds(22, 257, 122, 40);
 		contentPane.add(lblApellidos);
-		
+
 		JLabel label_2 = new JLabel("FECHA NAC");
 		label_2.setHorizontalAlignment(SwingConstants.CENTER);
 		label_2.setForeground(new Color(210, 180, 140));
@@ -82,8 +82,7 @@ public class InfoCliente extends JFrame {
 		label_2.setBackground(new Color(255, 215, 0));
 		label_2.setBounds(15, 300, 136, 40);
 		contentPane.add(label_2);
-		
-		
+
 		JLabel label_1 = new JLabel("Usuario");
 		label_1.setHorizontalAlignment(SwingConstants.CENTER);
 		label_1.setForeground(new Color(210, 180, 140));
@@ -91,45 +90,50 @@ public class InfoCliente extends JFrame {
 		label_1.setBackground(new Color(255, 215, 0));
 		label_1.setBounds(15, 173, 136, 40);
 		contentPane.add(label_1);
-		
+
 		JLabel InfoUsuario = new JLabel("New label");
 		InfoUsuario.setBounds(186, 183, 69, 20);
 		contentPane.add(InfoUsuario);
-		
+
 		JLabel InfoNombre = new JLabel("New label");
 		InfoNombre.setBounds(186, 222, 69, 20);
 		contentPane.add(InfoNombre);
-		
+
 		JLabel InfoApellido = new JLabel("New label");
 		InfoApellido.setBounds(186, 266, 69, 20);
 		contentPane.add(InfoApellido);
-		
+
 		JLabel InfoFechaNac = new JLabel("New label");
 		InfoFechaNac.setBounds(186, 309, 69, 20);
 		contentPane.add(InfoFechaNac);
-		
+
 		JButton btnNewButton = new JButton("Cambiar Info");
 		btnNewButton.setBackground(new Color(255, 215, 0));
 		btnNewButton.setForeground(new Color(255, 255, 255));
 		btnNewButton.setFont(new Font("Stencil", Font.BOLD, 25));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				CambioInfor ventana = new CambioInfor(controller);
+				ventana.setVisible(true);
+				InfoCliente.this.dispose();
 			}
 		});
 		btnNewButton.setBounds(25, 366, 348, 29);
 		contentPane.add(btnNewButton);
-		
+
 		JLabel lblMisEntradas = new JLabel("Mis entradas");
 		lblMisEntradas.setForeground(new Color(255, 215, 0));
 		lblMisEntradas.setFont(new Font("Stencil", Font.BOLD, 22));
 		lblMisEntradas.setBackground(new Color(248, 248, 255));
 		lblMisEntradas.setBounds(532, 134, 190, 33);
 		contentPane.add(lblMisEntradas);
-		
-		/*For para que aparezcan todas las entradas, modificar el set bounds para que no se solapen
-		 * y el boton deber�a dirigir al evento*/
-		 
-		
+
+		/*
+		 * For para que aparezcan todas las entradas, modificar el set bounds para que
+		 * no se solapen
+		 * y el boton deber�a dirigir al evento
+		 */
+
 		JButton btnNewButton_1 = new JButton("Entrada 1");
 		btnNewButton_1.setBackground(new Color(255, 228, 181));
 		btnNewButton_1.setForeground(new Color(255, 255, 255));
@@ -140,7 +144,7 @@ public class InfoCliente extends JFrame {
 		});
 		btnNewButton_1.setBounds(480, 183, 281, 40);
 		contentPane.add(btnNewButton_1);
-		
+
 		JButton btnNewButton_2 = new JButton("BACK");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -150,13 +154,10 @@ public class InfoCliente extends JFrame {
 			}
 		});
 		btnNewButton_2.setBackground(new Color(255, 0, 0));
-		btnNewButton_2.setIcon(new ImageIcon(InfoCliente.class.getResource("/com/sun/javafx/scene/web/skin/Undo_16x16_JFX.png")));
 		btnNewButton_2.setFont(new Font("Stencil", Font.BOLD, 22));
 		btnNewButton_2.setForeground(new Color(255, 255, 255));
 		btnNewButton_2.setBounds(658, 453, 136, 29);
 		contentPane.add(btnNewButton_2);
-		
-		
-		
+
 	}
 }

@@ -27,7 +27,6 @@ public class CambioInfor extends JFrame {
 	private JPanel contentPane;
 	private JTextField textFecNac;
 
-
 	public CambioInfor(Controller controller) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -36,12 +35,13 @@ public class CambioInfor extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel label = new JLabel("");
 		label.setBounds(-6, 0, 820, 513);
-		ImageIcon imageIcon = new ImageIcon("C:\\Users\\ALUMNO\\Desktop\\deustoTickets\\deustoTickets\\frontendUsuarios\\resources\\images\\fotofiesta.jpg");
+		ImageIcon imageIcon = new ImageIcon(
+				"C:\\Users\\ALUMNO\\Desktop\\deustoTickets\\deustoTickets\\frontendUsuarios\\resources\\images\\fotofiesta.jpg");
 		Image image = imageIcon.getImage().getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH);
-		
+
 		JButton button = new JButton("Guardar Cambios");
 		button.setFont(new Font("Stencil", Font.PLAIN, 25));
 		button.setForeground(new Color(255, 255, 255));
@@ -55,10 +55,10 @@ public class CambioInfor extends JFrame {
 		});
 		button.setBorder(BorderFactory.createEmptyBorder());
 		button.setContentAreaFilled(false);
-        button.setOpaque(true);
+		button.setOpaque(true);
 		button.setBounds(518, 436, 276, 40);
 		contentPane.add(button);
-		
+
 		JLabel lblUsuario = new JLabel("NOMBRE");
 		lblUsuario.setBackground(new Color(255, 215, 0));
 		lblUsuario.setForeground(new Color(255, 215, 0));
@@ -66,7 +66,7 @@ public class CambioInfor extends JFrame {
 		lblUsuario.setFont(new Font("Stencil", Font.BOLD, 25));
 		lblUsuario.setBounds(25, 288, 185, 40);
 		contentPane.add(lblUsuario);
-		
+
 		JLabel lblContrasea = new JLabel("Contrase\u00F1a");
 		lblContrasea.setHorizontalAlignment(SwingConstants.CENTER);
 		lblContrasea.setForeground(new Color(255, 215, 0));
@@ -74,7 +74,7 @@ public class CambioInfor extends JFrame {
 		lblContrasea.setBackground(new Color(255, 255, 255));
 		lblContrasea.setBounds(15, 239, 209, 40);
 		contentPane.add(lblContrasea);
-		
+
 		JLabel lblApellidos = new JLabel("APELLIDOS");
 		lblApellidos.setHorizontalAlignment(SwingConstants.CENTER);
 		lblApellidos.setForeground(new Color(255, 215, 0));
@@ -82,7 +82,7 @@ public class CambioInfor extends JFrame {
 		lblApellidos.setBackground(new Color(255, 215, 0));
 		lblApellidos.setBounds(25, 335, 185, 40);
 		contentPane.add(lblApellidos);
-		
+
 		JLabel tDni = new JLabel("DNI");
 		tDni.setHorizontalAlignment(SwingConstants.CENTER);
 		tDni.setForeground(new Color(255, 215, 0));
@@ -90,7 +90,7 @@ public class CambioInfor extends JFrame {
 		tDni.setBackground(new Color(255, 215, 0));
 		tDni.setBounds(422, 239, 185, 40);
 		contentPane.add(tDni);
-		
+
 		JLabel label_2 = new JLabel("FECHA NAC");
 		label_2.setHorizontalAlignment(SwingConstants.CENTER);
 		label_2.setForeground(new Color(255, 215, 0));
@@ -98,7 +98,7 @@ public class CambioInfor extends JFrame {
 		label_2.setBackground(new Color(255, 215, 0));
 		label_2.setBounds(422, 193, 185, 40);
 		contentPane.add(label_2);
-		
+
 		JLabel lblCorreo = new JLabel("Correo");
 		lblCorreo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCorreo.setForeground(new Color(255, 215, 0));
@@ -106,7 +106,7 @@ public class CambioInfor extends JFrame {
 		lblCorreo.setBackground(new Color(255, 215, 0));
 		lblCorreo.setBounds(422, 288, 185, 40);
 		contentPane.add(lblCorreo);
-		
+
 		JLabel lblNuevoUsuario = new JLabel("#NOMBRE DEL USUARIO");
 		lblNuevoUsuario.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNuevoUsuario.setForeground(new Color(255, 255, 0));
@@ -116,38 +116,39 @@ public class CambioInfor extends JFrame {
 		lblNuevoUsuario.setAlignmentX(0.5f);
 		lblNuevoUsuario.setBounds(110, 100, 570, 92);
 		contentPane.add(lblNuevoUsuario);
-		
+
 		JTextField textContrasenya = new JTextField();
 		textContrasenya.setBounds(223, 246, 146, 26);
 		contentPane.add(textContrasenya);
-		
+
 		JTextField textoApellido = new JTextField();
 		textoApellido.setBounds(223, 342, 146, 26);
 		contentPane.add(textoApellido);
-		
+
 		JTextField textCorreo = new JTextField();
 		textCorreo.setBounds(634, 295, 146, 26);
 		contentPane.add(textCorreo);
-		
+
 		textCorreo.setColumns(10);
-		
+
 		JTextField textNombre = new JTextField();
 		textNombre.setBounds(225, 295, 146, 26);
 		contentPane.add(textNombre);
-		
-		
-		
+
 		JTextField textDni = new JTextField();
 		textDni.setColumns(10);
 		textDni.setBounds(634, 246, 146, 26);
 		contentPane.add(textDni);
-		
+
 		textFecNac = new JTextField();
 		textFecNac.setColumns(10);
 		textFecNac.setBounds(634, 200, 146, 26);
 		contentPane.add(textFecNac);
-		
-		/*Aqui pasamos directamente el usuario para no dar opci�n a cambiar de nombre usuario*/
+
+		/*
+		 * Aqui pasamos directamente el usuario para no dar opci�n a cambiar de nombre
+		 * usuario
+		 */
 		JLabel lblNewLabel = new JLabel("#Usuario");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setForeground(new Color(255, 215, 0));
@@ -156,7 +157,7 @@ public class CambioInfor extends JFrame {
 		contentPane.add(lblNewLabel);
 		label.setIcon(new ImageIcon(image));
 		contentPane.add(label);
-		
+
 		JLabel label_1 = new JLabel("Usuario");
 		label_1.setHorizontalAlignment(SwingConstants.CENTER);
 		label_1.setForeground(new Color(255, 215, 0));
@@ -164,8 +165,7 @@ public class CambioInfor extends JFrame {
 		label_1.setBackground(new Color(255, 215, 0));
 		label_1.setBounds(25, 193, 185, 40);
 		contentPane.add(label_1);
-		
-		
+
 		JLabel lblDeustoTickets = new JLabel("Deusto Tickets");
 		lblDeustoTickets.setBackground(new Color(255, 255, 0));
 		lblDeustoTickets.setBorder(UIManager.getBorder("Button.border"));
@@ -179,4 +179,3 @@ public class CambioInfor extends JFrame {
 		contentPane.add(label);
 	}
 }
-

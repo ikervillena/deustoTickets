@@ -3,7 +3,6 @@ package presentation.gui;
 import business.clases.Evento;
 import business.controller.Controller;
 
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -37,22 +36,22 @@ public class MenuCliente extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBackground(new Color(255, 215, 0));
 		menuBar.setBounds(61, 16, 709, 63);
 		contentPane.add(menuBar);
-		
+
 		JLabel lblNewLabel = new JLabel("Eventos proximos");
 		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setFont(new Font("Stencil", Font.BOLD, 40));
 		menuBar.add(lblNewLabel);
-		
+
 		Component verticalStrut = Box.createVerticalStrut(0);
 		menuBar.add(verticalStrut);
-		
-		/*Hay que mirar si se ha accedido sin usuario o iniciando sesi�n*/
-		
+
+		/* Hay que mirar si se ha accedido sin usuario o iniciando sesi�n */
+
 		JButton btnNewButton = new JButton("Usuario");
 		btnNewButton.setBorder(null);
 		btnNewButton.setBorderPainted(false);
@@ -67,9 +66,9 @@ public class MenuCliente extends JFrame {
 		btnNewButton.setForeground(Color.WHITE);
 		btnNewButton.setFont(new Font("Stencil", Font.BOLD, 40));
 		menuBar.add(btnNewButton);
-		
-		/*Para hacer el filtro */
-		
+
+		/* Para hacer el filtro */
+
 		JComboBox comboBox = new JComboBox();
 		comboBox.setBounds(630, 86, 140, 26);
 		contentPane.add(comboBox);
@@ -82,7 +81,7 @@ public class MenuCliente extends JFrame {
 
 		ArrayList<Evento> eventos = controller.getEventos();
 
-		int altura = 100;
+		int altura = 130;
 
 		for (int i = 0; i < eventos.size(); i++) {
 			Evento evento = eventos.get(i);
@@ -106,7 +105,7 @@ public class MenuCliente extends JFrame {
 			contentPane.add(btnNewButto);
 			altura = altura + 70;
 		}
-		
+
 	}
 
 }

@@ -9,21 +9,19 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
-public class RemoteFacadeStaff extends UnicastRemoteObject implements IRemoteFacadeStaff{
+public class RemoteFacadeStaff extends UnicastRemoteObject implements IRemoteFacadeStaff {
 
     private static final long serialVersionUID = 1L;
     private int cont = 0;
 
-    //private XAppService xAppService = new XAppService();
+    // private XAppService xAppService = new XAppService();
 
-    protected RemoteFacadeStaff() throws RemoteException
-    {
+    protected RemoteFacadeStaff() throws RemoteException {
         super();
     }
 
     @Override
-    public String sayHello()
-    {
+    public String sayHello() {
         cont++;
         System.out.println(" * Client number: " + cont);
         return "Hello World! It works correctly";
@@ -34,16 +32,15 @@ public class RemoteFacadeStaff extends UnicastRemoteObject implements IRemoteFac
         return StaffAppService.getEventos();
     }
 
-
     @Override
     public Staff iniciarSesionStaff(String usuario, String contrasenya) throws RemoteException {
-        //PENDIENTE
+        // PENDIENTE
         return null;
     }
 
     @Override
     public boolean comprobarQR(String qr, Evento e) throws RemoteException {
-        //PENDIENTE
+        // PENDIENTE
         return false;
     }
 
