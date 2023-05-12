@@ -4,6 +4,7 @@
 	<property name="source.dir" location="src"/>
    	<property name="build.dir" location="bin"/>
 	<property name="dist.dir" location="dist"/>
+	<property name="lib.dir" location="lib"/>
 	<property name="classpath" location="bin"/>
 	<property name="server.port" value="1099"/>
 	<property name="server.IP" value="127.0.0.1"/> 
@@ -35,9 +36,10 @@
     </target>
 
 	<target name="client" depends="build" description="Runs the Client">
-		<java classname="dataAccess.rmi.client.Client" classpath="${classpath}" fork="true">
-			<jvmarg value="-Djava.security.policy=${policy.file}"/>			
-        	<arg value="${server.IP}"/> 
+		<java classname="dataAccess.rmi.client.Client" classpathref="full.classpath" fork="true">
+			<jvmarg value="-Djava.security.policy=${policy.file}"/>
+			<jvmarg value="-Dlog4j.configuration=file:${lib.dir}/log4j.properties"/>
+        	<arg value="${server.IP}"/>
 	 		<arg value="${server.port}"/> 
 			<arg value="${server.Name}"/> 
         </java>
