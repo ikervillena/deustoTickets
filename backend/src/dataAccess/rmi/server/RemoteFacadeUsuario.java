@@ -1,6 +1,5 @@
 package dataAccess.rmi.server;
 
-import business.appService.LoginAppService;
 import business.appService.UsuarioAppService;
 import business.clases.Artista;
 import business.clases.Cliente;
@@ -16,8 +15,6 @@ public class RemoteFacadeUsuario extends UnicastRemoteObject implements IRemoteF
 
     private static final long serialVersionUID = 1L;
     private int cont = 0;
-
-    private LoginAppService loginAppService = new LoginAppService();
 
     protected RemoteFacadeUsuario() throws RemoteException {
         super();
@@ -69,7 +66,7 @@ public class RemoteFacadeUsuario extends UnicastRemoteObject implements IRemoteF
     @Override
     public business.clases.Cliente iniciarSesion(String usuario, String contrasenya) throws RemoteException {
         //PENDIENTE
-        return loginAppService.iniciarSesion(usuario, contrasenya);
+        return null;
     }
 
     @Override
