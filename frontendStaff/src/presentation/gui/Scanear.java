@@ -1,13 +1,10 @@
 package presentation.gui;
 
 import business.controller.Controller;
+import com.github.sarxos.webcam.Webcam;
+import com.github.sarxos.webcam.WebcamPanel;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.EventQueue;
-import java.awt.Font;
-import java.awt.Image;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -25,6 +22,8 @@ import javax.swing.border.EmptyBorder;
 public class Scanear extends JFrame {
 
 	private JPanel contentPane;
+	private JPanel panelCamara;
+	private WebcamPanel webcamPanel;
 
 	public Scanear(Controller controller) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -70,14 +69,6 @@ public class Scanear extends JFrame {
 		lblNewLabel_1.setBounds(187, 93, 423, 63);
 		contentPane.add(lblNewLabel_1);
 
-		JLabel lbl = new JLabel("New label");
-		lbl.setBounds(238, 172, 320, 323);
-		ImageIcon imageIcon = new ImageIcon(
-				"C:\\Users\\ALUMNO\\Desktop\\deustoTickets\\deustoTickets\\frontendUsuarios\\resources\\images\\scan.png");
-		Image image = imageIcon.getImage().getScaledInstance(lbl.getWidth(), lbl.getHeight(), Image.SCALE_SMOOTH);
-		lbl.setIcon(new ImageIcon(image));
-		contentPane.add(lbl);
-
 		JButton btnBack = new JButton("BACK");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -92,5 +83,21 @@ public class Scanear extends JFrame {
 		btnBack.setBounds(655, 464, 115, 29);
 		contentPane.add(btnBack);
 
+		panelCamara = new JPanel();
+		panelCamara.setBounds(223, 172, 362, 249);
+		contentPane.add(panelCamara);
+		panelCamara.setLayout(new BorderLayout());
+
+		webcamPanel = new WebcamPanel(Webcam.getWebcams().get(1));
+		webcamPanel.setSize(new Dimension(480, 480));
+		webcamPanel.setFPSDisplayed(true);
+		webcamPanel.setDisplayDebugInfo(true);
+		webcamPanel.setImageSizeDisplayed(true);
+		webcamPanel.setMirrored(true);
+		panelCamara.add(webcamPanel);
+
+		ThreadLectorQR lectorQR = new ThreadLectorQR(webcamPanel);
+		Thread t = new Thread(lectorQR);
+		t.start();
 	}
 }
