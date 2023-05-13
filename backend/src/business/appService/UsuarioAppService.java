@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 
+
 public class UsuarioAppService {
 
     public static ArrayList<Evento> getEventos() throws IOException {
@@ -23,6 +24,7 @@ public class UsuarioAppService {
         boolean b = true;
         ArrayList<Cliente> listaClientes=clientDao.getClientes();
         for (Cliente cl: listaClientes){
+            System.out.println(cl);
             if(cl.getUsuario().equals(c.getUsuario())){
                 b=false;
             }
@@ -30,7 +32,7 @@ public class UsuarioAppService {
         if (b==true){
             clientDao.setCliente(c);
         }
-        return false;
+        return b;
     }
 
 

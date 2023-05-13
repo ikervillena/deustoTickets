@@ -23,7 +23,7 @@ public class EspacioDAO {
                 transaction.begin();
 
                 @SuppressWarnings("unchecked")
-                Query<Espacio> espaciosQuery = persistentManager.newQuery("SELECT * FROM espacio");
+                Query<Espacio> espaciosQuery = persistentManager.newQuery("SELECT FROM " + Espacio.class.getName());
 
                 for (Espacio espacio : espaciosQuery.executeList()){
                     espacios.add(espacio);

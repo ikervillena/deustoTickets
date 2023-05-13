@@ -23,7 +23,7 @@ public class ArtistaDAO {
                 transaction.begin();
 
                 @SuppressWarnings("unchecked")
-                Query<Artista> artistasQuery = persistentManager.newQuery("SELECT * FROM artista");
+                Query<Artista> artistasQuery = persistentManager.newQuery("SELECT FROM " + Artista.class.getName());
 
                 for (Artista artista : artistasQuery.executeList()){
                     artistas.add(artista);

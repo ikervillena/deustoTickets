@@ -23,7 +23,7 @@ public class PrecioDAO {
                 transaction.begin();
 
                 @SuppressWarnings("unchecked")
-                Query<Precio> preciosQuery = persistentManager.newQuery("SELECT * FROM precio");
+                Query<Precio> preciosQuery = persistentManager.newQuery("SELECT FROM " + Precio.class.getName());
 
                 for (Precio precio : preciosQuery.executeList()){
                     precios.add(precio);

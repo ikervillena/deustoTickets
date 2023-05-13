@@ -22,7 +22,7 @@ public class EventoDAO {
                 transaction.begin();
 
                 @SuppressWarnings("unchecked")
-                Query<Evento> eventosQuery = persistentManager.newQuery("SELECT * FROM evento");
+                Query<Evento> eventosQuery = persistentManager.newQuery("SELECT FROM " + Evento.class.getName());
 
                 for (Evento evento : eventosQuery.executeList()){
                     eventos.add(evento);

@@ -23,8 +23,7 @@ public class EntradaDAO {
                 transaction.begin();
 
                 @SuppressWarnings("unchecked")
-                Query<Entrada> entradasQuery = persistentManager.newQuery("SELECT * FROM entrada");
-
+                Query<Entrada> entradasQuery = persistentManager.newQuery("SELECT FROM " + Entrada.class.getName());
                 for (Entrada entrada : entradasQuery.executeList()){
                     entradas.add(entrada);
                 }
