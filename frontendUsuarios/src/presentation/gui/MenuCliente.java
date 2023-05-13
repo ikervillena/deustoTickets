@@ -18,6 +18,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenuBar;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.ImageIcon;
@@ -72,13 +73,6 @@ public class MenuCliente extends JFrame {
 		JComboBox comboBox = new JComboBox();
 		comboBox.setBounds(630, 86, 140, 26);
 		contentPane.add(comboBox);
-
-		/*
-		 * Hacer un for y que aparezcan los eventos y que por cada uno que entre varie
-		 * el
-		 * setBounds para que no se ponga uno encima del otro
-		 */
-
 		ArrayList<Evento> eventos = controller.getEventos();
 
 		int altura = 130;
@@ -98,6 +92,8 @@ public class MenuCliente extends JFrame {
 			btnNewButto.setFont(new Font("Stencil", Font.PLAIN, 50));
 			btnNewButto.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					InfoEvento ventana = new InfoEvento(controller, evento);
+					ventana.setVisible(true);
 					MenuCliente.this.dispose();
 				}
 			});

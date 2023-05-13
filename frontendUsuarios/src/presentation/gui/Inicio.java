@@ -30,7 +30,6 @@ public class Inicio extends JFrame {
 	private JPasswordField passwordField;
 	private JTextField textField;
 
-
 	public Inicio(Controller controller) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 831, 569);
@@ -38,12 +37,13 @@ public class Inicio extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel label = new JLabel("");
 		label.setBounds(0, 0, 820, 513);
-		ImageIcon imageIcon = new ImageIcon("C:\\Users\\ALUMNO\\Desktop\\deustoTickets\\deustoTickets\\frontendUsuarios\\resources\\images\\fotofiesta.jpg");
+		ImageIcon imageIcon = new ImageIcon(
+				"C:\\Users\\ALUMNO\\Desktop\\deustoTickets\\deustoTickets\\frontendUsuarios\\resources\\images\\fotofiesta.jpg");
 		Image image = imageIcon.getImage().getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH);
-		
+
 		JButton btnNewButton = new JButton("Inicio Sesion");
 		btnNewButton.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		btnNewButton.setFont(new Font("Stencil", Font.PLAIN, 20));
@@ -58,8 +58,7 @@ public class Inicio extends JFrame {
 		});
 		btnNewButton.setBounds(645, 397, 149, 33);
 		contentPane.add(btnNewButton);
-		
-		
+
 		JLabel lblDeustoTickets = new JLabel("Deusto Tickets");
 		lblDeustoTickets.setBackground(new Color(255, 255, 0));
 		lblDeustoTickets.setBorder(UIManager.getBorder("Button.border"));
@@ -69,23 +68,24 @@ public class Inicio extends JFrame {
 		lblDeustoTickets.setForeground(new Color(255, 200, 0));
 		lblDeustoTickets.setBounds(-16, 16, 836, 228);
 		contentPane.add(lblDeustoTickets);
-		
+
 		passwordField = new JPasswordField();
 		passwordField.setBounds(412, 299, 282, 43);
 		contentPane.add(passwordField);
-		
+
 		textField = new JTextField();
 		textField.setBounds(412, 234, 282, 40);
 		contentPane.add(textField);
 		textField.setColumns(10);
-		
+
 		JButton btnNuevoUsuario = new JButton("Nuevo Usuario");
 		btnNuevoUsuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Registro ventana1 = new Registro(controller);
 				ventana1.setVisible(true);
-				Inicio.this.dispose();;
-				
+				Inicio.this.dispose();
+				;
+
 			}
 		});
 		btnNuevoUsuario.setForeground(Color.WHITE);
@@ -94,7 +94,7 @@ public class Inicio extends JFrame {
 		btnNuevoUsuario.setBackground(new Color(255, 215, 0));
 		btnNuevoUsuario.setBounds(469, 397, 161, 33);
 		contentPane.add(btnNuevoUsuario);
-		
+
 		JLabel lblUsuario = new JLabel("Usuario");
 		lblUsuario.setBackground(new Color(255, 215, 0));
 		lblUsuario.setForeground(new Color(255, 215, 0));
@@ -102,7 +102,7 @@ public class Inicio extends JFrame {
 		lblUsuario.setFont(new Font("Stencil", Font.BOLD, 30));
 		lblUsuario.setBounds(133, 234, 185, 40);
 		contentPane.add(lblUsuario);
-		
+
 		JLabel lblContrasea = new JLabel("Contrase\u00F1a");
 		lblContrasea.setHorizontalAlignment(SwingConstants.CENTER);
 		lblContrasea.setForeground(new Color(255, 215, 0));
@@ -112,6 +112,6 @@ public class Inicio extends JFrame {
 		contentPane.add(lblContrasea);
 		label.setIcon(new ImageIcon(image));
 		contentPane.add(label);
-		
-	}	
+
+	}
 }
