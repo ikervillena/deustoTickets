@@ -21,13 +21,14 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
+import business.clases.*;
 
 public class CambioInfor extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textFecNac;
 
-	public CambioInfor(Controller controller) {
+	public CambioInfor(Controller controller, Cliente cliente) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 831, 569);
@@ -48,7 +49,7 @@ public class CambioInfor extends JFrame {
 		button.setBackground(new Color(255, 215, 0));
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				InfoCliente ventana = new InfoCliente(controller);
+				InfoCliente ventana = new InfoCliente(controller, cliente);
 				ventana.setVisible(true);
 				CambioInfor.this.dispose();
 			}

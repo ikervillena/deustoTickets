@@ -1,16 +1,13 @@
 package presentation.gui;
 
 import business.controller.Controller;
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.BorderFactory;
+import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -23,6 +20,7 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.JTextField;
+import business.clases.*;
 
 public class Inicio extends JFrame {
 
@@ -30,7 +28,8 @@ public class Inicio extends JFrame {
 	private JPasswordField passwordField;
 	private JTextField textField;
 
-	public Inicio(Controller controller) {
+	public Inicio(Controller controller, Cliente cliente) {
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 831, 569);
 		contentPane = new JPanel();
@@ -44,6 +43,15 @@ public class Inicio extends JFrame {
 				"C:\\Users\\ALUMNO\\Desktop\\deustoTickets\\deustoTickets\\frontendUsuarios\\resources\\images\\fotofiesta.jpg");
 		Image image = imageIcon.getImage().getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH);
 
+		passwordField = new JPasswordField();
+		passwordField.setBounds(412, 299, 282, 43);
+		contentPane.add(passwordField);
+
+		textField = new JTextField();
+		textField.setBounds(412, 234, 282, 40);
+		contentPane.add(textField);
+		textField.setColumns(10);
+
 		JButton btnNewButton = new JButton("Inicio Sesion");
 		btnNewButton.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		btnNewButton.setFont(new Font("Stencil", Font.PLAIN, 20));
@@ -51,9 +59,24 @@ public class Inicio extends JFrame {
 		btnNewButton.setBackground(new Color(255, 215, 0));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				MenuCliente ventana = new MenuCliente(controller);
-				ventana.setVisible(true);
-				Inicio.this.dispose();
+				String textoUsuario = textField.getText();
+				String passwordTexto = passwordField.getText();
+				if (passwordTexto.equals("") || textoUsuario.equals("")) {
+					JOptionPane.showMessageDialog(Inicio.this, "No dejes ningun campo vacio");
+				} else {
+					Boolean a = controller.InicioSesion(textField.getText(), passwordField.getText());
+					if (a == true) {
+						// HAY QUE PASARLE EL CLIENTE BUENO
+						MenuCliente ventana = new MenuCliente(controller, cliente);
+						ventana.setVisible(true);
+						Inicio.this.dispose();
+					} else {
+						JOptionPane.showMessageDialog(Inicio.this, "El usuario o la contrasenya son incorrectos");
+						Inicio ventana = new Inicio(controller, cliente);
+						ventana.setVisible(true);
+						Inicio.this.dispose();
+					}
+				}
 			}
 		});
 		btnNewButton.setBounds(645, 397, 149, 33);
@@ -69,15 +92,6 @@ public class Inicio extends JFrame {
 		lblDeustoTickets.setBounds(-16, 16, 836, 228);
 		contentPane.add(lblDeustoTickets);
 
-		passwordField = new JPasswordField();
-		passwordField.setBounds(412, 299, 282, 43);
-		contentPane.add(passwordField);
-
-		textField = new JTextField();
-		textField.setBounds(412, 234, 282, 40);
-		contentPane.add(textField);
-		textField.setColumns(10);
-
 		JButton btnNuevoUsuario = new JButton("Nuevo Usuario");
 		btnNuevoUsuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -85,7 +99,6 @@ public class Inicio extends JFrame {
 				ventana1.setVisible(true);
 				Inicio.this.dispose();
 				;
-
 			}
 		});
 		btnNuevoUsuario.setForeground(Color.WHITE);

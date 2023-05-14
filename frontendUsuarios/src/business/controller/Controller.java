@@ -10,7 +10,7 @@ import java.util.ArrayList;
 //Esta clase implementa el patron de diseño "Controller"
 public class Controller {
 
-    //Referencia a Service Locator
+    // Referencia a Service Locator
     private ServiceLocator serviceLocator;
 
     public Controller(ServiceLocator serviceLocator) {
@@ -25,4 +25,21 @@ public class Controller {
         }
     }
 
+    public Boolean InicioSesion(String usuario, String contrasenya) {
+        try {
+            return this.serviceLocator.getService().iniciarSesion(usuario, contrasenya);
+
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public Boolean Registrar(Cliente cliente) {
+        try {
+            return this.serviceLocator.getService().registrar(cliente);
+
+        } catch (Exception e) {
+            return null;
+        }
+    }
 }

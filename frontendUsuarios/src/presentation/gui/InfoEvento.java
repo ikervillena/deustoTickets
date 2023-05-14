@@ -19,12 +19,13 @@ import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.SwingConstants;
+import business.clases.*;
 
 public class InfoEvento extends JFrame {
 
 	private JPanel contentPane;
 
-	public InfoEvento(Controller controller, Evento evento) {
+	public InfoEvento(Controller controller, Evento evento, Cliente cliente) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 831, 569);
 		contentPane = new JPanel();
@@ -52,9 +53,15 @@ public class InfoEvento extends JFrame {
 		btnNewButton.setBorderPainted(false);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				InfoCliente ventana1 = new InfoCliente(controller);
-				ventana1.setVisible(true);
-				InfoEvento.this.dispose();
+				if (cliente.getNombre() == null) {
+					Inicio ventana1 = new Inicio(controller, cliente);
+					ventana1.setVisible(true);
+					InfoEvento.this.dispose();
+				} else {
+					InfoCliente ventana1 = new InfoCliente(controller, cliente);
+					ventana1.setVisible(true);
+					InfoEvento.this.dispose();
+				}
 			}
 		});
 		btnNewButton.setBackground(new Color(255, 215, 0));
@@ -117,7 +124,7 @@ public class InfoEvento extends JFrame {
 		JButton btnNewButton_1 = new JButton("ENTRADAS");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				InfoEntradas ventana = new InfoEntradas(controller, evento);
+				InfoEntradas ventana = new InfoEntradas(controller, evento, cliente);
 				ventana.setVisible(true);
 				InfoEvento.this.dispose();
 			}
@@ -136,7 +143,7 @@ public class InfoEvento extends JFrame {
 		JButton btnBack = new JButton("BACK");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MenuCliente ventana = new MenuCliente(controller);
+				MenuCliente ventana = new MenuCliente(controller, cliente);
 				ventana.setVisible(true);
 				InfoEvento.this.dispose();
 				;

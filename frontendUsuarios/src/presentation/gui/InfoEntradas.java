@@ -21,12 +21,13 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JSpinner;
+import business.clases.*;
 
 public class InfoEntradas extends JFrame {
 
 	private JPanel contentPane;
 
-	public InfoEntradas(Controller controller, Evento evento) {
+	public InfoEntradas(Controller controller, Evento evento, Cliente cliente) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 831, 569);
 		contentPane = new JPanel();
@@ -54,9 +55,15 @@ public class InfoEntradas extends JFrame {
 		btnNewButton.setBorderPainted(false);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				InfoCliente ventana1 = new InfoCliente(controller);
-				ventana1.setVisible(true);
-				InfoEntradas.this.dispose();
+				if (cliente.getNombre() == null) {
+					Inicio ventana1 = new Inicio(controller, cliente);
+					ventana1.setVisible(true);
+					InfoEntradas.this.dispose();
+				} else {
+					InfoCliente ventana1 = new InfoCliente(controller, cliente);
+					ventana1.setVisible(true);
+					InfoEntradas.this.dispose();
+				}
 			}
 		});
 		btnNewButton.setBackground(new Color(255, 215, 0));
@@ -117,7 +124,7 @@ public class InfoEntradas extends JFrame {
 		JButton btnBack = new JButton("BACK");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MenuCliente ventana = new MenuCliente(controller);
+				MenuCliente ventana = new MenuCliente(controller, cliente);
 				ventana.setVisible(true);
 				InfoEntradas.this.dispose();
 			}
