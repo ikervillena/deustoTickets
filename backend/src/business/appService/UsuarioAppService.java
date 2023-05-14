@@ -34,6 +34,19 @@ public class UsuarioAppService {
         }
         return b;
     }
+    public static boolean iniciarSesion(String usuario, String contrasenya) {
+    boolean sesionIniciada = false;
+    ClienteDAO clientDao=new ClienteDAO();
+    ArrayList<Cliente> listaClientes=clientDao.getClientes();
+    for (Cliente cliente : listaClientes) {
+        if (cliente.getUsuario().equals(usuario) && cliente.getContrasenya().equals(contrasenya)) {
+            sesionIniciada = true;
+            break;
+        }
+    }
+    return sesionIniciada;
+}
+    
 
 
 }

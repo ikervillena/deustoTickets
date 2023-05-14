@@ -64,9 +64,8 @@ public class RemoteFacadeUsuario extends UnicastRemoteObject implements IRemoteF
     }
 
     @Override
-    public business.clases.Cliente iniciarSesion(String usuario, String contrasenya) throws RemoteException {
-        //PENDIENTE
-        return null;
+    public boolean iniciarSesion(String usuario, String contrasenya) throws RemoteException {
+        return UsuarioAppService.iniciarSesion(usuario, contrasenya);
     }
 
     @Override
