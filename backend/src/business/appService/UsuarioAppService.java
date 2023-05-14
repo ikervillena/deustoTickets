@@ -34,7 +34,7 @@ public class UsuarioAppService {
         }
         return b;
     }
-    public static boolean iniciarSesion(String usuario, String contrasenya) {
+    public static boolean iniciarSesion(String usuario, String contrasenya) throws RemoteException{
     boolean sesionIniciada = false;
     ClienteDAO clientDao=new ClienteDAO();
     ArrayList<Cliente> listaClientes=clientDao.getClientes();

@@ -23,7 +23,7 @@ public class Evento implements Serializable {
     @Getter @Setter private Date fecha;
     @Getter @Setter private int aforo;
     @Persistent(mappedBy = "evento")
-	    @Getter @Setter private ArrayList<Entrada> entradas;
+	@Getter @Setter private ArrayList<Entrada> entradas;
 
         public Evento(String titulo, String descripcion, Date fecha, int aforo) {
             this.titulo = titulo;
