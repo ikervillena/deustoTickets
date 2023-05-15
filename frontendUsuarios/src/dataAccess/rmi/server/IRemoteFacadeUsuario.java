@@ -12,6 +12,7 @@ public interface IRemoteFacadeUsuario extends Remote {
 
     /**
      * Test message to say hello to client
+     * 
      * @param
      * @return Message
      * @throws RemoteException
@@ -20,6 +21,7 @@ public interface IRemoteFacadeUsuario extends Remote {
 
     /**
      * Provee la lista de eventos
+     * 
      * @return ArrayList con los eventos guardados en el servidor REST
      * @throws RemoteException
      */
@@ -35,7 +37,7 @@ public interface IRemoteFacadeUsuario extends Remote {
 
     ArrayList<Entrada> getEntradas(Cliente c) throws RemoteException;
 
-    Cliente iniciarSesion(String usuario, String contrasenya) throws RemoteException;
+    boolean iniciarSesion(String usuario, String contrasenya) throws RemoteException;
 
     boolean registrar(Cliente c) throws RemoteException;
 

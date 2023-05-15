@@ -10,7 +10,7 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.text.SimpleDateFormat;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.ImageIcon;
@@ -24,12 +24,14 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
+import business.clases.*;
+import java.util.Date;
 
 public class InfoCliente extends JFrame {
 
 	private JPanel contentPane;
 
-	public InfoCliente(Controller controller) {
+	public InfoCliente(Controller controller, Cliente cliente) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 831, 569);
 		contentPane = new JPanel();
@@ -91,19 +93,25 @@ public class InfoCliente extends JFrame {
 		label_1.setBounds(15, 173, 136, 40);
 		contentPane.add(label_1);
 
-		JLabel InfoUsuario = new JLabel("New label");
+		JLabel InfoUsuario = new JLabel(cliente.getUsuario());
 		InfoUsuario.setBounds(186, 183, 69, 20);
 		contentPane.add(InfoUsuario);
 
-		JLabel InfoNombre = new JLabel("New label");
+		JLabel InfoNombre = new JLabel(cliente.getNombre());
 		InfoNombre.setBounds(186, 222, 69, 20);
 		contentPane.add(InfoNombre);
 
-		JLabel InfoApellido = new JLabel("New label");
+		JLabel InfoApellido = new JLabel(cliente.getApellido());
 		InfoApellido.setBounds(186, 266, 69, 20);
 		contentPane.add(InfoApellido);
 
-		JLabel InfoFechaNac = new JLabel("New label");
+		Date fecha = cliente.getFecNac();
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy"); // se crea un objeto SimpleDateFormat
+		String fechaString = formatter.format(fecha);
+		char[] caracteres = fechaString.toCharArray();
+
+		JLabel InfoFechaNac = new JLabel("" + caracteres[0] + caracteres[1] + caracteres[2] + caracteres[3]
+				+ caracteres[4] + caracteres[5] + caracteres[6] + caracteres[7] + caracteres[8] + caracteres[9]);
 		InfoFechaNac.setBounds(186, 309, 69, 20);
 		contentPane.add(InfoFechaNac);
 
@@ -113,7 +121,7 @@ public class InfoCliente extends JFrame {
 		btnNewButton.setFont(new Font("Stencil", Font.BOLD, 25));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CambioInfor ventana = new CambioInfor(controller);
+				CambioInfor ventana = new CambioInfor(controller, cliente);
 				ventana.setVisible(true);
 				InfoCliente.this.dispose();
 			}
@@ -148,7 +156,7 @@ public class InfoCliente extends JFrame {
 		JButton btnNewButton_2 = new JButton("BACK");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MenuCliente ventana = new MenuCliente(controller);
+				MenuCliente ventana = new MenuCliente(controller, cliente);
 				ventana.setVisible(true);
 				InfoCliente.this.dispose();
 			}

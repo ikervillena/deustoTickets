@@ -23,12 +23,13 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
+import business.clases.*;
 
 public class MenuCliente extends JFrame {
 
 	private JPanel contentPane;
 
-	public MenuCliente(Controller controller) {
+	public MenuCliente(Controller controller, Cliente cliente) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 831, 569);
 		contentPane = new JPanel();
@@ -51,16 +52,20 @@ public class MenuCliente extends JFrame {
 		Component verticalStrut = Box.createVerticalStrut(0);
 		menuBar.add(verticalStrut);
 
-		/* Hay que mirar si se ha accedido sin usuario o iniciando sesi�n */
-
 		JButton btnNewButton = new JButton("Usuario");
 		btnNewButton.setBorder(null);
 		btnNewButton.setBorderPainted(false);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				InfoCliente ventana1 = new InfoCliente(controller);
-				ventana1.setVisible(true);
-				MenuCliente.this.dispose();
+				if (cliente.getNombre() == null) {
+					Inicio ventana1 = new Inicio(controller, cliente);
+					ventana1.setVisible(true);
+					MenuCliente.this.dispose();
+				} else {
+					InfoCliente ventana1 = new InfoCliente(controller, cliente);
+					ventana1.setVisible(true);
+					MenuCliente.this.dispose();
+				}
 			}
 		});
 		btnNewButton.setBackground(new Color(255, 215, 0));
@@ -92,7 +97,7 @@ public class MenuCliente extends JFrame {
 			btnNewButto.setFont(new Font("Stencil", Font.PLAIN, 50));
 			btnNewButto.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					InfoEvento ventana = new InfoEvento(controller, evento);
+					InfoEvento ventana = new InfoEvento(controller, evento, cliente);
 					ventana.setVisible(true);
 					MenuCliente.this.dispose();
 				}
