@@ -3,6 +3,7 @@ package business.appService;
 //Representa el patron de diseño "AppService"
 
 import business.clases.Evento;
+import business.clases.Artista;
 import business.clases.Cliente;
 import dataAccess.dao.*;
 import dataAccess.rest.client.TicketProviderGateway;
@@ -18,6 +19,12 @@ public class UsuarioAppService {
         TicketProviderGateway gateway = new TicketProviderGateway();
         return gateway.getEventos();
     }
+    
+    public static ArrayList<Artista> getArtistasDeEvento(Evento e) throws IOException {
+        TicketProviderGateway gateway = new TicketProviderGateway();
+        return gateway.getArtistasDeEvento(e);
+    }
+
 
     public static boolean registrar(business.clases.Cliente c) throws RemoteException {
         ClienteDAO clientDao=new ClienteDAO();
