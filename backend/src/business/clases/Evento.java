@@ -24,6 +24,8 @@ public class Evento implements Serializable {
     @Getter @Setter private int aforo;
     @Persistent(mappedBy = "evento")
 	@Getter @Setter private ArrayList<Entrada> entradas;
+    @Persistent(mappedBy = "evento")
+	@Getter @Setter private ArrayList<Artista> artistas;
 
         public Evento(String titulo, String descripcion, Date fecha, int aforo) {
             this.titulo = titulo;

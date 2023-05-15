@@ -3,7 +3,7 @@ package dataAccess.rmi.server;
 import business.appService.UsuarioAppService;
 import business.clases.Artista;
 import business.clases.Cliente;
-
+import business.clases.Evento;
 import dataAccess.dao.ClienteDAO;
 
 import java.io.IOException;
@@ -31,6 +31,11 @@ public class RemoteFacadeUsuario extends UnicastRemoteObject implements IRemoteF
     @Override
     public ArrayList<business.clases.Evento> getEventos() throws RemoteException, IOException {
         return UsuarioAppService.getEventos();
+    }
+
+    @Override
+    public ArrayList<business.clases.Artista> getArtistasDeEvento(Evento e) throws RemoteException, IOException {
+        return UsuarioAppService.getArtistasDeEvento(e);
     }
 
     @Override

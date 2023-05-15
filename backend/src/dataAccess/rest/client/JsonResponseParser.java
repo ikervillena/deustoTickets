@@ -1,6 +1,7 @@
 package dataAccess.rest.client;
 
 
+import business.clases.Artista;
 import business.clases.Evento;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -37,6 +38,32 @@ public class JsonResponseParser {
         }
 
         return eventos;
+    }
+
+    public static ArrayList<Artista> getArtistasDeEvento(Evento evento, String respuesta) throws JSONException {
+        ArrayList<Artista> artistas = new ArrayList<>();
+    
+        JSONObject obj = new JSONObject(respuesta);
+        JSONArray data = obj.getJSONArray("data");
+    
+        for (int i = 0; i < data.length(); i++) {
+            JSONObject atributos = data.getJSONObject(i).getJSONObject("attributes");
+    
+            String titulo = atributos.getString("titulo");
+            if (titulo.equals(evento.getTitulo())) {
+                JSONArray artistasJson = atributos.getJSONObject("artistas").getJSONArray("data");    
+                for (int j = 0; j < artistasJson.length(); j++) {
+                    JSONObject artistaJson = artistasJson.getJSONObject(j).getJSONObject("attributes");
+                    Artista artista = new Artista();
+                    artista.setNombre(artistaJson.getString("nombre"));
+                    artista.setEvento(evento);
+                    artista.setDescripcion(artistaJson.getString("descripcion"));
+                    //artista.setFecNac(new Date(artistaJson.getString("fecha_nacimiento")));
+                    artistas.add(artista);
+                }
+            }
+        }
+        return artistas;
     }
 
 }

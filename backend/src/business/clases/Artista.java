@@ -19,4 +19,6 @@ public class Artista implements Serializable {
     @Getter @Setter private String descripcion;
     @Getter @Setter private Date fecNac;
     @Getter @Setter private String foto;
+    @Column (name = "evento_id")
+    @Getter @Setter private Evento evento;
 }
