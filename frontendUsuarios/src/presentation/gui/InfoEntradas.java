@@ -2,15 +2,13 @@ package presentation.gui;
 
 import business.clases.Evento;
 import business.controller.Controller;
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import javax.swing.JOptionPane;
 import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -108,6 +106,19 @@ public class InfoEntradas extends JFrame {
 		JButton btnNewButton_1 = new JButton("Compra");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if (cliente.getNombre() == null) {
+					JOptionPane.showMessageDialog(InfoEntradas.this,
+							"Para poder comprar entradas debes estar registrado");
+					Inicio ventana1 = new Inicio(controller, cliente);
+					ventana1.setVisible(true);
+					InfoEntradas.this.dispose();
+				} else {
+					/* Hay que hacer lo de pasarselo al cliente */
+					DescargaEntrada pantalla = new DescargaEntrada(controller, cliente, evento);
+					pantalla.setVisible(true);
+					InfoEntradas.this.dispose();
+				}
+
 			}
 		});
 		btnNewButton_1.setBackground(new Color(255, 215, 0));
