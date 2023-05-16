@@ -1,5 +1,6 @@
 package business.entradas;
 
+import business.clases.Entrada;
 import com.google.zxing.WriterException;
 
 import java.awt.*;
@@ -17,7 +18,7 @@ public class GeneradorEntrada {
     private static String pathPlantilla = "resources/entradas/plantillaEntrada.png";
 
 
-    public static BufferedImage generarEntradas(String qr, String nombre, String informacion, int precio) throws IOException, WriterException {
+    public static BufferedImage generarEntradas(Entrada infoEntrada) throws IOException, WriterException {
         // Cargar la plantilla de entrada
         File plantilla = new File(pathPlantilla);
         BufferedImage entrada = ImageIO.read(plantilla);
@@ -33,18 +34,18 @@ public class GeneradorEntrada {
         // Dibujar el nombre en la entrada
         g2d.setFont(font);
         g2d.setColor(color);
-        g2d.drawString(nombre.toUpperCase(), 551, 153);
+        g2d.drawString(infoEntrada.getNombre().toUpperCase(), 551, 153);
 
         // Dibuja el precio en la entrada
-        g2d.drawString( String.format("%d\u20AC", precio), 551, 520);
+        g2d.drawString( String.format("%d\u20AC", infoEntrada.getPrecio()), 551, 520);
 
         // Dibujar la información en la entrada
         font = new Font("Anton", Font.BOLD, 32);
         g2d.setFont(font);
-        g2d.drawString(informacion.toUpperCase(), 551, 303);
+        g2d.drawString(infoEntrada.getEvento().getFecha().toString(), 551, 303);
 
         // Cargar el código QR generado
-        BufferedImage codigoQR = GeneradorQR.generarQR(qr);
+        BufferedImage codigoQR = GeneradorQR.generarQR(infoEntrada.getQr());
 
         // Dibuja el código QR en la entrada
         g2d.drawImage(codigoQR, 75, 129, 385, 390, null);
