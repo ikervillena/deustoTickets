@@ -94,11 +94,11 @@ public class DescargaEntrada extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String mensaje = "Necesitamos tu chatID, sigue los pasos a continuación para obtenerlo:\n" +
                         "1. Abre la aplicación de Telegram en tu dispositivo.\n" +
-                        "2. Busca el bot llamado @UserInfoBot y ábrelo.\n" +
-                        "3. Inicia una conversación con el bot.\n" +
-                        "4. Escribe cualquier mensaje en la ventana de chat.\n" +
-                        "5. Vuelve a esta ventana y copia el número que aparece en la parte inferior como 'ChatID'.\n" +
-                        "6. Pega el ChatID en el cuadro de diálogo a continuación y haz clic en 'Aceptar'.";
+                        "2. Busca el bot llamado @DeustoTickets y ábrelo.\n" +
+                        "3. Inicia una conversación con el bot si no hay una existente.\n" +
+                        "4. Busca el bot llamado @UserInfoBot e inicia una conversación.\n" +
+                        "5. Copia el número que aparece en la parte inferior como 'ChatID'.\n" +
+                        "6. Vuelve a esta ventana, pega el ChatID en el cuadro de diálogo y haz clic en 'Aceptar'.";
 
                 String chatID = JOptionPane.showInputDialog(DescargaEntrada.this, mensaje);
 
