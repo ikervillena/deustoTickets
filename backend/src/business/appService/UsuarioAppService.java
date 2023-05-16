@@ -41,18 +41,19 @@ public class UsuarioAppService {
         }
         return b;
     }
-    public static boolean iniciarSesion(String usuario, String contrasenya) throws RemoteException{
-    boolean sesionIniciada = false;
-    ClienteDAO clientDao=new ClienteDAO();
-    ArrayList<Cliente> listaClientes=clientDao.getClientes();
-    for (Cliente cliente : listaClientes) {
-        if (cliente.getUsuario().equals(usuario) && cliente.getContrasenya().equals(contrasenya)) {
-            sesionIniciada = true;
-            break;
+    public static Cliente iniciarSesion(String usuario, String contrasenya) throws RemoteException{
+        Cliente c = new Cliente();
+        ClienteDAO clientDao=new ClienteDAO();
+        ArrayList<Cliente> listaClientes=clientDao.getClientes();
+        c = null;
+        for (Cliente cliente : listaClientes) {
+            if (cliente.getUsuario().equals(usuario) && cliente.getContrasenya().equals(contrasenya)) {
+                c = cliente;
+                break;
+            }
         }
+        return c;
     }
-    return sesionIniciada;
-}
     
 
 

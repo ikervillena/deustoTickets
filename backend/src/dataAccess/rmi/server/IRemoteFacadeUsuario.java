@@ -1,7 +1,6 @@
 package dataAccess.rmi.server;
 
-import business.clases.Artista;
-import business.clases.Evento;
+import business.clases.*;
 
 import java.io.IOException;
 import java.rmi.Remote;
@@ -38,7 +37,7 @@ public interface IRemoteFacadeUsuario extends Remote {
 
     ArrayList<business.clases.Entrada> getEntradas(business.clases.Cliente c) throws RemoteException;
 
-    boolean iniciarSesion(String usuario, String contrasenya) throws RemoteException;
+    Cliente iniciarSesion(String usuario, String contrasenya) throws RemoteException;
     
     boolean registrar(business.clases.Cliente c) throws RemoteException;
 

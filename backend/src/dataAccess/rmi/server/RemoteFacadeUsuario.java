@@ -68,7 +68,7 @@ public class RemoteFacadeUsuario extends UnicastRemoteObject implements IRemoteF
     }
 
     @Override
-    public boolean iniciarSesion(String usuario, String contrasenya) throws RemoteException {
+    public Cliente iniciarSesion(String usuario, String contrasenya) throws RemoteException {
         return UsuarioAppService.iniciarSesion(usuario, contrasenya);
     }
 
