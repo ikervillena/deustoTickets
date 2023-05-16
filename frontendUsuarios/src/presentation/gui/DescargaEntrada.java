@@ -75,6 +75,10 @@ public class DescargaEntrada extends JFrame {
         JButton btnNewButton_1 = new JButton("DESCARGA LA ENTRADA");
         btnNewButton_1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                String rutaDescarga = JOptionPane.showInputDialog(DescargaEntrada.this,
+                        "Por favor, introduce la ruta absoluta en la que deseas descargar la entrada:");
+
+                // Descargar
             }
         });
         btnNewButton_1.setBackground(new Color(255, 215, 0));
@@ -88,7 +92,17 @@ public class DescargaEntrada extends JFrame {
         JButton btnNewButton_2 = new JButton("TELEGRAM");
         btnNewButton_2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(DescargaEntrada.this, "Tienes que introducir el siguiente codigo");
+                String mensaje = "Necesitamos tu chatID, sigue los pasos a continuación para obtenerlo:\n" +
+                        "1. Abre la aplicación de Telegram en tu dispositivo.\n" +
+                        "2. Busca el bot llamado @UserInfoBot y ábrelo.\n" +
+                        "3. Inicia una conversación con el bot.\n" +
+                        "4. Escribe cualquier mensaje en la ventana de chat.\n" +
+                        "5. Vuelve a esta ventana y copia el número que aparece en la parte inferior como 'ChatID'.\n" +
+                        "6. Pega el ChatID en el cuadro de diálogo a continuación y haz clic en 'Aceptar'.";
+
+                String chatID = JOptionPane.showInputDialog(DescargaEntrada.this, mensaje);
+
+                // Mandar por telegram
             }
         });
         btnNewButton_2.setBackground(new Color(255, 215, 0));
@@ -100,6 +114,10 @@ public class DescargaEntrada extends JFrame {
         JButton btnNewButton_3 = new JButton("ENVIAR POR CORREO");
         btnNewButton_3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(DescargaEntrada.this,
+                        "Las entradas han sido enviadas a tu direccion de email.");
+
+                // Mandar por correo
             }
         });
         btnNewButton_3.setBackground(new Color(255, 215, 0));
