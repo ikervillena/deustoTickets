@@ -25,7 +25,7 @@ public class Controller {
         }
     }
 
-    public Boolean InicioSesion(String usuario, String contrasenya) {
+    public Cliente InicioSesion(String usuario, String contrasenya) {
         try {
             return this.serviceLocator.getService().iniciarSesion(usuario, contrasenya);
 

@@ -64,15 +64,14 @@ public class Inicio extends JFrame {
 				if (passwordTexto.equals("") || textoUsuario.equals("")) {
 					JOptionPane.showMessageDialog(Inicio.this, "No dejes ningun campo vacio");
 				} else {
-					Boolean a = controller.InicioSesion(textField.getText(), passwordField.getText());
-					if (a == true) {
-						// HAY QUE PASARLE EL CLIENTE BUENO
-						MenuCliente ventana = new MenuCliente(controller, cliente);
+					Cliente a = controller.InicioSesion(textField.getText(), passwordField.getText());
+					if (a.getNombre().equals("")) {
+						JOptionPane.showMessageDialog(Inicio.this, "El usuario o la contrasenya son incorrectos");
+						Inicio ventana = new Inicio(controller, cliente);
 						ventana.setVisible(true);
 						Inicio.this.dispose();
 					} else {
-						JOptionPane.showMessageDialog(Inicio.this, "El usuario o la contrasenya son incorrectos");
-						Inicio ventana = new Inicio(controller, cliente);
+						MenuCliente ventana = new MenuCliente(controller, a);
 						ventana.setVisible(true);
 						Inicio.this.dispose();
 					}

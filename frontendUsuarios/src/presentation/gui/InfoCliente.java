@@ -32,7 +32,7 @@ public class InfoCliente extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		JLabel lblNewLabel_1 = new JLabel("Nombre usuario");
+		JLabel lblNewLabel_1 = new JLabel(cliente.getUsuario());
 		lblNewLabel_1.setBackground(new Color(255, 255, 255));
 		lblNewLabel_1.setFont(new Font("Stencil", Font.BOLD, 40));
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -76,7 +76,7 @@ public class InfoCliente extends JFrame {
 		label_2.setBounds(15, 300, 136, 40);
 		contentPane.add(label_2);
 
-		JLabel label_1 = new JLabel("Usuario");
+		JLabel label_1 = new JLabel("Email");
 		label_1.setHorizontalAlignment(SwingConstants.CENTER);
 		label_1.setForeground(new Color(210, 180, 140));
 		label_1.setFont(new Font("Stencil", Font.BOLD, 20));
@@ -84,8 +84,8 @@ public class InfoCliente extends JFrame {
 		label_1.setBounds(15, 173, 136, 40);
 		contentPane.add(label_1);
 
-		JLabel InfoUsuario = new JLabel(cliente.getUsuario());
-		InfoUsuario.setBounds(186, 183, 69, 20);
+		JLabel InfoUsuario = new JLabel(cliente.getEmail());
+		InfoUsuario.setBounds(186, 183, 200, 20);
 		contentPane.add(InfoUsuario);
 
 		JLabel InfoNombre = new JLabel(cliente.getNombre());
@@ -127,11 +127,7 @@ public class InfoCliente extends JFrame {
 		lblMisEntradas.setBounds(532, 134, 190, 33);
 		contentPane.add(lblMisEntradas);
 
-		/*
-		 * For para que aparezcan todas las entradas, modificar el set bounds para que
-		 * no se solapen
-		 * y el boton deber�a dirigir al evento
-		 */
+		/* Hay que hacer un for que nos pase las entradas que tiene el cliente */
 
 		JButton btnNewButton_1 = new JButton("Entrada 1");
 		btnNewButton_1.setBackground(new Color(255, 228, 181));

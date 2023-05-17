@@ -1,11 +1,14 @@
 package dataAccess.rmi.client;
 
+import business.clases.Cliente;
 import business.clases.Evento;
 import business.controller.Controller;
+import presentation.gui.DescargaEntrada;
 import presentation.gui.Inicio;
 import presentation.gui.InicioSesion;
 
 import java.io.IOException;
+import java.time.temporal.TemporalQuery;
 
 public class Client {
 

@@ -10,21 +10,16 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.*;
 
-import javax.swing.Box;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JMenuBar;
-import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.ImageIcon;
-import javax.swing.JComboBox;
 import business.clases.*;
 
 public class MenuCliente extends JFrame {
 
 	private JPanel contentPane;
+	private JComboBox<String> comboBox;
+	private JComboBox<String> comboBox1;
 
 	public MenuCliente(Controller controller, Cliente cliente) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -72,12 +67,33 @@ public class MenuCliente extends JFrame {
 
 		/* Para hacer el filtro */
 
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(630, 86, 140, 26);
-		contentPane.add(comboBox);
+		String[] opciones = { "Filtrar por Espacio", "Filtrar por Artista", "Filtrar por Usuario" };
+
+		comboBox = new JComboBox<>(opciones);
+		comboBox.setBounds(490, 86, 140, 26);
+		getContentPane().add(comboBox);
+
+		comboBox1 = new JComboBox<>();
+		comboBox1.setBounds(630, 86, 140, 26);
+		getContentPane().add(comboBox1);
+
+		comboBox.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String seleccion = (String) comboBox.getSelectedItem();
+				if (seleccion.equals("Filtrar por Espacio")) {
+				} else if (seleccion.equals("Filtrar por Artista")) {
+					// Lógica para filtrar por Artista
+
+				} else if (seleccion.equals("Filtrar por Usuario")) {
+
+				}
+			}
+		});
+
 		ArrayList<Evento> eventos = controller.getEventos();
 
-		int altura = 130;
+		int altura = 150;
 
 		for (int i = 0; i < eventos.size(); i++) {
 			Evento evento = eventos.get(i);
