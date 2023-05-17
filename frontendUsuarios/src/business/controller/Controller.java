@@ -42,4 +42,13 @@ public class Controller {
             return null;
         }
     }
+
+    public ArrayList<business.clases.Artista> getArtistasDeEvento(Evento e) {
+        try {
+            return this.serviceLocator.getService().getArtistasDeEvento(e);
+
+        } catch (Exception a) {
+            return null;
+        }
+    }
 }

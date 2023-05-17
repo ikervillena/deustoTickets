@@ -3,6 +3,7 @@ package presentation.gui;
 import business.clases.Evento;
 import business.controller.Controller;
 
+import java.util.ArrayList;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
@@ -96,9 +97,16 @@ public class InfoEvento extends JFrame {
 		lblDireccin.setBounds(462, 172, 271, 33);
 		contentPane.add(lblDireccin);
 
-		JLabel InfoEvento = new JLabel(evento.getDescripcion());
-		InfoEvento.setBounds(37, 313, 344, 73);
-		contentPane.add(InfoEvento);
+		ArrayList<business.clases.Artista> a = controller.getArtistasDeEvento(evento);
+
+		int altura = 318;
+		for (int i = 0; i < a.size(); i++) {
+			JLabel InfoEvento = new JLabel("-" + a.get(i).getNombre());
+			InfoEvento.setBounds(37, altura, 344, 15);
+			contentPane.add(InfoEvento);
+			altura = altura + 20;
+
+		}
 
 		JLabel lblDireccinDelEvento = new JLabel("Direcci\u00F3n del evento");
 		lblDireccinDelEvento.setBounds(462, 205, 332, 63);
