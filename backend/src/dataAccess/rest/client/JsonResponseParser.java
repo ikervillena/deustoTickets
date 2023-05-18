@@ -79,4 +79,20 @@ public class JsonResponseParser {
         return artistas;
     }
 
+    public static ArrayList<Integer> getIDPrecios(String respuesta) throws JSONException {
+        ArrayList<Integer> listaID = new ArrayList<Integer>();
+
+        JSONObject obj = new JSONObject(respuesta);
+        JSONArray data = obj.getJSONArray("data");
+
+        for (int i = 0; i < data.length(); i++) {
+            int id = data.getJSONObject(i).getJSONObject("attributes").getJSONObject("cliente").getJSONObject("data").getInt("id");
+            if (id == 4) {
+                listaID.add(data.getJSONObject(i).getInt("id"));
+            }
+
+        }
+        return listaID;
+    }
+
 }

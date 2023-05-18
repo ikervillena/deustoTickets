@@ -73,4 +73,8 @@ public class TicketProviderGateway implements ITicketProviderGateway {
         return JsonResponseParser.getArtistasDeEvento(e,consultarAPI("eventos?populate=*"));
     }
 
+    public ArrayList<Integer> getIDPrecios(Evento e) throws IOException {
+        return JsonResponseParser.getIDPrecios(consultarAPI("precios?populate=*"));
+    }
+
 }
