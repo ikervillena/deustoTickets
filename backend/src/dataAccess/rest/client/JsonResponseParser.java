@@ -2,6 +2,7 @@ package dataAccess.rest.client;
 
 
 import business.clases.Artista;
+import business.clases.Espacio;
 import business.clases.Evento;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,8 +33,20 @@ public class JsonResponseParser {
                 fecha = new Date(2,2,2);
             }
             int aforo = atributos.getInt("aforo");
+            
+            JSONObject espacioJson = atributos.getJSONObject("espacio").getJSONObject("data").getJSONObject("attributes");
+            Espacio espacio = new Espacio();
+            espacio.setNombre(espacioJson.getString("nombre"));
+            espacio.setDireccion(espacioJson.getString("direccion"));
 
+            
             Evento evento = new Evento(titulo, descripcion, fecha, aforo);
+            evento.setEspacio(espacio);
+            
+            JsonResponseParser j = new JsonResponseParser();
+            ArrayList<Artista> artistas = j.getArtistasDeEvento(evento, respuesta);
+            evento.setArtistas(artistas);
+
             eventos.add(evento);
         }
 

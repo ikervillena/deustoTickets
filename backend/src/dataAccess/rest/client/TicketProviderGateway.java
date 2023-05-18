@@ -66,10 +66,11 @@ public class TicketProviderGateway implements ITicketProviderGateway {
 
     @Override
     public ArrayList<Evento> getEventos() throws IOException {
-        return JsonResponseParser.getEventos(consultarAPI("eventos"));
+        return JsonResponseParser.getEventos(consultarAPI("eventos?populate=*"));
     }
 
     public ArrayList<Artista> getArtistasDeEvento(Evento e) throws IOException {
         return JsonResponseParser.getArtistasDeEvento(e,consultarAPI("eventos?populate=*"));
     }
+
 }

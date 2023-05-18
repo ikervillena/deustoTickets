@@ -27,10 +27,11 @@ public class RemoteFacadeUsuario extends UnicastRemoteObject implements IRemoteF
         return "Hello World! It works correctly";
     }
 
+    
     @Override
     public ArrayList<business.clases.Evento> getEventos() throws RemoteException, IOException {
         return UsuarioAppService.getEventos();
-    }
+    } 
 
     @Override
     public ArrayList<business.clases.Artista> getArtistasDeEvento(Evento e) throws RemoteException, IOException {

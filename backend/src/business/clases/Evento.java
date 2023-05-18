@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.jdo.annotations.PersistenceCapable;
 
-import business.clases.Entrada;
+import business.clases.*;
 import lombok.*;
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.Persistent;
@@ -22,10 +22,14 @@ public class Evento implements Serializable {
     @Getter @Setter private String descripcion;
     @Getter @Setter private Date fecha;
     @Getter @Setter private int aforo;
+	@Getter @Setter private ArrayList<Precio> precios;
     @Persistent(mappedBy = "evento")
 	@Getter @Setter private ArrayList<Entrada> entradas;
     @Persistent(mappedBy = "evento")
 	@Getter @Setter private ArrayList<Artista> artistas;
+    @Column (name = "espacio_id")
+    @Getter @Setter private Espacio espacio;
+
 
         public Evento(String titulo, String descripcion, Date fecha, int aforo) {
             this.titulo = titulo;
