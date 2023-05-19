@@ -1,8 +1,7 @@
 package dataAccess.rest.client;
 
 
-import business.clases.Artista;
-import business.clases.Evento;
+import business.clases.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -75,6 +74,11 @@ public class TicketProviderGateway implements ITicketProviderGateway {
 
     public ArrayList<Integer> getIDPrecios(Evento e) throws IOException {
         return JsonResponseParser.getIDPrecios(consultarAPI("precios?populate=*"));
+    }
+
+    public ArrayList<Precio> getPreciosEvento(Evento e) throws IOException {
+        ArrayList<Integer> idPrecios = getIDPrecios(e);
+        return JsonResponseParser.getPreciosEvento(e,idPrecios,consultarAPI("eventos?populate=precios"));
     }
 
 }

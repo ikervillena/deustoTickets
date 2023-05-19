@@ -4,6 +4,8 @@ package dataAccess.rest.client;
 import business.clases.Artista;
 import business.clases.Espacio;
 import business.clases.Evento;
+import business.clases.Precio;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -95,4 +97,32 @@ public class JsonResponseParser {
         return listaID;
     }
 
+    public static ArrayList<Precio> getPreciosEvento(Evento evento, ArrayList<Integer> idPrecios, String respuesta) throws JSONException{
+        ArrayList<Precio> listaPrecios = new ArrayList<Precio>();
+        
+        JSONObject obj = new JSONObject(respuesta);
+        JSONArray data = obj.getJSONArray("data");
+
+        for (int i = 0; i < data.length(); i++) {
+            JSONObject atributos = data.getJSONObject(i).getJSONObject("attributes");
+            String titulo = atributos.getString("titulo");
+            if (titulo.equals(evento.getTitulo())) {
+                JSONArray preciosJson = atributos.getJSONObject("precios").getJSONArray("data");
+                for (int j = 0; j < preciosJson.length(); j++) {
+                    for (Integer id: idPrecios){
+                        if (id==preciosJson.getJSONObject(j).getInt("id")){
+                            JSONObject precioJson = preciosJson.getJSONObject(j).getJSONObject("attributes");
+                            Precio p = new Precio();
+                            p.setNombre(precioJson.getString("nombre"));
+                            p.setPrecio(precioJson.getInt("precio"));
+                            p.setDisponibles(Integer.parseInt(precioJson.getString("disponibles")));
+                            p.setOfertadas(Integer.parseInt(precioJson.getString("ofertadas")));
+                            listaPrecios.add(p);
+                        }
+                    }
+                }
+            }
+        }
+        return listaPrecios;
+    }
 }
