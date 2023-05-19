@@ -10,6 +10,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -45,10 +46,24 @@ public class JsonResponseParser {
             Evento evento = new Evento(titulo, descripcion, fecha, aforo);
             evento.setEspacio(espacio);
             
-            JsonResponseParser j = new JsonResponseParser();
-            ArrayList<Artista> artistas = j.getArtistasDeEvento(evento, respuesta);
+            TicketProviderGateway tg = new TicketProviderGateway();
+            ArrayList<Artista> artistas = new ArrayList<Artista>();
+            try {
+                artistas = tg.getArtistasDeEvento(evento);
+              }
+              catch(IOException e) {
+                e.printStackTrace();
+              }
             evento.setArtistas(artistas);
-
+            
+            ArrayList<Precio> listaPrecios = new ArrayList<Precio>();
+            try {
+                listaPrecios = tg.getPreciosEvento(evento);
+              }
+              catch(IOException e) {
+                e.printStackTrace();
+              }
+            evento.setPrecios(listaPrecios);
             eventos.add(evento);
         }
 
