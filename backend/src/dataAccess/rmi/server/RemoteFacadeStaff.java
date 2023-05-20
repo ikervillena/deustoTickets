@@ -34,8 +34,7 @@ public class RemoteFacadeStaff extends UnicastRemoteObject implements IRemoteFac
 
     @Override
     public Staff iniciarSesionStaff(String usuario, String contrasenya) throws RemoteException {
-        // PENDIENTE
-        return null;
+        return StaffAppService.iniciarSesion(usuario, contrasenya);
     }
 
     @Override

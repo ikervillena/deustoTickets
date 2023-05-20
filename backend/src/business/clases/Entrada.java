@@ -4,8 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.jdo.annotations.PersistenceCapable;
 
-import business.clases.Cliente;
-import business.clases.Evento;
+import business.clases.*;
 import lombok.*;
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.Persistent;
@@ -21,10 +20,12 @@ public class Entrada implements Serializable {
     @Getter @Setter private String qr;
     @Getter @Setter private int codigo;
     @Getter @Setter private String nombre;
-    @Getter @Setter private int precio;
+    @Column (name = "precio_id")
+        @Getter @Setter private Precio precio;
     @Getter @Setter private Date fecCompra;
     @Column (name = "evento_id")
         @Getter @Setter private Evento evento;
     @Column (name="cliente_id")
         @Getter @Setter private Cliente cliente;
+    @Getter @Setter private boolean utilizada;
 }

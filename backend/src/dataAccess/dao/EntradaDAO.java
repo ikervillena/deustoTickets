@@ -12,7 +12,7 @@ import business.clases.*;
 
 public class EntradaDAO {
 
-    public ArrayList<Entrada> getTickets(){
+    public ArrayList<Entrada> getEntrada(){
         ArrayList<Entrada> entradas = new ArrayList<>();
         try{
             PersistenceManagerFactory persistentManagerFactory = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");

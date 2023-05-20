@@ -2,6 +2,7 @@ package dataAccess.rest.client;
 
 
 import business.clases.Artista;
+import business.clases.Entrada;
 import business.clases.Espacio;
 import business.clases.Evento;
 import business.clases.Precio;
@@ -140,4 +141,5 @@ public class JsonResponseParser {
         }
         return listaPrecios;
     }
+
 }

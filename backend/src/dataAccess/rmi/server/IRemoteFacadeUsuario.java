@@ -35,7 +35,7 @@ public interface IRemoteFacadeUsuario extends Remote {
 
     boolean enviarEmailConfirmacion(business.clases.Entrada e) throws RemoteException;
 
-    ArrayList<business.clases.Entrada> getEntradas(business.clases.Cliente c) throws RemoteException;
+    ArrayList<business.clases.Entrada> getEntradas(business.clases.Cliente cliente) throws RemoteException;
 
     Cliente iniciarSesion(String usuario, String contrasenya) throws RemoteException;
     

@@ -1,9 +1,7 @@
 package dataAccess.rmi.server;
 
 import business.appService.UsuarioAppService;
-import business.clases.Artista;
-import business.clases.Cliente;
-import business.clases.Evento;
+import business.clases.*;
 import dataAccess.dao.ClienteDAO;
 
 import java.io.IOException;
@@ -63,9 +61,8 @@ public class RemoteFacadeUsuario extends UnicastRemoteObject implements IRemoteF
     }
 
     @Override
-    public ArrayList<business.clases.Entrada> getEntradas(business.clases.Cliente c) throws RemoteException {
-        // PENDIENTE
-        return null;
+    public ArrayList<business.clases.Entrada> getEntradas(business.clases.Cliente cliente) throws RemoteException {
+        return UsuarioAppService.getEntradas(cliente);
     }
 
     @Override
@@ -84,5 +81,6 @@ public class RemoteFacadeUsuario extends UnicastRemoteObject implements IRemoteF
         // PENDIENTE
         return false;
     }
+
 
 }

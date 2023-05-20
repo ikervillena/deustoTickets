@@ -2,9 +2,7 @@ package business.appService;
 
 //Representa el patron de diseño "AppService"
 
-import business.clases.Evento;
-import business.clases.Artista;
-import business.clases.Cliente;
+import business.clases.*;
 import dataAccess.dao.*;
 import dataAccess.rest.client.TicketProviderGateway;
 import java.rmi.RemoteException;
@@ -54,6 +52,18 @@ public class UsuarioAppService {
         }
         return c;
     }
+
+    public static ArrayList<Entrada> getEntradas(Cliente cliente) throws RemoteException{
+        ArrayList<Entrada> listaEntradas = new ArrayList<Entrada>();
+        EntradaDAO entradaDAO= new EntradaDAO();
+        ArrayList<Entrada> todas = entradaDAO.getEntrada();
+        for (Entrada e: todas){
+            if(e.getCliente().getUsuario().equals(cliente.getUsuario())){
+                listaEntradas.add(e);
+            }
+        }
+        return listaEntradas;
+    } 
     
 
 
