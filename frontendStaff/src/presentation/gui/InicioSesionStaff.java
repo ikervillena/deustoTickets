@@ -10,7 +10,7 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -35,6 +35,14 @@ public class InicioSesionStaff extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		JPasswordField passwordField = new JPasswordField();
+		passwordField.setBounds(412, 299, 282, 43);
+		contentPane.add(passwordField);
+
+		JTextField textField = new JTextField();
+		textField.setBounds(412, 234, 282, 40);
+		contentPane.add(textField);
+		textField.setColumns(10);
 
 		JLabel label = new JLabel("");
 		label.setBounds(0, 0, 820, 513);
@@ -49,10 +57,25 @@ public class InicioSesionStaff extends JFrame {
 		btnNewButton.setBackground(new Color(255, 215, 0));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				MenuStaff ventana = new MenuStaff(controller);
-				ventana.setVisible(true);
-				InicioSesionStaff.this.dispose();
-
+				String textoUsuario = textField.getText();
+				String passwordTexto = passwordField.getText();
+				if (passwordTexto.equals("") || textoUsuario.equals("")) {
+					JOptionPane.showMessageDialog(InicioSesionStaff.this, "No dejes ningun campo vacio");
+				} else {
+					/*
+					 * Staff a = controller.InicioSesion(textoUsuario, passwordTexto);
+					 * if (a.getNombre().equals("")) {
+					 * JOptionPane.showMessageDialog(InicioSesionStaff.this,
+					 * "El usuario o la contrasenya son incorrectos");
+					 * InicioSesionStaff ventana = new InicioSesionStaff(controller);
+					 * ventana.setVisible(true);
+					 * InicioSesionStaff.this.dispose();
+					 * } else {
+					 * MenuStaff ventana = new MenuStaff(controller,a);
+					 * ventana.setVisible(true);
+					 * InicioSesionStaff.this.dispose();
+					 */
+				}
 			}
 		});
 		btnNewButton.setBounds(645, 397, 149, 33);
@@ -67,15 +90,6 @@ public class InicioSesionStaff extends JFrame {
 		lblDeustoTickets.setForeground(new Color(255, 200, 0));
 		lblDeustoTickets.setBounds(-16, 16, 836, 228);
 		contentPane.add(lblDeustoTickets);
-
-		JPasswordField passwordField = new JPasswordField();
-		passwordField.setBounds(412, 299, 282, 43);
-		contentPane.add(passwordField);
-
-		JTextField textField = new JTextField();
-		textField.setBounds(412, 234, 282, 40);
-		contentPane.add(textField);
-		textField.setColumns(10);
 
 		JLabel lblUsuario = new JLabel("Usuario");
 		lblUsuario.setBackground(new Color(255, 215, 0));

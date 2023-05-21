@@ -80,23 +80,36 @@ public class MenuCliente extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				String seleccion = (String) comboBox.getSelectedItem();
 				String seleccion2 = (String) comboBox1.getSelectedItem();
+
 				if (seleccion.equals("Filtrar por Artista")) {
 					comboBox1.removeAllItems();
 					comboBox1.addItem("---");
+					ArrayList<String> artistasExistentes = new ArrayList<>();
+
 					for (int i = 0; i < eventos.size(); i++) {
 						ArrayList<Artista> artistas = eventos.get(i).getArtistas();
 						for (int x = 0; x < artistas.size(); x++) {
-							comboBox1.addItem(artistas.get(x).getNombre());
+							String nombreArtista = artistas.get(x).getNombre();
+							if (!artistasExistentes.contains(nombreArtista)) {
+								comboBox1.addItem(nombreArtista);
+								artistasExistentes.add(nombreArtista);
+							}
 						}
 					}
 				} else if (seleccion.equals("Filtrar por Espacio")) {
 					comboBox1.removeAllItems();
 					comboBox1.addItem("---");
+					ArrayList<String> espaciosExistentes = new ArrayList<>();
+
 					for (int a = 0; a < eventos.size(); a++) {
 						Espacio espacio = eventos.get(a).getEspacio();
-						comboBox1.addItem(espacio.getNombre());
+						String nombreEspacio = espacio.getNombre();
+						if (!espaciosExistentes.contains(nombreEspacio)) {
+							comboBox1.addItem(nombreEspacio);
+							espaciosExistentes.add(nombreEspacio);
+						}
 					}
-				} else if (seleccion.equals("Seleccione opcion")) {
+				} else if (seleccion.equals("Seleccione opción")) {
 					comboBox1.removeAllItems();
 				}
 
@@ -114,6 +127,7 @@ public class MenuCliente extends JFrame {
 				actualizarVisualizacionEventos(eventosFiltrados, controller, cliente, botonesEventos);
 			}
 		});
+
 	}
 
 	public void visualizarEventos(ArrayList<Evento> eventos, Controller controller, Cliente cliente,

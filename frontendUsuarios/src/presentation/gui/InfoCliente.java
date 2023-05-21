@@ -16,6 +16,8 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import business.clases.*;
+
+import java.util.ArrayList;
 import java.util.Date;
 
 public class InfoCliente extends JFrame {
@@ -127,18 +129,42 @@ public class InfoCliente extends JFrame {
 		lblMisEntradas.setBounds(532, 134, 190, 33);
 		contentPane.add(lblMisEntradas);
 
-		/* Hay que hacer un for que nos pase las entradas que tiene el cliente */
+		ArrayList<Entrada> entradas = cliente.getEntradas();
+		ArrayList<Evento> eventos = new ArrayList<>();
+		ArrayList<ArrayList<Entrada>> entradasPorEvento = new ArrayList<>();
 
-		JButton btnNewButton_1 = new JButton("Entrada 1");
-		btnNewButton_1.setBackground(new Color(255, 228, 181));
-		btnNewButton_1.setForeground(new Color(255, 255, 255));
-		btnNewButton_1.setFont(new Font("Stencil", Font.BOLD, 25));
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		for (Entrada entrada : entradas) {
+			Evento evento = entrada.getEvento();
+			if (!eventos.contains(evento)) {
+				eventos.add(evento);
+				entradasPorEvento.add(new ArrayList<>());
 			}
-		});
-		btnNewButton_1.setBounds(480, 183, 281, 40);
-		contentPane.add(btnNewButton_1);
+		}
+
+		for (Entrada entrada : entradas) {
+			Evento evento = entrada.getEvento();
+			int indiceEvento = eventos.indexOf(evento);
+			ArrayList<Entrada> entradasEvento = entradasPorEvento.get(indiceEvento);
+			entradasEvento.add(entrada);
+		}
+		int altura = 183;
+		for (int i = 0; i < eventos.size(); i++) {
+			Evento evento = eventos.get(i);
+			int numero = i;
+			JButton btnNewButton_1 = new JButton(evento.getTitulo());
+			btnNewButton_1.setBackground(new Color(255, 228, 181));
+			btnNewButton_1.setForeground(new Color(255, 255, 255));
+			btnNewButton_1.setFont(new Font("Stencil", Font.BOLD, 15));
+			btnNewButton_1.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					// ArrayList<Entrada> entradasEvento = entradasPorEvento.get(numero); Aqui
+					// consigo las entradas del evento y las mando para conseguirlas
+				}
+			});
+			btnNewButton_1.setBounds(480, altura, 281, 40);
+			contentPane.add(btnNewButton_1);
+			altura = altura + 50;
+		}
 
 		JButton btnNewButton_2 = new JButton("BACK");
 		btnNewButton_2.addActionListener(new ActionListener() {

@@ -1,5 +1,6 @@
 package presentation.gui;
 
+import javax.swing.SpinnerNumberModel;
 import business.clases.Evento;
 import business.controller.Controller;
 import java.awt.Color;
@@ -20,6 +21,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JSpinner;
 import java.util.ArrayList;
+import java.util.List;
 import business.clases.*;
 
 public class InfoEntradas extends JFrame {
@@ -79,7 +81,7 @@ public class InfoEntradas extends JFrame {
 		Image img = icon.getImage().getScaledInstance(100, 60, Image.SCALE_SMOOTH);
 		icon = new ImageIcon(img);
 		lblNewLabel_1.setIcon(icon);
-		lblNewLabel_1.setBounds(187, 93, 423, 63);
+		lblNewLabel_1.setBounds(117, 95, 633, 63);
 		contentPane.add(lblNewLabel_1);
 
 		JLabel lblNewLabel_2 = new JLabel("Entradas");
@@ -147,20 +149,35 @@ public class InfoEntradas extends JFrame {
 		btnBack.setBounds(655, 464, 115, 29);
 		contentPane.add(btnBack);
 
-		JSpinner spinner = new JSpinner();
-		spinner.setBounds(341, 225, 32, 26);
-		contentPane.add(spinner);
-
-		ArrayList<Precio> precio = evento.getPrecios();
 		int altura = 223;
-		for (int i = 0; i < precio.size(); i++) {
-			JLabel lblEntrada = new JLabel(precio.get(i).getNombre() + "" + precio.get(i).getPrecio());
+		ArrayList<Precio> precios = evento.getPrecios();
+		List<JSpinner> spinners = new ArrayList<>();
+
+		// int valorSpinner = (int) spinners.get(2).getValue(); Es para conseguir el
+		// valor de los spiners
+		for (int i = 0; i < precios.size(); i++) {
+
+			JLabel lblEntrada = new JLabel(precios.get(i).getNombre());
 			lblEntrada.setForeground(new Color(240, 230, 140));
-			lblEntrada.setFont(new Font("Stencil", Font.BOLD, 22));
+			lblEntrada.setFont(new Font("Stencil", Font.BOLD, 16));
 			lblEntrada.setBackground(new Color(248, 248, 255));
-			lblEntrada.setBounds(61, altura, 257, 33);
+			lblEntrada.setBounds(21, altura, 400, 33);
 			contentPane.add(lblEntrada);
-			altura = altura + 40;
+
+			JLabel lblInformacion = new JLabel(
+					"Precio: " + precios.get(i).getPrecio() + " euros   Disponibles: "
+							+ precios.get(i).getDisponibles());
+			lblInformacion.setForeground(Color.GRAY);
+			lblInformacion.setFont(new Font("Arial", Font.PLAIN, 12));
+			lblInformacion.setBounds(21, altura + 33, 400, 20);
+			contentPane.add(lblInformacion);
+
+			JSpinner spinner = new JSpinner(new SpinnerNumberModel(0, 0, 10, 1));
+			spinner.setBounds(400, altura, 32, 26);
+			contentPane.add(spinner);
+			spinners.add(spinner);
+
+			altura += 70;
 		}
 	}
 }
