@@ -19,6 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JSpinner;
+import java.util.ArrayList;
 import business.clases.*;
 
 public class InfoEntradas extends JFrame {
@@ -146,21 +147,22 @@ public class InfoEntradas extends JFrame {
 		btnBack.setBounds(655, 464, 115, 29);
 		contentPane.add(btnBack);
 
-		/*
-		 * Por cada tipo de entrada hay que hacer un for con esto para crear el contador
-		 * y el nombre de entrada
-		 */
-
 		JSpinner spinner = new JSpinner();
 		spinner.setBounds(341, 225, 32, 26);
 		contentPane.add(spinner);
 
-		JLabel lblEntrada = new JLabel("Entrada 1");
-		lblEntrada.setForeground(new Color(240, 230, 140));
-		lblEntrada.setFont(new Font("Stencil", Font.BOLD, 22));
-		lblEntrada.setBackground(new Color(248, 248, 255));
-		lblEntrada.setBounds(61, 223, 257, 33);
-		contentPane.add(lblEntrada);
-
+		/*
+		 * ArrayList<Entrada> entrada = evento.getEntradas();
+		 * int altura = 223;
+		 * for (int i = 0; i < entrada.size(); i++) {
+		 * JLabel lblEntrada = new JLabel(entrada.get(i).getNombre());
+		 * lblEntrada.setForeground(new Color(240, 230, 140));
+		 * lblEntrada.setFont(new Font("Stencil", Font.BOLD, 22));
+		 * lblEntrada.setBackground(new Color(248, 248, 255));
+		 * lblEntrada.setBounds(61, altura, 257, 33);
+		 * contentPane.add(lblEntrada);
+		 * altura = altura + 40;
+		 * }
+		 */
 	}
 }

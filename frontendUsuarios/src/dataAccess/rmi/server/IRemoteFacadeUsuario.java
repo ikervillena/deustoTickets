@@ -27,8 +27,6 @@ public interface IRemoteFacadeUsuario extends Remote {
      */
     ArrayList<Evento> getEventos() throws IOException;
 
-    ArrayList<Artista> getArtistas(Evento e) throws RemoteException;
-
     ArrayList<Precio> getPrecios(Evento e) throws RemoteException;
 
     boolean comprarEntrada(Entrada e) throws RemoteException;
