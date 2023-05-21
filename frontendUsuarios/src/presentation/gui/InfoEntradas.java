@@ -70,7 +70,7 @@ public class InfoEntradas extends JFrame {
 		btnNewButton.setFont(new Font("Stencil", Font.BOLD, 40));
 		menuBar.add(btnNewButton);
 
-		JLabel lblNewLabel_1 = new JLabel("Evento 1");
+		JLabel lblNewLabel_1 = new JLabel(evento.getTitulo());
 		lblNewLabel_1.setBackground(new Color(255, 255, 255));
 		lblNewLabel_1.setFont(new Font("Stencil", Font.BOLD, 40));
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -151,18 +151,16 @@ public class InfoEntradas extends JFrame {
 		spinner.setBounds(341, 225, 32, 26);
 		contentPane.add(spinner);
 
-		/*
-		 * ArrayList<Entrada> entrada = evento.getEntradas();
-		 * int altura = 223;
-		 * for (int i = 0; i < entrada.size(); i++) {
-		 * JLabel lblEntrada = new JLabel(entrada.get(i).getNombre());
-		 * lblEntrada.setForeground(new Color(240, 230, 140));
-		 * lblEntrada.setFont(new Font("Stencil", Font.BOLD, 22));
-		 * lblEntrada.setBackground(new Color(248, 248, 255));
-		 * lblEntrada.setBounds(61, altura, 257, 33);
-		 * contentPane.add(lblEntrada);
-		 * altura = altura + 40;
-		 * }
-		 */
+		ArrayList<Precio> precio = evento.getPrecios();
+		int altura = 223;
+		for (int i = 0; i < precio.size(); i++) {
+			JLabel lblEntrada = new JLabel(precio.get(i).getNombre() + "" + precio.get(i).getPrecio());
+			lblEntrada.setForeground(new Color(240, 230, 140));
+			lblEntrada.setFont(new Font("Stencil", Font.BOLD, 22));
+			lblEntrada.setBackground(new Color(248, 248, 255));
+			lblEntrada.setBounds(61, altura, 257, 33);
+			contentPane.add(lblEntrada);
+			altura = altura + 40;
+		}
 	}
 }

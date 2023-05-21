@@ -108,7 +108,7 @@ public class InfoEvento extends JFrame {
 
 		}
 
-		JLabel lblDireccinDelEvento = new JLabel("Direcci\u00F3n del evento");
+		JLabel lblDireccinDelEvento = new JLabel(evento.getEspacio().getDireccion());
 		lblDireccinDelEvento.setBounds(462, 205, 332, 63);
 		contentPane.add(lblDireccinDelEvento);
 

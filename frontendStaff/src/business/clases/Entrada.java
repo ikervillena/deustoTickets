@@ -3,6 +3,8 @@ package business.clases;
 import java.io.Serializable;
 import java.util.Date;
 import lombok.*;
+import business.clases.Evento;
+import business.clases.Cliente;
 
 @NoArgsConstructor
 @AllArgsConstructor
