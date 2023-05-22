@@ -1,6 +1,5 @@
 package dataAccess.rest.client;
 
-
 import business.clases.*;
 
 import java.io.BufferedReader;
@@ -25,7 +24,7 @@ public class TicketProviderGateway implements ITicketProviderGateway {
         // URL del servidor REST
         URL url = new URL(baseURL + tabla);
 
-        //Abrir conexión a la URL
+        // Abrir conexión a la URL
         HttpURLConnection connection = null;
         try {
             connection = (HttpURLConnection) url.openConnection();
@@ -45,7 +44,7 @@ public class TicketProviderGateway implements ITicketProviderGateway {
         BufferedReader reader = null;
         String respuesta;
         try {
-            reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            reader = new BufferedReader(new InputStreamReader(connection.getInputStream(), "UTF-8"));
             StringBuilder sb = new StringBuilder();
             String line;
             while ((line = reader.readLine()) != null) {
@@ -57,7 +56,7 @@ public class TicketProviderGateway implements ITicketProviderGateway {
             throw new RuntimeException(e);
         }
 
-        //Cerrar conexion
+        // Cerrar conexion
         connection.disconnect();
 
         return respuesta;
@@ -69,7 +68,7 @@ public class TicketProviderGateway implements ITicketProviderGateway {
     }
 
     public ArrayList<Artista> getArtistasDeEvento(Evento e) throws IOException {
-        return JsonResponseParser.getArtistasDeEvento(e,consultarAPI("eventos?populate=*"));
+        return JsonResponseParser.getArtistasDeEvento(e, consultarAPI("eventos?populate=*"));
     }
 
     @Override
@@ -88,7 +87,7 @@ public class TicketProviderGateway implements ITicketProviderGateway {
 
     public ArrayList<Precio> getPreciosEvento(Evento e) throws IOException {
         ArrayList<Integer> idPrecios = getIDPrecios(e);
-        return JsonResponseParser.getPreciosEvento(e,idPrecios,consultarAPI("eventos?populate=precios"));
+        return JsonResponseParser.getPreciosEvento(e, idPrecios, consultarAPI("eventos?populate=precios"));
     }
 
 }

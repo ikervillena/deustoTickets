@@ -1,6 +1,7 @@
 package business.controller;
 
-import business.clases.Evento;
+import business.clases.*;
+
 import dataAccess.rmi.client.ServiceLocator;
 
 import java.util.ArrayList;
@@ -21,5 +22,16 @@ public class Controller {
             return null;
         }
     }
+
+    /*
+     * public Staff iniciarSesionStaff(String usuario, String contrasenya) {
+     * try {
+     * return this.serviceLocator.getService().iniciarSesionStaff(String usuario,
+     * String contrasenya);
+     * } catch (Exception e) {
+     * return null;
+     * }
+     * }
+     */
 
 }

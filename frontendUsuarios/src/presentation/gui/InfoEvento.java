@@ -10,17 +10,21 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import java.awt.Dimension;
 import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenuBar;
+import javax.swing.JTextArea;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.SwingConstants;
 import business.clases.*;
+import javax.swing.UIManager;
 
 public class InfoEvento extends JFrame {
 
@@ -96,16 +100,33 @@ public class InfoEvento extends JFrame {
 		lblDireccin.setBackground(new Color(248, 248, 255));
 		lblDireccin.setBounds(462, 172, 271, 33);
 		contentPane.add(lblDireccin);
-
 		ArrayList<business.clases.Artista> a = controller.getArtistasDeEvento(evento);
 
 		int altura = 318;
 		for (int i = 0; i < a.size(); i++) {
-			JLabel InfoEvento = new JLabel("-" + a.get(i).getNombre());
-			InfoEvento.setBounds(37, altura, 344, 15);
-			contentPane.add(InfoEvento);
+			JButton btnArtista = new JButton(a.get(i).getNombre());
+			btnArtista.setBounds(37, altura, 344, 15);
+			contentPane.add(btnArtista);
 			altura = altura + 20;
+			int numero = i;
+			btnArtista.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					String informacionArtista = "Nombre: " + a.get(numero).getNombre() + "\n"
+							+ "Fecha de nacimiento: " + a.get(numero).getFecNac() + "\n"
+							+ "Descripción: " + a.get(numero).getDescripcion();
 
+					JTextArea textArea = new JTextArea(informacionArtista);
+					textArea.setEditable(false);
+					textArea.setLineWrap(true);
+					textArea.setWrapStyleWord(true);
+
+					JScrollPane scrollPane = new JScrollPane(textArea);
+					scrollPane.setPreferredSize(new Dimension(300, 200));
+
+					JOptionPane.showMessageDialog(InfoEvento.this, scrollPane, "Información del artista",
+							JOptionPane.INFORMATION_MESSAGE);
+				}
+			});
 		}
 
 		JLabel lblDireccinDelEvento = new JLabel(evento.getEspacio().getDireccion());
@@ -119,9 +140,32 @@ public class InfoEvento extends JFrame {
 		lblArtistasDelEvento.setBounds(83, 280, 259, 33);
 		contentPane.add(lblArtistasDelEvento);
 
-		JLabel InforEvento = new JLabel(evento.getDescripcion());
-		InforEvento.setBounds(37, 200, 344, 73);
-		contentPane.add(InforEvento);
+		JButton btnInfoEvento = new JButton("Ver informacion del evento");
+		btnInfoEvento.setBounds(37, 200, 344, 73);
+		btnInfoEvento.setBackground(new Color(255, 215, 0));
+		btnInfoEvento.setForeground(new Color(255, 255, 255));
+		btnInfoEvento.setFont(new Font("Stencil", Font.BOLD, 18));
+		contentPane.add(btnInfoEvento);
+
+		btnInfoEvento.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JTextArea textArea = new JTextArea(evento.getDescripcion());
+				textArea.setEditable(false);
+				textArea.setLineWrap(true);
+				textArea.setWrapStyleWord(true);
+				textArea.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 12));
+
+				JScrollPane scrollPane = new JScrollPane(textArea);
+				scrollPane.setPreferredSize(new Dimension(400, 200));
+
+				UIManager.put("OptionPane.background", new Color(255, 248, 220));
+				UIManager.put("Panel.background", new Color(255, 248, 220));
+				UIManager.put("OptionPane.messageForeground", Color.BLACK);
+
+				JOptionPane.showMessageDialog(InfoEvento.this, scrollPane, "Informacion del evento",
+						JOptionPane.PLAIN_MESSAGE);
+			}
+		});
 
 		JLabel lblNewLabel_3 = new JLabel("New label");
 		lblNewLabel_3.setIcon(new ImageIcon(
