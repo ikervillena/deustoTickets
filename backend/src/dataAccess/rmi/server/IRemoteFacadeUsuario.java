@@ -35,7 +35,7 @@ public interface IRemoteFacadeUsuario extends Remote {
 
     boolean comprarEntrada(EntradaDTO e) throws RemoteException;
 
-    boolean enviarEmailConfirmacion(EntradaDTO e) throws RemoteException;
+    boolean enviarEntradas(ArrayList<EntradaDTO> entradas, String direccion, boolean porEmail) throws RemoteException;
 
     ArrayList<EntradaDTO> getEntradas(ClienteDTO cliente) throws RemoteException;
 

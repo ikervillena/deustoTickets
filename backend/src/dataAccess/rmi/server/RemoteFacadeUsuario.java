@@ -4,6 +4,9 @@ import business.appService.UsuarioAppService;
 import business.clases.*;
 import business.clases.dto.ClienteDTO;
 import business.clases.dto.EntradaDTO;
+import business.entradas.enviarStrategy.EnviarStrategy;
+import business.entradas.enviarStrategy.EnvioEmail;
+import business.entradas.enviarStrategy.EnvioTelegram;
 import dataAccess.dao.ClienteDAO;
 
 import java.io.IOException;
@@ -57,9 +60,8 @@ public class RemoteFacadeUsuario extends UnicastRemoteObject implements IRemoteF
     }
 
     @Override
-    public boolean enviarEmailConfirmacion(EntradaDTO e) throws RemoteException {
-        // PENDIENTE
-        return false;
+    public boolean enviarEntradas(ArrayList<EntradaDTO> entradas, String direccion, boolean porEmail) throws RemoteException {
+       return UsuarioAppService.enviarEntradas(entradas,direccion,porEmail);
     }
 
     @Override
