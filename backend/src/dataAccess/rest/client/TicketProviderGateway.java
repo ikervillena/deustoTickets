@@ -5,11 +5,13 @@ import business.clases.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 import java.util.ArrayList;
+import dataAccess.rest.client.JsonResponseParser;
 
 public class TicketProviderGateway implements ITicketProviderGateway {
 
@@ -60,6 +62,65 @@ public class TicketProviderGateway implements ITicketProviderGateway {
         connection.disconnect();
 
         return respuesta;
+    }
+
+    public void actualizarDisponibles(int idPrecio, int numEntradas) {
+
+        try {
+            int nuevosDisponibles = obtenerNuevasDisponibles(idPrecio,numEntradas);
+            // Construir la URL de la API
+            URL url = new URL(baseURL +"precios/"+idPrecio);
+    
+            // Abrir la conexión HTTP
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+    
+            // Configurar la solicitud como PUT
+            connection.setRequestMethod("PUT");
+            connection.setRequestProperty("Content-Type", "application/json");
+            connection.setRequestProperty("Authorization", "Bearer " + token);
+    
+            // Crear el objeto JSON para enviar en el cuerpo de la solicitud
+            String requestBody = "{\"data\": {\"disponibles\": \"" + nuevosDisponibles + "\"}}";
+    
+            // Habilitar el envío de datos en la solicitud
+            connection.setDoOutput(true);
+    
+            // Escribir el cuerpo de la solicitud en la conexión
+            OutputStream outputStream = connection.getOutputStream();
+            outputStream.write(requestBody.getBytes());
+            outputStream.flush();
+    
+            // Obtener la respuesta de la API
+            int responseCode = connection.getResponseCode();
+    
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                // La solicitud se realizó correctamente
+                BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                String line;
+                StringBuilder response = new StringBuilder();
+    
+                while ((line = reader.readLine()) != null) {
+                    response.append(line);
+                }
+    
+                reader.close();
+    
+                // Hacer algo con la respuesta de la API, si es necesario
+                System.out.println("La solicitud se realizó correctamente. Respuesta: " + response.toString());
+            } else {
+                // La solicitud falló
+                System.out.println("La solicitud falló. Código de respuesta: " + responseCode);
+            }
+    
+            // Cerrar la conexión
+            connection.disconnect();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public int obtenerNuevasDisponibles (int idPrecio, int numEntradas)throws IOException{
+        return JsonResponseParser.obtenerNuevasDisponibles(idPrecio,consultarAPI("eventos?populate=*"),numEntradas);
     }
 
     @Override
