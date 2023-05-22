@@ -1,7 +1,7 @@
 package business.entradas.enviarStrategy;
 
-import business.clases.Cliente;
-import business.clases.Entrada;
+import business.clases.dto.ClienteDTO;
+import business.clases.dto.EntradaDTO;
 import business.entradas.GeneradorPDF;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendDocument;
@@ -22,7 +22,7 @@ public class EnvioTelegram extends TelegramLongPollingBot implements IEnviarStra
     private String username = "DeustoTickets_bot";
     private String token = "6229099927:AAGt71kHvV9guRG733hsaIzgEIOav3zlzP8";
     @Override
-    public boolean enviar(Cliente cliente, ArrayList<Entrada> entradas, String direccion) {
+    public boolean enviar(ClienteDTO cliente, ArrayList<EntradaDTO> entradas, String direccion) {
         try {
             execute(new SendMessage(direccion, "Hola "+cliente.getNombre()+"! Gracias por tu compra!"));
             execute(new SendMessage(direccion, "Te adjunto tus entradas en formato PDF. Asegurate de guardar el archivo " +

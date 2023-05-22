@@ -10,7 +10,6 @@ import lombok.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@PersistenceCapable
 public class Espacio implements Serializable {
 
     private static final long serialVersionUID = 1L;

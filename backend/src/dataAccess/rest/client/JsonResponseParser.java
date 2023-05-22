@@ -87,7 +87,6 @@ public class JsonResponseParser {
                     JSONObject artistaJson = artistasJson.getJSONObject(j).getJSONObject("attributes");
                     Artista artista = new Artista();
                     artista.setNombre(artistaJson.getString("nombre"));
-                    artista.setEvento(evento);
                     artista.setDescripcion(artistaJson.getString("descripcion"));
                     //artista.setFecNac(new Date(artistaJson.getString("fecha_nacimiento")));
                     artistas.add(artista);

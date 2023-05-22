@@ -1,7 +1,10 @@
 package business.entradas;
 
 import business.clases.Entrada;
+import business.clases.Espacio;
+import business.clases.dto.EntradaDTO;
 import com.google.zxing.WriterException;
+import dataAccess.googleMapsGateway.GoogleMapsGateway;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -18,7 +21,8 @@ public class GeneradorEntrada {
     private static String pathPlantilla = "resources/entradas/plantillaEntrada.png";
 
 
-    public static BufferedImage generarEntradas(Entrada infoEntrada) throws IOException, WriterException {
+    public static BufferedImage generarEntradas(EntradaDTO infoEntrada) throws IOException, WriterException {
+
         // Cargar la plantilla de entrada
         File plantilla = new File(pathPlantilla);
         BufferedImage entrada = ImageIO.read(plantilla);
@@ -37,12 +41,16 @@ public class GeneradorEntrada {
         g2d.drawString(infoEntrada.getNombre().toUpperCase(), 551, 153);
 
         // Dibuja el precio en la entrada
-        g2d.drawString( String.format("%d\u20AC", infoEntrada.getPrecio()), 551, 520);
+        String precio = String.valueOf(infoEntrada.getPrecio().getPrecio());
+        g2d.drawString(precio, 551, 520);
 
         // Dibujar la información en la entrada
         font = new Font("Anton", Font.BOLD, 32);
         g2d.setFont(font);
-        g2d.drawString(infoEntrada.getEvento().getFecha().toString(), 551, 303);
+        //Espacio espacio = infoEntrada.getEvento().getEspacio();
+        //GoogleMapsGateway g = new GoogleMapsGateway();
+        //String informacion = espacio.getNombre() + " - "+ g.getCodigoPostal(espacio.getDireccion());
+        g2d.drawString("PENDIENTE", 551, 303);
 
         // Cargar el código QR generado
         BufferedImage codigoQR = GeneradorQR.generarQR(infoEntrada.getQr());

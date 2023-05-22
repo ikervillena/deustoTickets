@@ -1,6 +1,7 @@
 package business.entradas;
 
 import business.clases.Entrada;
+import business.clases.dto.EntradaDTO;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
@@ -28,11 +29,11 @@ public class GeneradorPDF {
     private static final float ENTRY_HEIGHT = PAGE_HEIGHT - 2 * MARGIN;
     private static final float ENTRY_SPACING = 10;
 
-    public static byte[] generarPDF(ArrayList<Entrada> entradas) throws IOException {
+    public static byte[] generarPDF(ArrayList<EntradaDTO> entradas) throws IOException {
         PDDocument document = new PDDocument();
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 
-        for (Entrada e : entradas) {
+        for (EntradaDTO e : entradas) {
             PDPage page = new PDPage(PDRectangle.A4);
             document.addPage(page);
 

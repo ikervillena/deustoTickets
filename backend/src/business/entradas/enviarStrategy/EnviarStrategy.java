@@ -1,7 +1,8 @@
 package business.entradas.enviarStrategy;
 
-import business.clases.Cliente;
-import business.clases.Entrada;
+
+import business.clases.dto.ClienteDTO;
+import business.clases.dto.EntradaDTO;
 
 import java.util.ArrayList;
 
@@ -17,7 +18,7 @@ public class EnviarStrategy {
         this.strategy = strategy;
     }
 
-    public boolean enviar(Cliente cliente, ArrayList<Entrada> entradas, String direccion) {
+    public boolean enviar(ClienteDTO cliente, ArrayList<EntradaDTO> entradas, String direccion) {
         return strategy.enviar(cliente, entradas, direccion);
     }
 }

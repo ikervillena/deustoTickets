@@ -1,6 +1,8 @@
 package dataAccess.rmi.server;
 
 import business.clases.*;
+import business.clases.dto.ClienteDTO;
+import business.clases.dto.EntradaDTO;
 
 import java.io.IOException;
 import java.rmi.Remote;
@@ -31,16 +33,16 @@ public interface IRemoteFacadeUsuario extends Remote {
 
     ArrayList<business.clases.Precio> getPrecios(business.clases.Evento e) throws RemoteException;
 
-    boolean comprarEntrada(business.clases.Entrada e) throws RemoteException;
+    boolean comprarEntrada(EntradaDTO e) throws RemoteException;
 
-    boolean enviarEmailConfirmacion(business.clases.Entrada e) throws RemoteException;
+    boolean enviarEmailConfirmacion(EntradaDTO e) throws RemoteException;
 
-    ArrayList<business.clases.Entrada> getEntradas(business.clases.Cliente cliente) throws RemoteException;
+    ArrayList<EntradaDTO> getEntradas(ClienteDTO cliente) throws RemoteException;
 
-    Cliente iniciarSesion(String usuario, String contrasenya) throws RemoteException;
+    ClienteDTO iniciarSesion(String usuario, String contrasenya) throws RemoteException;
     
-    boolean registrar(business.clases.Cliente c) throws RemoteException;
+    boolean registrar(ClienteDTO c) throws RemoteException;
 
-    boolean actualizarDatos(business.clases.Cliente cAntiguo, business.clases.Cliente cNuevo) throws RemoteException;
+    boolean actualizarDatos(ClienteDTO cAntiguo, ClienteDTO cNuevo) throws RemoteException;
 
 }

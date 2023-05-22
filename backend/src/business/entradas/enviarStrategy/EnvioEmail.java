@@ -2,6 +2,8 @@ package business.entradas.enviarStrategy;
 
 import business.clases.Cliente;
 import business.clases.Entrada;
+import business.clases.dto.ClienteDTO;
+import business.clases.dto.EntradaDTO;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -29,7 +31,7 @@ public class EnvioEmail implements IEnviarStrategy{
     private static String puertoSMTP = "587";
 
     @Override
-    public boolean enviar(Cliente cliente, ArrayList<Entrada> entradas, String direccion) {
+    public boolean enviar(ClienteDTO cliente, ArrayList<EntradaDTO> entradas, String direccion) {
         boolean plural;
         plural = (entradas.size()>1)?true:false;
         String asunto = "¡Gracias por tu compra! Tu entrada para "+entradas.get(0).getEvento().getTitulo()+" está aquí";

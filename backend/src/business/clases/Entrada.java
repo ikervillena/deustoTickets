@@ -8,24 +8,21 @@ import business.clases.*;
 import lombok.*;
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.PrimaryKey;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @PersistenceCapable
 
-public class Entrada implements Serializable {
+public class Entrada {
 
-    private static final long serialVersionUID = 1L;
-
+    @PrimaryKey
     @Getter @Setter private String qr;
-    @Getter @Setter private int codigo;
     @Getter @Setter private String nombre;
-    @Column (name = "precio_id")
-        @Getter @Setter private Precio precio;
     @Getter @Setter private Date fecCompra;
-    @Column (name = "evento_id")
-        @Getter @Setter private Evento evento;
-    @Column (name="cliente_id")
-        @Getter @Setter private Cliente cliente;
+    @Getter @Setter private int idPrecio;
+    @Getter @Setter private int idEvento;
+    @Getter @Setter private String dniCliente;
     @Getter @Setter private boolean utilizada;
+
 }

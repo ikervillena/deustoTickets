@@ -54,7 +54,7 @@ public class EntradaDAO {
             try {
                 transaction.begin();
                 persistentManager.makePersistent(a);
-                System.out.println("Entrada insertada: "+a.getCodigo());
+                System.out.println("Entrada insertada: "+a.getNombre());
                 transaction.commit();
             } catch (Exception ex) {
                 // TODO: handle exception

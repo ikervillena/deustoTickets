@@ -2,6 +2,8 @@ package dataAccess.rmi.server;
 
 import business.appService.UsuarioAppService;
 import business.clases.*;
+import business.clases.dto.ClienteDTO;
+import business.clases.dto.EntradaDTO;
 import dataAccess.dao.ClienteDAO;
 
 import java.io.IOException;
@@ -49,34 +51,34 @@ public class RemoteFacadeUsuario extends UnicastRemoteObject implements IRemoteF
     }
 
     @Override
-    public boolean comprarEntrada(business.clases.Entrada e) throws RemoteException {
+    public boolean comprarEntrada(EntradaDTO e) throws RemoteException {
         // PENDIENTE
         return false;
     }
 
     @Override
-    public boolean enviarEmailConfirmacion(business.clases.Entrada e) throws RemoteException {
+    public boolean enviarEmailConfirmacion(EntradaDTO e) throws RemoteException {
         // PENDIENTE
         return false;
     }
 
     @Override
-    public ArrayList<business.clases.Entrada> getEntradas(business.clases.Cliente cliente) throws RemoteException {
+    public ArrayList<EntradaDTO> getEntradas(ClienteDTO cliente) throws RemoteException {
         return UsuarioAppService.getEntradas(cliente);
     }
 
     @Override
-    public Cliente iniciarSesion(String usuario, String contrasenya) throws RemoteException {
+    public ClienteDTO iniciarSesion(String usuario, String contrasenya) throws RemoteException {
         return UsuarioAppService.iniciarSesion(usuario, contrasenya);
     }
 
     @Override
-    public boolean registrar(business.clases.Cliente c) throws RemoteException {
+    public boolean registrar(ClienteDTO c) throws RemoteException {
         return UsuarioAppService.registrar(c);
     }
 
     @Override
-    public boolean actualizarDatos(business.clases.Cliente cAntiguo, business.clases.Cliente cNuevo)
+    public boolean actualizarDatos(ClienteDTO cAntiguo, ClienteDTO cNuevo)
             throws RemoteException {
         // PENDIENTE
         return false;
