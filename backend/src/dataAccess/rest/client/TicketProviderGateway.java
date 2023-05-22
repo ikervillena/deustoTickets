@@ -73,14 +73,14 @@ public class TicketProviderGateway implements ITicketProviderGateway {
 
     @Override
     public Precio getPrecio(int idPrecio) throws IOException {
-        return null;
+        return JsonResponseParser.getPrecio(idPrecio, consultarAPI("precios?populate=*"));
     }
 
     @Override
     public Evento getEvento(int idEvento) throws IOException {
-        return null;
+        return JsonResponseParser.getEvento(idEvento,consultarAPI("eventos?populate=*"));
     }
-
+    
     public ArrayList<Integer> getIDPrecios(Evento e) throws IOException {
         return JsonResponseParser.getIDPrecios(consultarAPI("precios?populate=*"));
     }

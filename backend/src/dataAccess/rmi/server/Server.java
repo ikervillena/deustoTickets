@@ -16,7 +16,7 @@ import dataAccess.rmi.server.RemoteFacadeUsuario;;
 public class Server {
 
     public static void main(String[] args) throws IOException {
-
+        
         if (args.length != 4) {
             System.out.println("usage: java [policy] [codebase] server.Server [host] [port] [serverStaff] [ServerUsuario]");
             System.exit(0);

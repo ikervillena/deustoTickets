@@ -141,4 +141,39 @@ public class JsonResponseParser {
         return listaPrecios;
     }
 
+    public static Precio getPrecio(int IdPrecio, String respuesta) throws JSONException{
+        Precio p = new Precio();
+        JSONObject obj = new JSONObject(respuesta);
+        JSONArray data = obj.getJSONArray("data");
+
+        for (int i = 0; i < data.length(); i++) {
+            if (IdPrecio==data.getJSONObject(i).getInt("id")){
+                p.setId(data.getJSONObject(i).getInt("id"));
+                JSONObject precioJson = data.getJSONObject(i).getJSONObject("attributes");
+                p.setNombre(precioJson.getString("nombre"));
+                p.setPrecio(precioJson.getInt("precio"));
+                p.setDisponibles(Integer.parseInt(precioJson.getString("disponibles")));
+                p.setOfertadas(Integer.parseInt(precioJson.getString("ofertadas")));
+            }
+        }
+        return p;
+    }
+
+    public static Evento getEvento(int IdEvento, String respuesta) throws JSONException{
+        Evento e = new Evento();
+        JSONObject obj = new JSONObject(respuesta);
+        JSONArray data = obj.getJSONArray("data");
+
+        for (int i = 0; i < data.length(); i++) {
+            if (IdEvento==data.getJSONObject(i).getInt("id")){
+                e.setId(data.getJSONObject(i).getInt("id"));
+                JSONObject eventoJson = data.getJSONObject(i).getJSONObject("attributes");
+                e.setTitulo(eventoJson.getString("titulo"));
+                e.setDescripcion(eventoJson.getString("descripcion"));
+                e.setAforo(eventoJson.getInt("aforo"));
+            }
+        }
+        return e;
+    }
+
 }
