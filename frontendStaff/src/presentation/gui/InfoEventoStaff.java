@@ -3,14 +3,15 @@ package presentation.gui;
 import business.clases.Evento;
 import business.controller.Controller;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import java.awt.Dimension;
 import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -85,13 +86,23 @@ public class InfoEventoStaff extends JFrame {
 		lblDireccin.setBounds(462, 172, 271, 33);
 		contentPane.add(lblDireccin);
 
-		JLabel lblDireccinDelEvento = new JLabel("" + evento.getAforo());
+		JLabel lblDireccinDelEvento = new JLabel("" + evento.getAforo() + " personas");
 		lblDireccinDelEvento.setBounds(462, 205, 332, 63);
 		contentPane.add(lblDireccinDelEvento);
 
-		JLabel InforEvento = new JLabel(evento.getDescripcion() + evento.getFecha());
-		InforEvento.setBounds(37, 200, 344, 73);
-		contentPane.add(InforEvento);
+		JTextArea textArea = new JTextArea(evento.getDescripcion());
+		textArea.setEditable(false);
+		textArea.setLineWrap(true);
+		textArea.setWrapStyleWord(true);
+		textArea.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 12));
+
+		textArea.append("\n \n FECHA :" + evento.getFecha());
+
+		JScrollPane scrollPane = new JScrollPane(textArea);
+		scrollPane.setPreferredSize(new Dimension(400, 200));
+
+		scrollPane.setBounds(37, 200, 344, 200);
+		contentPane.add(scrollPane);
 
 		JLabel lblNewLabel_3 = new JLabel("New label");
 		lblNewLabel_3.setIcon(new ImageIcon("C:\\workspace\\imagenes\\Ubicacion.png"));

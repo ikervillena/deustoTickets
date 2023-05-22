@@ -108,7 +108,7 @@ public class CambioInfor extends JFrame {
 		lblCorreo.setBounds(422, 288, 185, 40);
 		contentPane.add(lblCorreo);
 
-		JLabel lblNuevoUsuario = new JLabel("#NOMBRE DEL USUARIO");
+		JLabel lblNuevoUsuario = new JLabel(cliente.getUsuario());
 		lblNuevoUsuario.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNuevoUsuario.setForeground(new Color(255, 255, 0));
 		lblNuevoUsuario.setFont(new Font("Stencil", Font.PLAIN, 48));
