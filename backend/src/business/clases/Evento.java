@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.jdo.annotations.PersistenceCapable;
 
 import business.clases.*;
+import business.clases.dto.EntradaDTO;
 import lombok.*;
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.Persistent;
@@ -23,7 +24,7 @@ public class Evento implements Serializable {
     @Getter @Setter private Date fecha;
     @Getter @Setter private int aforo;
 	@Getter @Setter private ArrayList<Precio> precios;
-	@Getter @Setter private ArrayList<Entrada> entradas;
+	@Getter @Setter private ArrayList<EntradaDTO> entradas;
 	@Getter @Setter private ArrayList<Artista> artistas;
     @Getter @Setter private Espacio espacio;
 

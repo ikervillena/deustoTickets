@@ -1,4 +1,4 @@
-package dataAccess.dao;
+package business.clases.dao;
 
 import java.util.ArrayList;
 

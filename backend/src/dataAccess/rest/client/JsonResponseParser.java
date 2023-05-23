@@ -5,7 +5,9 @@ import business.clases.Entrada;
 import business.clases.Espacio;
 import business.clases.Evento;
 import business.clases.Precio;
-import dataAccess.dao.EntradaDAO;
+import business.clases.dao.EntradaDAO;
+import business.clases.dto.EntradaAssembler;
+import business.clases.dto.EntradaDTO;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -42,6 +44,8 @@ public class JsonResponseParser {
 
     public static ArrayList<Evento> getEventos(String respuesta) throws JSONException {
         ArrayList<Evento> eventos = new ArrayList<>();
+        EntradaDAO entDao = new EntradaDAO();
+        EntradaAssembler assembler = new EntradaAssembler();
 
         JSONObject obj = new JSONObject(respuesta);
         JSONArray data = obj.getJSONArray("data");
@@ -87,6 +91,26 @@ public class JsonResponseParser {
                 e.printStackTrace();
               }
             evento.setPrecios(listaPrecios);
+            ArrayList<Entrada> entradasEvento = new ArrayList<Entrada>();
+
+            try {
+                ArrayList<Entrada> listaEntradasBD = entDao.getEntrada();
+                for (Entrada e: listaEntradasBD){
+                    if (e.getIdEvento()==data.getJSONObject(i).getInt("id")){
+                        entradasEvento.add(e);
+                    }
+                }
+              }
+                catch(Exception e) {
+                    e.printStackTrace();
+              }
+            try {
+                ArrayList<EntradaDTO> entradasDTO = assembler.assemble(entradasEvento);
+                evento.setEntradas(entradasDTO);
+            }
+                catch(IOException e){
+                    e.printStackTrace();
+            }
             eventos.add(evento);
         }
 

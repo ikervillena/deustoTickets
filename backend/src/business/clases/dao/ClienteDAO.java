@@ -1,4 +1,4 @@
-package dataAccess.dao;
+package business.clases.dao;
 
 import java.util.ArrayList;
 
@@ -6,29 +6,30 @@ import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
+
 import javax.jdo.Transaction;
 
 import business.clases.*;
 
-public class EspacioDAO {
+public class ClienteDAO {
 
-    public ArrayList<Espacio> getEspacios(){
-        ArrayList<Espacio> espacios = new ArrayList<>();
+    public ArrayList<Cliente> getClientes(){
+        ArrayList<Cliente> clientes = new ArrayList<>();
         try{
             PersistenceManagerFactory persistentManagerFactory = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
             PersistenceManager persistentManager = persistentManagerFactory.getPersistenceManager();
-			Transaction transaction = persistentManager.currentTransaction();
-
+            Transaction transaction = persistentManager.currentTransaction();
+    
             try {
                 transaction.begin();
-
+    
                 @SuppressWarnings("unchecked")
-                Query<Espacio> espaciosQuery = persistentManager.newQuery("SELECT FROM " + Espacio.class.getName());
-
-                for (Espacio espacio : espaciosQuery.executeList()){
-                    espacios.add(espacio);
+                Query<Cliente> clientesQuery = persistentManager.newQuery("SELECT FROM " + Cliente.class.getName());
+    
+                for (Cliente c : clientesQuery.executeList()){
+                    clientes.add(c);
                 }
-
+    
             } catch (Exception ex) {
                 // TODO: handle exception
                 System.err.println("* Exception executing a query: " + ex.getMessage());
@@ -38,24 +39,27 @@ public class EspacioDAO {
                 }
                 persistentManager.close();
             }
-            
+    
         } catch (Exception ex) {
             // TODO: handle exception
             System.err.println("* Exception: " + ex.getMessage());
         }
-        return espacios;
+        return clientes;
     }
 
-    public void setEspacio(Espacio a){
+    public void setCliente(Cliente a){
+        
         try {
+            
             PersistenceManagerFactory persistentManagerFactory = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
             PersistenceManager persistentManager = persistentManagerFactory.getPersistenceManager();				
 			Transaction transaction = persistentManager.currentTransaction();
+            
 
             try {
                 transaction.begin();
                 persistentManager.makePersistent(a);
-                System.out.println("Espacio insertado: "+a.getNombre());
+                System.out.println("Cliente insertado: "+a.getNombre());
                 transaction.commit();
             } catch (Exception ex) {
                 // TODO: handle exception
@@ -72,6 +76,4 @@ public class EspacioDAO {
             System.err.println("* Exception: " + ex.getMessage());
         }
     }
-
-    
 }

@@ -6,6 +6,9 @@ import java.rmi.registry.Registry;
 
 import business.appService.UsuarioAppService;
 import business.clases.*;
+import business.clases.dao.ClienteDAO;
+import business.clases.dto.ClienteDTO;
+import business.clases.dto.ClienteAssembler;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -16,7 +19,6 @@ import dataAccess.rmi.server.RemoteFacadeUsuario;;
 public class Server {
 
     public static void main(String[] args) throws IOException {
-        
         if (args.length != 4) {
             System.out.println("usage: java [policy] [codebase] server.Server [host] [port] [serverStaff] [ServerUsuario]");
             System.exit(0);

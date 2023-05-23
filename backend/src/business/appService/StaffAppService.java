@@ -3,7 +3,7 @@ package business.appService;
 //Representa el patron de diseño "AppService"
 
 import business.clases.*;
-import dataAccess.dao.*;
+import business.clases.dao.*;
 import dataAccess.rest.client.TicketProviderGateway;
 import java.rmi.RemoteException;
 import java.io.IOException;
@@ -28,5 +28,6 @@ public class StaffAppService {
         }
         return s;
     }
+
 
 }

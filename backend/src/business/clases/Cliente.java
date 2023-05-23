@@ -7,7 +7,7 @@ import javax.jdo.annotations.PrimaryKey;
 import java.util.ArrayList;
 import java.util.Date;
 import business.clases.Entrada;
-
+import business.clases.dao.EntradaDAO;
 import lombok.*;
 
 import java.io.Serializable;
@@ -27,9 +27,16 @@ public class Cliente {
     @Getter @Setter private String email;
 
     public ArrayList<Entrada> getEntradas() {
-        ArrayList<Entrada> entradas = new ArrayList<>();
-        // PENDIENTE
-        return entradas;
+        EntradaDAO eDao = new EntradaDAO();
+        ArrayList<Entrada> entradasCLiente = new ArrayList<Entrada>();
+        ArrayList<Entrada> entradasDB = eDao.getEntrada();
+        for (Entrada e:entradasDB){
+            if (this.dni.equals(e.getDniCliente())){
+                entradasCLiente.add(e);
+            }
+        }
+        return entradasCLiente;
     }
+
     
 }
