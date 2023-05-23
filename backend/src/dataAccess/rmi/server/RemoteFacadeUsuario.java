@@ -53,11 +53,6 @@ public class RemoteFacadeUsuario extends UnicastRemoteObject implements IRemoteF
         return null;
     }
 
-    @Override
-    public boolean comprarEntrada(EntradaDTO e) throws RemoteException {
-        // PENDIENTE
-        return false;
-    }
 
     @Override
     public boolean enviarEntradas(ArrayList<EntradaDTO> entradas, String direccion, boolean porEmail) throws RemoteException {
@@ -80,10 +75,14 @@ public class RemoteFacadeUsuario extends UnicastRemoteObject implements IRemoteF
     }
 
     @Override
-    public boolean actualizarDatos(ClienteDTO cAntiguo, ClienteDTO cNuevo)
-            throws RemoteException {
+    public boolean actualizarDatos(ClienteDTO cAntiguo, ClienteDTO cNuevo)throws RemoteException {
         // PENDIENTE
         return false;
+    }
+
+    @Override
+    public ArrayList<EntradaDTO> comprarEntradas(ArrayList<EntradaDTO> entradas)throws RemoteException{
+        return UsuarioAppService.comprarEntradas(entradas);
     }
 
 

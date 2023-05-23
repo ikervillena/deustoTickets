@@ -5,6 +5,7 @@ package business.appService;
 import business.clases.*;
 import business.clases.dao.*;
 import business.clases.dto.ClienteAssembler;
+import business.clases.dto.EntradaAssembler;
 import business.clases.dto.ClienteDTO;
 import business.clases.dto.EntradaDTO;
 import business.entradas.enviarStrategy.EnviarStrategy;
@@ -14,6 +15,7 @@ import dataAccess.rest.client.TicketProviderGateway;
 import java.rmi.RemoteException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.UUID;
 
 
 
@@ -93,5 +95,26 @@ public class UsuarioAppService {
         strategy.enviar(entradas.get(0).getCliente(), entradas, direccion);
         return true;
     }
+
+    public static ArrayList<EntradaDTO> comprarEntradas(ArrayList<EntradaDTO> entradas){
+        EntradaAssembler assembler = new EntradaAssembler();
+        TicketProviderGateway t = new TicketProviderGateway();
+        EntradaDAO entradaDAO = new EntradaDAO();
+
+        for (EntradaDTO e: entradas){
+            t.actualizarDisponibles(e.getPrecio().getId(), 1);
+            Entrada entrada = assembler.getEntrada(e);
+            UUID uuid = UUID.randomUUID();
+            String stringQR = uuid.toString();
+            entrada.setQr(stringQR);
+            e.setQr(stringQR);
+            entradaDAO.setEntrada(entrada);
+        }
+
+        
+        return entradas;
+    }
+
+
 
 }

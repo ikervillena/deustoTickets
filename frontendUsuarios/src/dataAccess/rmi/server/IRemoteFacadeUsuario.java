@@ -35,14 +35,14 @@ public interface IRemoteFacadeUsuario extends Remote {
 
     ArrayList<business.clases.Precio> getPrecios(business.clases.Evento e) throws RemoteException;
 
-    boolean comprarEntrada(EntradaDTO e) throws RemoteException;
+    ArrayList<EntradaDTO> comprarEntradas(ArrayList<EntradaDTO> entradas)throws RemoteException;
 
     boolean enviarEntradas(ArrayList<EntradaDTO> entradas, String direccion, boolean porEmail) throws RemoteException;
 
     ArrayList<EntradaDTO> getEntradas(ClienteDTO cliente) throws RemoteException;
 
     ClienteDTO iniciarSesion(String usuario, String contrasenya) throws RemoteException;
-
+    
     boolean registrar(ClienteDTO c) throws RemoteException;
 
     boolean actualizarDatos(ClienteDTO cAntiguo, ClienteDTO cNuevo) throws RemoteException;
