@@ -1,8 +1,12 @@
 package business.clases;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.io.Serializable;
 import java.util.Date;
-import lombok.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -15,4 +19,5 @@ public class Artista implements Serializable {
     @Getter @Setter private String descripcion;
     @Getter @Setter private Date fecNac;
     @Getter @Setter private String foto;
+
 }

@@ -1,86 +1,26 @@
 package business.clases;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.io.Serializable;
-import lombok.*;
-import java.util.*;
-import business.clases.Entrada;
+import java.util.ArrayList;
+import java.util.Date;
 
 @NoArgsConstructor
 @AllArgsConstructor
 public class Cliente implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private String nombre;
-    private String apellido;
-    private String usuario;
-    private String contrasenya;
-    private Date fecNac;
-    private String dni;
-    private String email;
-    ArrayList<Entrada> entradas;
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
-    public String getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }
-
-    public String getContrasenya() {
-        return contrasenya;
-    }
-
-    public void setContrasenya(String contrasenya) {
-        this.contrasenya = contrasenya;
-    }
-
-    public Date getFecNac() {
-        return fecNac;
-    }
-
-    public void setFecNac(Date fecNac) {
-        this.fecNac = fecNac;
-    }
-
-    public String getDni() {
-        return dni;
-    }
-
-    public void setDni(String dni) {
-        this.dni = dni;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public ArrayList<Entrada> getEntradas() {
-        return entradas;
-    }
-
-    public void setEntradas(ArrayList<Entrada> entradas) {
-        this.entradas = entradas;
-    }
-
+    @Getter @Setter private String dni;
+    @Getter @Setter private String nombre;
+    @Getter @Setter private String apellido;
+    @Getter @Setter private String usuario;
+    @Getter @Setter private String contrasenya;
+    @Getter @Setter private Date fecNac;
+    @Getter @Setter private String email;
+    @Getter @Setter private ArrayList<Entrada> entradas;
 }

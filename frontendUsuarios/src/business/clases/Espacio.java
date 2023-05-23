@@ -1,8 +1,13 @@
 package business.clases;
 
-import java.io.Serializable;
-import lombok.*;
+//import javax.jdo.annotations.Persistent;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.io.Serializable;
 
 @NoArgsConstructor
 @AllArgsConstructor
