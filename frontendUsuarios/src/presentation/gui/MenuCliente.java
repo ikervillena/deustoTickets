@@ -1,6 +1,7 @@
 package presentation.gui;
 
 import business.clases.Evento;
+import business.clases.dto.ClienteDTO;
 import business.controller.Controller;
 import java.awt.Color;
 import java.awt.Component;
@@ -19,7 +20,7 @@ public class MenuCliente extends JFrame {
 	private JComboBox<String> comboBox;
 	private JComboBox<String> comboBox1;
 
-	public MenuCliente(Controller controller, Cliente cliente) {
+	public MenuCliente(Controller controller, ClienteDTO cliente) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 831, 569);
 		contentPane = new JPanel();
@@ -130,7 +131,7 @@ public class MenuCliente extends JFrame {
 
 	}
 
-	public void visualizarEventos(ArrayList<Evento> eventos, Controller controller, Cliente cliente,
+	public void visualizarEventos(ArrayList<Evento> eventos, Controller controller, ClienteDTO cliente,
 			ArrayList<JButton> botonesEventos) {
 		int altura = 150;
 		for (int i = 0; i < eventos.size(); i++) {
@@ -190,7 +191,7 @@ public class MenuCliente extends JFrame {
 		return eventosFiltrados;
 	}
 
-	public void actualizarVisualizacionEventos(ArrayList<Evento> eventos, Controller controller, Cliente cliente,
+	public void actualizarVisualizacionEventos(ArrayList<Evento> eventos, Controller controller, ClienteDTO cliente,
 			ArrayList<JButton> botonesEventos) {
 		for (JButton boton : botonesEventos) {
 			contentPane.remove(boton);

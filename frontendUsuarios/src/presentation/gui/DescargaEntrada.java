@@ -17,13 +17,15 @@ import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import business.clases.*;
+import business.clases.dto.ClienteDTO;
+
 import javax.swing.JOptionPane;
 
 public class DescargaEntrada extends JFrame {
 
     private JPanel contentPane;
 
-    public DescargaEntrada(Controller controller, Cliente cliente, Evento evento) {
+    public DescargaEntrada(Controller controller, ClienteDTO cliente, Evento evento) {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 831, 569);
         contentPane = new JPanel();

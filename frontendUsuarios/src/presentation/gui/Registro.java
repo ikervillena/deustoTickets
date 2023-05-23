@@ -3,6 +3,8 @@ package presentation.gui;
 import javax.swing.JOptionPane;
 import java.util.Date;
 import business.clases.*;
+import business.clases.dto.ClienteDTO;
+import business.clases.dto.EntradaDTO;
 import business.controller.Controller;
 import java.awt.Color;
 import java.awt.Component;
@@ -196,9 +198,9 @@ public class Registro extends JFrame {
 					calendar.set(Calendar.DAY_OF_MONTH, dia);
 					Date date = calendar.getTime();
 
-					ArrayList<Entrada> entradas = new ArrayList<Entrada>();
+					ArrayList<EntradaDTO> entradas = new ArrayList<EntradaDTO>();
 
-					Cliente cliente = new Cliente();
+					ClienteDTO cliente = new ClienteDTO();
 					cliente.setNombre(nombre);
 					cliente.setApellido(apellido);
 					cliente.setUsuario(usuario);
@@ -208,7 +210,7 @@ public class Registro extends JFrame {
 					cliente.setFecNac(date);
 					cliente.setEntradas(entradas);
 					Boolean respuesta = controller.Registrar(cliente);
-					if (respuesta = false) {
+					if (!respuesta) {
 						JOptionPane.showMessageDialog(Registro.this,
 								"El usuario que has introducido ya existe, por favor vuelva a realizar el registro");
 						Registro ventana = new Registro(controller);

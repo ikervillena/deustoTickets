@@ -1,7 +1,7 @@
 package business.controller;
 
-import business.clases.Cliente;
 import business.clases.Evento;
+import business.clases.dto.ClienteDTO;
 import dataAccess.rmi.client.ServiceLocator;
 
 import java.rmi.RemoteException;
@@ -25,7 +25,7 @@ public class Controller {
         }
     }
 
-    public Cliente InicioSesion(String usuario, String contrasenya) {
+    public ClienteDTO InicioSesion(String usuario, String contrasenya) {
         try {
             return this.serviceLocator.getService().iniciarSesion(usuario, contrasenya);
 
@@ -34,12 +34,13 @@ public class Controller {
         }
     }
 
-    public Boolean Registrar(Cliente cliente) {
+    public boolean Registrar(ClienteDTO cliente) {
         try {
             return this.serviceLocator.getService().registrar(cliente);
 
         } catch (Exception e) {
-            return null;
+            System.out.println(e);
+            return false;
         }
     }
 

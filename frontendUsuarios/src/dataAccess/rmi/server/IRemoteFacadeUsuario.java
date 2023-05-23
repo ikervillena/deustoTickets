@@ -1,10 +1,8 @@
 package dataAccess.rmi.server;
 
-import business.clases.Artista;
-import business.clases.Evento;
-import business.clases.Precio;
-import business.clases.Cliente;
-import business.clases.Entrada;
+import business.clases.*;
+import business.clases.dto.ClienteDTO;
+import business.clases.dto.EntradaDTO;
 
 import java.io.IOException;
 import java.rmi.Remote;
@@ -16,6 +14,7 @@ public interface IRemoteFacadeUsuario extends Remote {
 
     /**
      * Test message to say hello to client
+     * 
      * @param
      * @return Message
      * @throws RemoteException
@@ -24,27 +23,28 @@ public interface IRemoteFacadeUsuario extends Remote {
 
     /**
      * Provee la lista de eventos
+     * 
      * @return ArrayList con los eventos guardados en el servidor REST
      * @throws RemoteException
      */
-    ArrayList<Evento> getEventos() throws RemoteException, IOException;
+    ArrayList<business.clases.Evento> getEventos() throws RemoteException, IOException;
 
-    ArrayList<Artista> getArtistasDeEvento(Evento e) throws RemoteException, IOException;
+    ArrayList<business.clases.Artista> getArtistasDeEvento(Evento e) throws RemoteException, IOException;
 
-    ArrayList<Artista> getArtistas(Evento e) throws RemoteException;
+    ArrayList<Artista> getArtistas(business.clases.Evento e) throws RemoteException;
 
-    ArrayList<Precio> getPrecios(Evento e) throws RemoteException;
+    ArrayList<business.clases.Precio> getPrecios(business.clases.Evento e) throws RemoteException;
 
-    boolean comprarEntrada(Entrada e) throws RemoteException;
+    boolean comprarEntrada(EntradaDTO e) throws RemoteException;
 
-    boolean enviarEntradas(ArrayList<Entrada> entradas, String direccion, boolean porEmail) throws RemoteException;
+    boolean enviarEntradas(ArrayList<EntradaDTO> entradas, String direccion, boolean porEmail) throws RemoteException;
 
-    ArrayList<Entrada> getEntradas(Cliente cliente) throws RemoteException;
+    ArrayList<EntradaDTO> getEntradas(ClienteDTO cliente) throws RemoteException;
 
-    Cliente iniciarSesion(String usuario, String contrasenya) throws RemoteException;
-    
-    boolean registrar(Cliente c) throws RemoteException;
+    ClienteDTO iniciarSesion(String usuario, String contrasenya) throws RemoteException;
 
-    boolean actualizarDatos(Cliente cAntiguo, Cliente cNuevo) throws RemoteException;
+    boolean registrar(ClienteDTO c) throws RemoteException;
+
+    boolean actualizarDatos(ClienteDTO cAntiguo, ClienteDTO cNuevo) throws RemoteException;
 
 }

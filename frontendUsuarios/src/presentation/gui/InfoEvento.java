@@ -1,6 +1,7 @@
 package presentation.gui;
 
 import business.clases.Evento;
+import business.clases.dto.ClienteDTO;
 import business.controller.Controller;
 
 import java.util.ArrayList;
@@ -30,7 +31,7 @@ public class InfoEvento extends JFrame {
 
 	private JPanel contentPane;
 
-	public InfoEvento(Controller controller, Evento evento, Cliente cliente) {
+	public InfoEvento(Controller controller, Evento evento, ClienteDTO cliente) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 831, 569);
 		contentPane = new JPanel();

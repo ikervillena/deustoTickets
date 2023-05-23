@@ -16,6 +16,8 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import business.clases.*;
+import business.clases.dto.ClienteDTO;
+import business.clases.dto.EntradaDTO;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -24,7 +26,7 @@ public class InfoCliente extends JFrame {
 
 	private JPanel contentPane;
 
-	public InfoCliente(Controller controller, Cliente cliente) {
+	public InfoCliente(Controller controller, ClienteDTO cliente) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 831, 569);
 		contentPane = new JPanel();
@@ -129,11 +131,11 @@ public class InfoCliente extends JFrame {
 		lblMisEntradas.setBounds(532, 134, 190, 33);
 		contentPane.add(lblMisEntradas);
 
-		ArrayList<Entrada> entradas = cliente.getEntradas();
+		ArrayList<EntradaDTO> entradas = cliente.getEntradas();
 		ArrayList<Evento> eventos = new ArrayList<>();
-		ArrayList<ArrayList<Entrada>> entradasPorEvento = new ArrayList<>();
+		ArrayList<ArrayList<EntradaDTO>> entradasPorEvento = new ArrayList<>();
 
-		for (Entrada entrada : entradas) {
+		for (EntradaDTO entrada : entradas) {
 			Evento evento = entrada.getEvento();
 			if (!eventos.contains(evento)) {
 				eventos.add(evento);
@@ -141,10 +143,10 @@ public class InfoCliente extends JFrame {
 			}
 		}
 
-		for (Entrada entrada : entradas) {
+		for (EntradaDTO entrada : entradas) {
 			Evento evento = entrada.getEvento();
 			int indiceEvento = eventos.indexOf(evento);
-			ArrayList<Entrada> entradasEvento = entradasPorEvento.get(indiceEvento);
+			ArrayList<EntradaDTO> entradasEvento = entradasPorEvento.get(indiceEvento);
 			entradasEvento.add(entrada);
 		}
 		int altura = 183;

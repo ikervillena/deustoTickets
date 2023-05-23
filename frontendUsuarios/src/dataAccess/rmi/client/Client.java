@@ -1,7 +1,7 @@
 package dataAccess.rmi.client;
 
-import business.clases.Cliente;
 import business.clases.Evento;
+import business.clases.dto.ClienteDTO;
 import business.controller.Controller;
 import presentation.gui.DescargaEntrada;
 import presentation.gui.Inicio;

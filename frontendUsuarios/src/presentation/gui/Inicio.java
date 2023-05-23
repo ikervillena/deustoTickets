@@ -21,6 +21,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.JTextField;
 import business.clases.*;
+import business.clases.dto.ClienteDTO;
 
 public class Inicio extends JFrame {
 
@@ -28,7 +29,7 @@ public class Inicio extends JFrame {
 	private JPasswordField passwordField;
 	private JTextField textField;
 
-	public Inicio(Controller controller, Cliente cliente) {
+	public Inicio(Controller controller, ClienteDTO cliente) {
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 831, 569);
@@ -64,7 +65,7 @@ public class Inicio extends JFrame {
 				if (passwordTexto.equals("") || textoUsuario.equals("")) {
 					JOptionPane.showMessageDialog(Inicio.this, "No dejes ningun campo vacio");
 				} else {
-					Cliente a = controller.InicioSesion(textField.getText(), passwordField.getText());
+					ClienteDTO a = controller.InicioSesion(textField.getText(), passwordField.getText());
 					if (a.getNombre().equals("")) {
 						JOptionPane.showMessageDialog(Inicio.this, "El usuario o la contrasenya son incorrectos");
 						Inicio ventana = new Inicio(controller, cliente);

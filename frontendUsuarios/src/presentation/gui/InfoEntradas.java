@@ -2,6 +2,7 @@ package presentation.gui;
 
 import javax.swing.SpinnerNumberModel;
 import business.clases.Evento;
+import business.clases.dto.ClienteDTO;
 import business.controller.Controller;
 import java.awt.Color;
 import java.awt.Component;
@@ -28,7 +29,7 @@ public class InfoEntradas extends JFrame {
 
 	private JPanel contentPane;
 
-	public InfoEntradas(Controller controller, Evento evento, Cliente cliente) {
+	public InfoEntradas(Controller controller, Evento evento, ClienteDTO cliente) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 831, 569);
 		contentPane = new JPanel();

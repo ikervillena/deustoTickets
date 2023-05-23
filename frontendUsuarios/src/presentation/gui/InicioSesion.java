@@ -19,6 +19,7 @@ import javax.swing.border.BevelBorder;
 import javax.swing.UIManager;
 import javax.swing.border.SoftBevelBorder;
 import business.clases.*;
+import business.clases.dto.ClienteDTO;
 
 public class InicioSesion extends JFrame {
 
@@ -29,7 +30,7 @@ public class InicioSesion extends JFrame {
 	 * Create the frame.
 	 */
 	public InicioSesion(Controller controller) {
-		Cliente cliente = new Cliente();
+		ClienteDTO cliente = new ClienteDTO();
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 831, 569);
