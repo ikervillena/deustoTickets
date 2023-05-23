@@ -1,7 +1,7 @@
 package business.controller;
 
 import business.clases.Evento;
-import business.clases.dto.ClienteDTO;
+import business.clases.dto.*;
 import dataAccess.rmi.client.ServiceLocator;
 
 import java.rmi.RemoteException;
@@ -47,6 +47,15 @@ public class Controller {
     public ArrayList<business.clases.Artista> getArtistasDeEvento(Evento e) {
         try {
             return this.serviceLocator.getService().getArtistasDeEvento(e);
+
+        } catch (Exception a) {
+            return null;
+        }
+    }
+
+    public ArrayList<EntradaDTO> comprarEntradas(ArrayList<EntradaDTO> entradas) {
+        try {
+            return this.serviceLocator.getService().comprarEntradas(entradas);
 
         } catch (Exception a) {
             return null;

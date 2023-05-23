@@ -3,11 +3,13 @@ package presentation.gui;
 import javax.swing.SpinnerNumberModel;
 import business.clases.Evento;
 import business.clases.dto.ClienteDTO;
+import business.clases.dto.EntradaDTO;
 import business.controller.Controller;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
 import java.awt.Image;
+import java.util.Date;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
@@ -107,35 +109,6 @@ public class InfoEntradas extends JFrame {
 		lbl.setIcon(new ImageIcon(image));
 		contentPane.add(lbl);
 
-		JButton btnNewButton_1 = new JButton("Compra");
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (cliente.getNombre() == null) {
-					JOptionPane.showMessageDialog(InfoEntradas.this,
-							"Para poder comprar entradas debes estar registrado");
-					Inicio ventana1 = new Inicio(controller, cliente);
-					ventana1.setVisible(true);
-					InfoEntradas.this.dispose();
-				} else {
-					/* Hay que hacer lo de pasarselo al cliente */
-					DescargaEntrada pantalla = new DescargaEntrada(controller, cliente, evento);
-					pantalla.setVisible(true);
-					InfoEntradas.this.dispose();
-				}
-
-			}
-		});
-		btnNewButton_1.setBackground(new Color(255, 215, 0));
-		btnNewButton_1.setForeground(new Color(255, 255, 255));
-		btnNewButton_1.setFont(new Font("Stencil", Font.BOLD, 20));
-		ImageIcon icon1 = new ImageIcon(
-				"C:\\Users\\ALUMNO\\Desktop\\deustoTickets\\deustoTickets\\frontendUsuarios\\resources\\images\\ENTRADA.png");
-		Image img1 = icon1.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
-		icon = new ImageIcon(img1);
-		btnNewButton_1.setIcon(icon);
-		btnNewButton_1.setBounds(445, 464, 195, 29);
-		contentPane.add(btnNewButton_1);
-
 		JButton btnBack = new JButton("BACK");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -152,8 +125,7 @@ public class InfoEntradas extends JFrame {
 
 		int altura = 223;
 		ArrayList<Precio> precios = evento.getPrecios();
-		List<JSpinner> spinners = new ArrayList<>();
-
+		ArrayList<JSpinner> spinners = new ArrayList<>();
 		// int valorSpinner = (int) spinners.get(2).getValue(); Es para conseguir el
 		// valor de los spiners
 		for (int i = 0; i < precios.size(); i++) {
@@ -180,5 +152,50 @@ public class InfoEntradas extends JFrame {
 
 			altura += 70;
 		}
+		ArrayList<EntradaDTO> entradas = new ArrayList<EntradaDTO>();
+
+		JButton btnNewButton_1 = new JButton("Compra");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (cliente.getNombre() == null) {
+					JOptionPane.showMessageDialog(InfoEntradas.this,
+							"Para poder comprar entradas debes estar registrado");
+					Inicio ventana1 = new Inicio(controller, cliente);
+					ventana1.setVisible(true);
+					InfoEntradas.this.dispose();
+				} else {
+					for (int i = 0; i < spinners.size(); i++) {
+						int valorSpinner = (int) spinners.get(i).getValue();
+
+						if (valorSpinner != 0) {
+							for (int numero = 0; numero < valorSpinner; numero++) {
+								Date fecha = new Date();
+								System.out.println(precios.get(i).getId());
+								System.out.println(evento.getId());
+								EntradaDTO entrada = new EntradaDTO("", precios.get(i).getNombre(), fecha,
+										precios.get(i), evento, cliente, false);
+								entradas.add(entrada);
+							}
+
+						}
+					}
+					ArrayList<EntradaDTO> sarrerak = controller.comprarEntradas(entradas);
+					DescargaEntrada pantalla = new DescargaEntrada(controller, cliente, evento, sarrerak);
+					pantalla.setVisible(true);
+					InfoEntradas.this.dispose();
+				}
+
+			}
+		});
+		btnNewButton_1.setBackground(new Color(255, 215, 0));
+		btnNewButton_1.setForeground(new Color(255, 255, 255));
+		btnNewButton_1.setFont(new Font("Stencil", Font.BOLD, 20));
+		ImageIcon icon1 = new ImageIcon(
+				"C:\\Users\\ALUMNO\\Desktop\\deustoTickets\\deustoTickets\\frontendUsuarios\\resources\\images\\ENTRADA.png");
+		Image img1 = icon1.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+		icon = new ImageIcon(img1);
+		btnNewButton_1.setIcon(icon);
+		btnNewButton_1.setBounds(445, 464, 195, 29);
+		contentPane.add(btnNewButton_1);
 	}
 }

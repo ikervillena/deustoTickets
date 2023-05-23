@@ -15,9 +15,11 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import business.clases.*;
 import business.clases.dto.ClienteDTO;
+import business.clases.dto.EntradaDTO;
 
 import javax.swing.JOptionPane;
 
@@ -25,7 +27,7 @@ public class DescargaEntrada extends JFrame {
 
     private JPanel contentPane;
 
-    public DescargaEntrada(Controller controller, ClienteDTO cliente, Evento evento) {
+    public DescargaEntrada(Controller controller, ClienteDTO cliente, Evento evento, ArrayList<EntradaDTO> entradas) {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 831, 569);
         contentPane = new JPanel();
