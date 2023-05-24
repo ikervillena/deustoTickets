@@ -20,7 +20,6 @@ public class GeneradorEntrada {
 
     private static String pathPlantilla = "resources/entradas/plantillaEntrada.png";
 
-
     public static BufferedImage generarEntradas(EntradaDTO infoEntrada) throws IOException, WriterException {
 
         // Cargar la plantilla de entrada
@@ -47,9 +46,10 @@ public class GeneradorEntrada {
         // Dibujar la información en la entrada
         font = new Font("Anton", Font.BOLD, 32);
         g2d.setFont(font);
-        //Espacio espacio = infoEntrada.getEvento().getEspacio();
-        //GoogleMapsGateway g = new GoogleMapsGateway();
-        //String informacion = espacio.getNombre() + " - "+ g.getCodigoPostal(espacio.getDireccion());
+        // Espacio espacio = infoEntrada.getEvento().getEspacio();
+        // GoogleMapsGateway g = new GoogleMapsGateway();
+        // String informacion = espacio.getNombre() + " - "+
+        // g.getCodigoPostal(espacio.getDireccion());
         g2d.drawString("PENDIENTE", 551, 303);
 
         // Cargar el código QR generado
@@ -62,8 +62,8 @@ public class GeneradorEntrada {
         g2d.dispose();
 
         // Guarda la entrada generada
-        //File entradaGenerada = new File("temp/Entrada.png");
-        //ImageIO.write(entrada, "png", entradaGenerada);
+        // File entradaGenerada = new File("temp/Entrada.png");
+        // ImageIO.write(entrada, "png", entradaGenerada);
 
         return entrada;
     }

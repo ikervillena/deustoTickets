@@ -66,7 +66,7 @@ public class Inicio extends JFrame {
 					JOptionPane.showMessageDialog(Inicio.this, "No dejes ningun campo vacio");
 				} else {
 					ClienteDTO a = controller.InicioSesion(textField.getText(), passwordField.getText());
-					if (a.getNombre().equals("")) {
+					if (a == null) {
 						JOptionPane.showMessageDialog(Inicio.this, "El usuario o la contrasenya son incorrectos");
 						Inicio ventana = new Inicio(controller, cliente);
 						ventana.setVisible(true);

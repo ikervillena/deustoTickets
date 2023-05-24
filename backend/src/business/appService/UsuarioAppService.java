@@ -17,42 +17,40 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.UUID;
 
-
-
 public class UsuarioAppService {
 
     public static ArrayList<Evento> getEventos() throws IOException {
         TicketProviderGateway gateway = new TicketProviderGateway();
         return gateway.getEventos();
     }
-    
+
     public static ArrayList<Artista> getArtistasDeEvento(Evento e) throws IOException {
         TicketProviderGateway gateway = new TicketProviderGateway();
         return gateway.getArtistasDeEvento(e);
     }
 
-
     public static boolean registrar(ClienteDTO dto) throws RemoteException {
-        ClienteAssembler assembler =  new ClienteAssembler();
+        ClienteAssembler assembler = new ClienteAssembler();
         Cliente c = assembler.getCliente(dto);
-        ClienteDAO clientDao=new ClienteDAO();
+        ClienteDAO clientDao = new ClienteDAO();
         boolean b = true;
-        ArrayList<Cliente> listaClientes=clientDao.getClientes();
-        for (Cliente cl: listaClientes){
+        ArrayList<Cliente> listaClientes = clientDao.getClientes();
+        for (Cliente cl : listaClientes) {
             System.out.println(cl);
-            if(cl.getUsuario().equals(c.getUsuario())){
-                b=false;
+            if (cl.getUsuario().equals(c.getUsuario())) {
+                b = false;
             }
         }
-        if (b==true){
+        if (b == true) {
             clientDao.setCliente(c);
         }
         return b;
     }
-    public static ClienteDTO iniciarSesion(String usuario, String contrasenya) throws RemoteException{
+
+    public static ClienteDTO iniciarSesion(String usuario, String contrasenya) throws RemoteException {
         Cliente c = new Cliente();
-        ClienteDAO clientDao=new ClienteDAO();
-        ArrayList<Cliente> listaClientes=clientDao.getClientes();
+        ClienteDAO clientDao = new ClienteDAO();
+        ArrayList<Cliente> listaClientes = clientDao.getClientes();
         c = null;
         for (Cliente cliente : listaClientes) {
             if (cliente.getUsuario().equals(usuario) && cliente.getContrasenya().equals(contrasenya)) {
@@ -68,26 +66,27 @@ public class UsuarioAppService {
         }
     }
 
-    public static ArrayList<EntradaDTO> getEntradas(ClienteDTO cliente) throws RemoteException{
+    public static ArrayList<EntradaDTO> getEntradas(ClienteDTO cliente) throws RemoteException {
         /*
-        ArrayList<Entrada> listaEntradas = new ArrayList<Entrada>();
-        EntradaDAO entradaDAO= new EntradaDAO();
-        ArrayList<Entrada> todas = entradaDAO.getEntrada();
-        for (Entrada e: todas){
-            if(e.getCliente().getUsuario().equals(cliente.getUsuario())){
-                listaEntradas.add(e);
-            }
-        }
-        return listaEntradas;
-        */
+         * ArrayList<Entrada> listaEntradas = new ArrayList<Entrada>();
+         * EntradaDAO entradaDAO= new EntradaDAO();
+         * ArrayList<Entrada> todas = entradaDAO.getEntrada();
+         * for (Entrada e: todas){
+         * if(e.getCliente().getUsuario().equals(cliente.getUsuario())){
+         * listaEntradas.add(e);
+         * }
+         * }
+         * return listaEntradas;
+         */
 
         // PENDIENTE
         return null;
     }
 
-    public static boolean enviarEntradas(ArrayList<EntradaDTO> entradas, String direccion, boolean porEmail) throws RemoteException {
+    public static boolean enviarEntradas(ArrayList<EntradaDTO> entradas, String direccion, boolean porEmail)
+            throws RemoteException {
         EnviarStrategy strategy = new EnviarStrategy();
-        if(porEmail) {
+        if (porEmail) {
             strategy.setStrategy(new EnvioEmail());
         } else {
             strategy.setStrategy(new EnvioTelegram());
@@ -96,12 +95,12 @@ public class UsuarioAppService {
         return true;
     }
 
-    public static ArrayList<EntradaDTO> comprarEntradas(ArrayList<EntradaDTO> entradas){
+    public static ArrayList<EntradaDTO> comprarEntradas(ArrayList<EntradaDTO> entradas) {
         EntradaAssembler assembler = new EntradaAssembler();
         TicketProviderGateway t = new TicketProviderGateway();
         EntradaDAO entradaDAO = new EntradaDAO();
 
-        for (EntradaDTO e: entradas){
+        for (EntradaDTO e : entradas) {
             t.actualizarDisponibles(e.getPrecio().getId(), 1);
             Entrada entrada = assembler.getEntrada(e);
             UUID uuid = UUID.randomUUID();
@@ -111,10 +110,7 @@ public class UsuarioAppService {
             entradaDAO.setEntrada(entrada);
         }
 
-        
         return entradas;
     }
-
-
 
 }

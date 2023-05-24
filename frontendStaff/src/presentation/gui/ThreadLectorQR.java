@@ -9,7 +9,7 @@ import com.google.zxing.common.HybridBinarizer;
 import javax.swing.*;
 import java.awt.image.BufferedImage;
 
-public class ThreadLectorQR implements Runnable{
+public class ThreadLectorQR implements Runnable {
 
     private WebcamPanel webcamPanel;
     private JTextField textField;
@@ -22,14 +22,18 @@ public class ThreadLectorQR implements Runnable{
 
     @Override
     public void run() {
-        while(isRunning) {
+        while (isRunning) {
             try {
                 BufferedImage image = this.webcamPanel.getWebcam().getImage();
                 BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(new BufferedImageLuminanceSource(image)));
                 String codigoQR = new MultiFormatReader().decode(bitmap).getText();
 
-                // PENDIENTE: HAY QUE COMPROBAR QUE EL QR CORRESPONDE LA EVENTO Y TODAVIA NO HA SIDO UTILIZADO
-                System.out.println("Codigo QR: "+ codigoQR); // Temporal
+                // PENDIENTE: HAY QUE COMPROBAR QUE EL QR CORRESPONDE LA EVENTO Y TODAVIA NO HA
+                // SIDO UTILIZADO
+
+                // boolean utilizarEntrada(EntradaDTO) me marca con esto que la entrada esta
+                // utilizada, le tengo que pasar la entrada con el campo de utilizada cambiado.
+                System.out.println("Codigo QR: " + codigoQR); // Temporal
                 mostrarCorrecto(); // Esto hay que hacerlo tras comprobar que es valido
             } catch (Exception e) {
             }

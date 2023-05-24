@@ -76,23 +76,6 @@ public class DescargaEntrada extends JFrame {
         lblNewLabel_1.setBounds(117, 108, 633, 63);
         contentPane.add(lblNewLabel_1);
 
-        JButton btnNewButton_1 = new JButton("DESCARGA LA ENTRADA");
-        btnNewButton_1.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                String rutaDescarga = JOptionPane.showInputDialog(DescargaEntrada.this,
-                        "Por favor, introduce la ruta absoluta en la que deseas descargar la entrada:");
-
-                // Descargar
-            }
-        });
-        btnNewButton_1.setBackground(new Color(255, 215, 0));
-        btnNewButton_1.setForeground(new Color(255, 255, 255));
-        btnNewButton_1.setFont(new Font("Stencil", Font.BOLD, 20));
-        btnNewButton_1.setBounds(117, 393, 619, 63);
-        btnNewButton_1.setHorizontalTextPosition(SwingConstants.RIGHT);
-        btnNewButton_1.setIconTextGap(50);
-        contentPane.add(btnNewButton_1);
-
         JButton btnNewButton_2 = new JButton("TELEGRAM");
         btnNewButton_2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -105,8 +88,15 @@ public class DescargaEntrada extends JFrame {
                         "6. Vuelve a esta ventana, pega el ChatID en el cuadro de diálogo y haz clic en 'Aceptar'.";
 
                 String chatID = JOptionPane.showInputDialog(DescargaEntrada.this, mensaje);
+                boolean respuesta = controller.enviarEntradas(entradas, chatID, false);
+                if (!respuesta) {
+                    JOptionPane.showMessageDialog(DescargaEntrada.this,
+                            "Las entradas han sido enviadas a tu telegram.");
+                } else {
+                    JOptionPane.showMessageDialog(DescargaEntrada.this,
+                            "Las entradas no han podido ser enviadas.");
+                }
 
-                // Mandar por telegram
             }
         });
         btnNewButton_2.setBackground(new Color(255, 215, 0));
@@ -118,10 +108,15 @@ public class DescargaEntrada extends JFrame {
         JButton btnNewButton_3 = new JButton("ENVIAR POR CORREO");
         btnNewButton_3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(DescargaEntrada.this,
-                        "Las entradas han sido enviadas a tu direccion de email.");
+                boolean respuesta = controller.enviarEntradas(entradas, cliente.getEmail(), true);
+                if (!respuesta) {
+                    JOptionPane.showMessageDialog(DescargaEntrada.this,
+                            "Las entradas han sido enviadas a tu direccion de email.");
+                } else {
+                    JOptionPane.showMessageDialog(DescargaEntrada.this,
+                            "Las entradas no han podido ser enviadas.");
+                }
 
-                // Mandar por correo
             }
         });
         btnNewButton_3.setBackground(new Color(255, 215, 0));
@@ -131,5 +126,20 @@ public class DescargaEntrada extends JFrame {
         contentPane.add(btnNewButton_3);
         label.setIcon(new ImageIcon(image));
         contentPane.add(label);
+
+        JButton btnBack = new JButton("BACK");
+        btnBack.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                MenuCliente ventana = new MenuCliente(controller, cliente);
+                ventana.setVisible(true);
+                DescargaEntrada.this.dispose();
+                ;
+            }
+        });
+        btnBack.setBackground(new Color(178, 34, 34));
+        btnBack.setForeground(new Color(255, 255, 255));
+        btnBack.setFont(new Font("Stencil", Font.BOLD, 20));
+        btnBack.setBounds(655, 464, 115, 29);
+        contentPane.add(btnBack);
     }
 }

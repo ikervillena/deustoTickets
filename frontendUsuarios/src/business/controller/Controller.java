@@ -30,6 +30,7 @@ public class Controller {
             return this.serviceLocator.getService().iniciarSesion(usuario, contrasenya);
 
         } catch (Exception e) {
+            System.out.println(e);
             return null;
         }
     }
@@ -59,6 +60,15 @@ public class Controller {
 
         } catch (Exception a) {
             return null;
+        }
+    }
+
+    public boolean enviarEntradas(ArrayList<EntradaDTO> entradas, String direccion, boolean porEmail) {
+        try {
+            return this.serviceLocator.getService().enviarEntradas(entradas, direccion, porEmail);
+
+        } catch (Exception a) {
+            return false;
         }
     }
 }
