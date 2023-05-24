@@ -14,11 +14,11 @@ public class StaffAppService {
         TicketProviderGateway gateway = new TicketProviderGateway();
         return gateway.getEventos();
     }
-    
-    public static Staff iniciarSesion(String usuario, String contrasenya) throws RemoteException{
+
+    public static Staff iniciarSesion(String usuario, String contrasenya) throws RemoteException {
         Staff s = new Staff();
-        StaffDAO staffDAO=new StaffDAO();
-        ArrayList<Staff> listaStaff=staffDAO.getStaff();
+        StaffDAO staffDAO = new StaffDAO();
+        ArrayList<Staff> listaStaff = staffDAO.getStaff();
         s = null;
         for (Staff staff : listaStaff) {
             if (staff.getUsuario().equals(usuario) && staff.getContrasenya().equals(contrasenya)) {
@@ -28,6 +28,5 @@ public class StaffAppService {
         }
         return s;
     }
-
 
 }

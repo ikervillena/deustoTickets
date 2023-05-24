@@ -50,8 +50,6 @@ public class MenuStaff extends JFrame {
 		Component verticalStrut = Box.createVerticalStrut(0);
 		menuBar.add(verticalStrut);
 
-		/* Cargar el usuario y cambiar el nombre */
-
 		JButton btnNewButton = new JButton("Usuario");
 		btnNewButton.setBorder(null);
 		btnNewButton.setBorderPainted(false);
@@ -60,14 +58,13 @@ public class MenuStaff extends JFrame {
 		btnNewButton.setFont(new Font("Stencil", Font.BOLD, 40));
 		menuBar.add(btnNewButton);
 
-		/*
-		 * Hacer un for y que aparezcan los eventos y que por cada uno que entre varie
-		 * el
-		 * setBounds para que no se ponga uno encima del otro
-		 */
-
-		ArrayList<Evento> eventos = controller.getEventos();
-
+		ArrayList<Evento> eventos1 = controller.getEventos();
+		ArrayList<Evento> eventos = new ArrayList<Evento>();
+		for (int i = 0; i < eventos1.size(); i++) {
+			if (!eventos1.get(i).getPrecios().isEmpty()) {
+				eventos.add(eventos1.get(i));
+			}
+		}
 		int altura = 100;
 
 		for (int i = 0; i < eventos.size(); i++) {
@@ -85,14 +82,14 @@ public class MenuStaff extends JFrame {
 			btnNewButton_1.setFont(new Font("Stencil", Font.PLAIN, 50));
 			btnNewButton_1.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					InfoEventoStaff ventana = new InfoEventoStaff(controller, evento);
+					InfoEventoStaff ventana = new InfoEventoStaff(controller, evento, a);
 					ventana.setVisible(true);
 					MenuStaff.this.dispose();
 				}
 			});
-			btnNewButton_1.setBounds(61, altura, 709, 60);
+			btnNewButton_1.setBounds(61, altura, 709, 100);
 			contentPane.add(btnNewButton_1);
-			altura = altura + 70;
+			altura = altura + 110;
 		}
 	}
 

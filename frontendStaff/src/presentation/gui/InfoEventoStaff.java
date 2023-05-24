@@ -1,6 +1,7 @@
 package presentation.gui;
 
 import business.clases.Evento;
+import business.clases.Staff;
 import business.controller.Controller;
 
 import java.awt.Color;
@@ -26,7 +27,7 @@ public class InfoEventoStaff extends JFrame {
 
 	private JPanel contentPane;
 
-	public InfoEventoStaff(Controller controller, Evento evento) {
+	public InfoEventoStaff(Controller controller, Evento evento, Staff staff) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 831, 569);
 		contentPane = new JPanel();
@@ -112,7 +113,7 @@ public class InfoEventoStaff extends JFrame {
 		JButton btnNewButton_1 = new JButton("SCANEAR ENTRADAS");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Scanear ventana = new Scanear(controller);
+				Scanear ventana = new Scanear(controller, staff, evento);
 				ventana.setVisible(true);
 				InfoEventoStaff.this.dispose();
 			}
@@ -131,7 +132,7 @@ public class InfoEventoStaff extends JFrame {
 		JButton btnBack = new JButton("BACK");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MenuStaff ventana = new MenuStaff(controller);
+				MenuStaff ventana = new MenuStaff(controller, staff);
 				ventana.setVisible(true);
 				InfoEventoStaff.this.dispose();
 				;

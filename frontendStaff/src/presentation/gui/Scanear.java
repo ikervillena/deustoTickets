@@ -18,6 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import business.clases.*;
 
 public class Scanear extends JFrame {
 
@@ -25,7 +26,7 @@ public class Scanear extends JFrame {
 	private JPanel panelCamara;
 	private WebcamPanel webcamPanel;
 
-	public Scanear(Controller controller) {
+	public Scanear(Controller controller, Staff staff, Evento evento) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 831, 569);
 		contentPane = new JPanel();
@@ -72,7 +73,7 @@ public class Scanear extends JFrame {
 		JButton btnBack = new JButton("BACK");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MenuStaff ventana = new MenuStaff(controller);
+				MenuStaff ventana = new MenuStaff(controller, staff);
 				ventana.setVisible(true);
 				Scanear.this.dispose();
 			}
@@ -96,7 +97,7 @@ public class Scanear extends JFrame {
 		webcamPanel.setMirrored(true);
 		panelCamara.add(webcamPanel);
 
-		ThreadLectorQR lectorQR = new ThreadLectorQR(webcamPanel);
+		ThreadLectorQR lectorQR = new ThreadLectorQR(webcamPanel, evento);
 		Thread t = new Thread(lectorQR);
 		t.start();
 	}
