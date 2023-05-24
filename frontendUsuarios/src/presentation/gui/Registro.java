@@ -201,6 +201,7 @@ public class Registro extends JFrame {
 					ArrayList<EntradaDTO> entradas = new ArrayList<EntradaDTO>();
 
 					ClienteDTO cliente = new ClienteDTO();
+
 					cliente.setNombre(nombre);
 					cliente.setApellido(apellido);
 					cliente.setUsuario(usuario);
@@ -209,6 +210,7 @@ public class Registro extends JFrame {
 					cliente.setContrasenya(contrasenya);
 					cliente.setFecNac(date);
 					cliente.setEntradas(entradas);
+
 					Boolean respuesta = controller.Registrar(cliente);
 					if (!respuesta) {
 						JOptionPane.showMessageDialog(Registro.this,

@@ -2,15 +2,15 @@ package presentation.gui;
 
 import business.controller.Controller;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -21,8 +21,9 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
-import business.clases.*;
 import business.clases.dto.ClienteDTO;
+import business.clases.dto.EntradaDTO;
+import javax.swing.JOptionPane;
 
 public class CambioInfor extends JFrame {
 
@@ -43,23 +44,6 @@ public class CambioInfor extends JFrame {
 		ImageIcon imageIcon = new ImageIcon(
 				"C:\\Users\\ALUMNO\\Desktop\\deustoTickets\\deustoTickets\\frontendUsuarios\\resources\\images\\fotofiesta.jpg");
 		Image image = imageIcon.getImage().getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH);
-
-		JButton button = new JButton("Guardar Cambios");
-		button.setFont(new Font("Stencil", Font.PLAIN, 25));
-		button.setForeground(new Color(255, 255, 255));
-		button.setBackground(new Color(255, 215, 0));
-		button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				InfoCliente ventana = new InfoCliente(controller, cliente);
-				ventana.setVisible(true);
-				CambioInfor.this.dispose();
-			}
-		});
-		button.setBorder(BorderFactory.createEmptyBorder());
-		button.setContentAreaFilled(false);
-		button.setOpaque(true);
-		button.setBounds(518, 436, 276, 40);
-		contentPane.add(button);
 
 		JLabel lblUsuario = new JLabel("NOMBRE");
 		lblUsuario.setBackground(new Color(255, 215, 0));
@@ -147,16 +131,11 @@ public class CambioInfor extends JFrame {
 		textFecNac.setBounds(634, 200, 146, 26);
 		contentPane.add(textFecNac);
 
-		/*
-		 * Aqui pasamos directamente el usuario para no dar opci�n a cambiar de nombre
-		 * usuario
-		 */
-		JLabel lblNewLabel = new JLabel("#Usuario");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setForeground(new Color(255, 215, 0));
-		lblNewLabel.setFont(new Font("Stencil", Font.BOLD, 19));
-		lblNewLabel.setBounds(234, 205, 135, 20);
-		contentPane.add(lblNewLabel);
+		JTextField usuario = new JTextField();
+		usuario.setColumns(10);
+		usuario.setBounds(234, 205, 135, 20);
+		contentPane.add(usuario);
+
 		label.setIcon(new ImageIcon(image));
 		contentPane.add(label);
 
@@ -179,5 +158,68 @@ public class CambioInfor extends JFrame {
 		contentPane.add(lblDeustoTickets);
 		label.setIcon(new ImageIcon(image));
 		contentPane.add(label);
+
+		JButton button = new JButton("Guardar Cambios");
+		button.setFont(new Font("Stencil", Font.PLAIN, 25));
+		button.setForeground(new Color(255, 255, 255));
+		button.setBackground(new Color(255, 215, 0));
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				String contrasenya = textContrasenya.getText();
+				String apellido = textoApellido.getText();
+				String correo = textCorreo.getText();
+				String nombre = textNombre.getText();
+				String dni = textDni.getText();
+				String fechaNacimiento = textFecNac.getText();
+				String usuarios = usuario.getText();
+
+				char[] caracteres = fechaNacimiento.toCharArray();
+				String day = "" + caracteres[0] + caracteres[1];
+				String month = "" + caracteres[3] + caracteres[4];
+				String year = "" + caracteres[6] + caracteres[7] + caracteres[8] + caracteres[9];
+
+				int dia = Integer.parseInt(day);
+				int mes = Integer.parseInt(month);
+				int anyo = Integer.parseInt(year);
+
+				Calendar calendar = Calendar.getInstance();
+				calendar.set(Calendar.YEAR, anyo);
+				calendar.set(Calendar.MONTH, mes - 1);
+				calendar.set(Calendar.DAY_OF_MONTH, dia);
+				Date date = calendar.getTime();
+
+				ArrayList<EntradaDTO> entradas = cliente.getEntradas();
+
+				ClienteDTO clientNuevo = new ClienteDTO();
+
+				clientNuevo.setNombre(nombre);
+				clientNuevo.setApellido(apellido);
+				clientNuevo.setUsuario(usuarios);
+				clientNuevo.setDni(dni);
+				clientNuevo.setEmail(correo);
+				clientNuevo.setContrasenya(contrasenya);
+				clientNuevo.setFecNac(date);
+				clientNuevo.setEntradas(entradas);
+
+				if (nombre.equals("") || apellido.equals("") || usuario.equals("") || dni.equals("")
+						|| correo.equals("") || contrasenya.equals("") || fechaNacimiento.equals("")) {
+
+					JOptionPane.showMessageDialog(CambioInfor.this, "No dejes ningun campo vacio");
+				} else {
+					boolean respuesta = controller.actualizarDatos(cliente, clientNuevo);
+					if (!respuesta) {
+						InfoCliente ventana = new InfoCliente(controller, cliente);
+						ventana.setVisible(true);
+						CambioInfor.this.dispose();
+					}
+				}
+			}
+		});
+		button.setBorder(BorderFactory.createEmptyBorder());
+		button.setContentAreaFilled(false);
+		button.setOpaque(true);
+		button.setBounds(518, 436, 276, 40);
+		contentPane.add(button);
 	}
 }

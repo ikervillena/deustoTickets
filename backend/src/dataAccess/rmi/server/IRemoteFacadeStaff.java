@@ -13,6 +13,7 @@ public interface IRemoteFacadeStaff extends Remote {
 
     /**
      * Test message to say hello to client
+     * 
      * @param
      * @return Message
      * @throws RemoteException
@@ -21,6 +22,7 @@ public interface IRemoteFacadeStaff extends Remote {
 
     /**
      * Provee la lista de eventos
+     * 
      * @return ArrayList con los eventos guardados en el servidor REST
      * @throws RemoteException
      */
@@ -28,18 +30,22 @@ public interface IRemoteFacadeStaff extends Remote {
 
     /**
      * Gestiona el inicio de sesion de un miembro del Staff
+     * 
      * @param usuario
      * @param contrasenya
-     * @return Staff al que corresponden las credenciales o null en caso de que sean incorrectas
+     * @return Staff al que corresponden las credenciales o null en caso de que sean
+     *         incorrectas
      * @throws RemoteException
      */
     Staff iniciarSesionStaff(String usuario, String contrasenya) throws RemoteException;
 
     /**
      * Comprueba la validez de un codigo QR
+     * 
      * @param qr
      * @param e
-     * @return True en caso de que el código QR corresponda a una entrada del evento que no haya sido utilizada, o False en caso contrario
+     * @return True en caso de que el código QR corresponda a una entrada del evento
+     *         que no haya sido utilizada, o False en caso contrario
      * @throws RemoteException
      */
     boolean comprobarQR(String qr, Evento e) throws RemoteException;

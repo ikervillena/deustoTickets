@@ -71,4 +71,13 @@ public class Controller {
             return false;
         }
     }
+
+    public boolean actualizarDatos(ClienteDTO cAntiguo, ClienteDTO cNuevo) {
+        try {
+            return this.serviceLocator.getService().actualizarDatos(cAntiguo, cNuevo);
+
+        } catch (Exception a) {
+            return false;
+        }
+    }
 }

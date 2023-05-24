@@ -73,7 +73,13 @@ public class MenuCliente extends JFrame {
 		comboBox1.setBounds(600, 86, 180, 26);
 		getContentPane().add(comboBox1);
 
-		ArrayList<Evento> eventos = controller.getEventos();
+		ArrayList<Evento> eventos1 = controller.getEventos();
+		ArrayList<Evento> eventos = new ArrayList<Evento>();
+		for (int i = 0; i < eventos1.size(); i++) {
+			if (!eventos1.get(i).getPrecios().isEmpty()) {
+				eventos.add(eventos1.get(i));
+			}
+		}
 		ArrayList<JButton> botonesEventos = new ArrayList<>();
 		visualizarEventos(eventos, controller, cliente, botonesEventos);
 
@@ -154,10 +160,10 @@ public class MenuCliente extends JFrame {
 					MenuCliente.this.dispose();
 				}
 			});
-			btnNewButto.setBounds(61, altura, 709, 60);
+			btnNewButto.setBounds(61, altura, 709, 100);
 			contentPane.add(btnNewButto);
 			botonesEventos.add(btnNewButto);
-			altura = altura + 70;
+			altura = altura + 110;
 		}
 	}
 
@@ -183,6 +189,7 @@ public class MenuCliente extends JFrame {
 				}
 			} else if (seleccion.equals("Seleccione opcion")) {
 				for (int z = 0; z < eventos.size(); z++) {
+					comboBox1.removeAllItems();
 					eventosFiltrados.add(eventos.get(z));
 				}
 
