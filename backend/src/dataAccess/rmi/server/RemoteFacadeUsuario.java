@@ -75,14 +75,18 @@ public class RemoteFacadeUsuario extends UnicastRemoteObject implements IRemoteF
     }
 
     @Override
-    public boolean actualizarDatos(ClienteDTO cAntiguo, ClienteDTO cNuevo)throws RemoteException {
-        // PENDIENTE
-        return false;
+    public boolean actualizarDatos(ClienteDTO cAntiguo, ClienteDTO cNuevo) throws RemoteException {
+        return UsuarioAppService.actualizarDatos(cAntiguo, cNuevo);
     }
 
     @Override
     public ArrayList<EntradaDTO> comprarEntradas(ArrayList<EntradaDTO> entradas)throws RemoteException{
         return UsuarioAppService.comprarEntradas(entradas);
+    }
+
+    @Override
+    public boolean utilizarEntrada(EntradaDTO e) throws RemoteException{
+        return UsuarioAppService.utilizarEntrada(e);
     }
 
 

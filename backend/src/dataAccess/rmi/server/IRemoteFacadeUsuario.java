@@ -45,4 +45,6 @@ public interface IRemoteFacadeUsuario extends Remote {
 
     boolean actualizarDatos(ClienteDTO cAntiguo, ClienteDTO cNuevo) throws RemoteException;
 
+    boolean utilizarEntrada(EntradaDTO e) throws RemoteException;
+
 }

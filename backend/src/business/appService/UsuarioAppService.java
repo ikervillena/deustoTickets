@@ -113,4 +113,16 @@ public class UsuarioAppService {
         return entradas;
     }
 
+    public static boolean actualizarDatos(ClienteDTO cAntiguo, ClienteDTO cNuevo)throws RemoteException {
+        ClienteAssembler assembler = new ClienteAssembler();
+        ClienteDAO cdao = new ClienteDAO();
+        return cdao.actualizarCliente(assembler.getCliente(cAntiguo), assembler.getCliente(cNuevo));
+    }
+
+    public static boolean utilizarEntrada(EntradaDTO entradaDTO) throws RemoteException{
+        EntradaAssembler assembler = new EntradaAssembler();
+        EntradaDAO eDao = new EntradaDAO();
+        return eDao.utilizarEntrada(assembler.getEntrada(entradaDTO));
+    }
+
 }
