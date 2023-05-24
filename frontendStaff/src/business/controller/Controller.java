@@ -1,6 +1,7 @@
 package business.controller;
 
 import business.clases.*;
+import business.clases.dto.*;
 
 import dataAccess.rmi.client.ServiceLocator;
 
@@ -25,10 +26,19 @@ public class Controller {
 
     public Staff iniciarSesionStaff(String usuario, String contrasenya) {
         try {
-            return this.serviceLocator.getService().iniciarSesionStaff(usuario,contrasenya);
+            return this.serviceLocator.getService().iniciarSesionStaff(usuario, contrasenya);
         } catch (Exception e) {
             return null;
         }
+    }
+
+    public boolean utilizarEntrada(EntradaDTO entrada) {
+        try {
+            return this.serviceLocator.getService().utilizarEntrada(entrada);
+        } catch (Exception e) {
+            return false;
+        }
+
     }
 
 }

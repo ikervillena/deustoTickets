@@ -3,6 +3,7 @@ package dataAccess.rmi.server;
 import business.appService.StaffAppService;
 import business.clases.Evento;
 import business.clases.Staff;
+import business.clases.dto.*;
 
 import java.io.IOException;
 import java.rmi.RemoteException;
@@ -41,6 +42,11 @@ public class RemoteFacadeStaff extends UnicastRemoteObject implements IRemoteFac
     public boolean comprobarQR(String qr, Evento e) throws RemoteException {
         // PENDIENTE
         return false;
+    }
+
+    @Override
+    public boolean utilizarEntrada(EntradaDTO e) throws RemoteException {
+        return StaffAppService.utilizarEntrada(e);
     }
 
 }

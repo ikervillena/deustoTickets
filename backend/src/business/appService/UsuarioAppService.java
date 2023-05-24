@@ -119,10 +119,4 @@ public class UsuarioAppService {
         return cdao.actualizarCliente(assembler.getCliente(cAntiguo), assembler.getCliente(cNuevo));
     }
 
-    public static boolean utilizarEntrada(EntradaDTO entradaDTO) throws RemoteException {
-        EntradaAssembler assembler = new EntradaAssembler();
-        EntradaDAO eDao = new EntradaDAO();
-        return eDao.utilizarEntrada(assembler.getEntrada(entradaDTO));
-    }
-
 }

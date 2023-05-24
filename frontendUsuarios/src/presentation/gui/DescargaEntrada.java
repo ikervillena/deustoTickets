@@ -91,10 +91,10 @@ public class DescargaEntrada extends JFrame {
                 boolean respuesta = controller.enviarEntradas(entradas, chatID, false);
                 if (!respuesta) {
                     JOptionPane.showMessageDialog(DescargaEntrada.this,
-                            "Las entradas han sido enviadas a tu telegram.");
+                            "Las entradas no han podido ser enviadas.");
                 } else {
                     JOptionPane.showMessageDialog(DescargaEntrada.this,
-                            "Las entradas no han podido ser enviadas.");
+                            "Las entradas han sido enviadas a tu telegram.");
                 }
 
             }
@@ -111,10 +111,10 @@ public class DescargaEntrada extends JFrame {
                 boolean respuesta = controller.enviarEntradas(entradas, cliente.getEmail(), true);
                 if (!respuesta) {
                     JOptionPane.showMessageDialog(DescargaEntrada.this,
-                            "Las entradas han sido enviadas a tu direccion de email.");
+                            "Las entradas no han podido ser enviadas.");
                 } else {
                     JOptionPane.showMessageDialog(DescargaEntrada.this,
-                            "Las entradas no han podido ser enviadas.");
+                            "Las entradas han sido enviadas a tu direccion de email.");
                 }
 
             }

@@ -63,9 +63,8 @@ public class InicioSesionStaff extends JFrame {
 				if (passwordTexto.equals("") || textoUsuario.equals("")) {
 					JOptionPane.showMessageDialog(InicioSesionStaff.this, "No dejes ningun campo vacio");
 				} else {
-
 					Staff a = controller.iniciarSesionStaff(textoUsuario, passwordTexto);
-					if (a.getNombre().equals("")) {
+					if (a == null) {
 						JOptionPane.showMessageDialog(InicioSesionStaff.this,
 								"El usuario o la contrasenya son incorrectos");
 						InicioSesionStaff ventana = new InicioSesionStaff(controller);

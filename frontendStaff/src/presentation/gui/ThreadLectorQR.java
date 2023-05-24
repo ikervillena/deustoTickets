@@ -8,6 +8,7 @@ import com.google.zxing.common.HybridBinarizer;
 
 import business.clases.Evento;
 import business.clases.dto.EntradaDTO;
+import business.controller.Controller;
 
 import javax.swing.*;
 import java.awt.image.BufferedImage;
@@ -18,10 +19,12 @@ public class ThreadLectorQR implements Runnable {
     private WebcamPanel webcamPanel;
     private JTextField textField;
     private Evento evento;
+    private Controller controller;
     public boolean isRunning;
 
-    public ThreadLectorQR(WebcamPanel webcamPanel, Evento evento) {
+    public ThreadLectorQR(WebcamPanel webcamPanel, Evento evento, Controller controller) {
         this.webcamPanel = webcamPanel;
+        this.controller = controller;
         this.evento = evento;
         this.isRunning = true;
     }
@@ -40,8 +43,10 @@ public class ThreadLectorQR implements Runnable {
 
                 for (int i = 0; i < entradas.size(); i++) {
                     if (entradas.get(i).getQr().equals(codigoQR)) {
-                        if (entradas.get(i).isUtilizada()) {
+                        if (!entradas.get(i).isUtilizada()) {
                             mostrarCorrecto();
+                            controller.utilizarEntrada(entradas.get(i));
+                            entradas.get(i).setUtilizada(true);
                         } else {
                             mostrarInCorrecto();
                         }
@@ -49,7 +54,6 @@ public class ThreadLectorQR implements Runnable {
                         break;
                     }
                 }
-
                 if (!encontrado) {
                     mostrarInCorrecto();
                 }

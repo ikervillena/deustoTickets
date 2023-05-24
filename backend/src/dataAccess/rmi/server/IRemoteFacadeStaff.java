@@ -2,6 +2,7 @@ package dataAccess.rmi.server;
 
 import business.clases.Evento;
 import business.clases.Staff;
+import business.clases.dto.*;
 
 import java.io.IOException;
 import java.rmi.Remote;
@@ -49,5 +50,7 @@ public interface IRemoteFacadeStaff extends Remote {
      * @throws RemoteException
      */
     boolean comprobarQR(String qr, Evento e) throws RemoteException;
+
+    boolean utilizarEntrada(EntradaDTO e) throws RemoteException;
 
 }

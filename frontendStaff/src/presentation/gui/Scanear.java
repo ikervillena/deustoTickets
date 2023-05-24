@@ -57,7 +57,7 @@ public class Scanear extends JFrame {
 		btnNewButton.setFont(new Font("Stencil", Font.BOLD, 40));
 		menuBar.add(btnNewButton);
 
-		JLabel lblNewLabel_1 = new JLabel("Evento 1");
+		JLabel lblNewLabel_1 = new JLabel(evento.getTitulo());
 		lblNewLabel_1.setBackground(new Color(255, 255, 255));
 		lblNewLabel_1.setFont(new Font("Stencil", Font.BOLD, 40));
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -97,7 +97,7 @@ public class Scanear extends JFrame {
 		webcamPanel.setMirrored(true);
 		panelCamara.add(webcamPanel);
 
-		ThreadLectorQR lectorQR = new ThreadLectorQR(webcamPanel, evento);
+		ThreadLectorQR lectorQR = new ThreadLectorQR(webcamPanel, evento, controller);
 		Thread t = new Thread(lectorQR);
 		t.start();
 	}

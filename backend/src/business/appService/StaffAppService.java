@@ -4,6 +4,7 @@ package business.appService;
 
 import business.clases.*;
 import business.clases.dao.*;
+import business.clases.dto.*;
 import dataAccess.rest.client.TicketProviderGateway;
 import java.rmi.RemoteException;
 import java.io.IOException;
@@ -27,6 +28,12 @@ public class StaffAppService {
             }
         }
         return s;
+    }
+
+    public static boolean utilizarEntrada(EntradaDTO entradaDTO) throws RemoteException {
+        EntradaAssembler assembler = new EntradaAssembler();
+        EntradaDAO eDao = new EntradaDAO();
+        return eDao.utilizarEntrada(assembler.getEntrada(entradaDTO));
     }
 
 }
