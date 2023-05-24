@@ -27,7 +27,7 @@ public class MenuStaff extends JFrame {
 
 	private JPanel contentPane;
 
-	public MenuStaff(Controller controller) {
+	public MenuStaff(Controller controller, Staff a) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 831, 569);
 		contentPane = new JPanel();

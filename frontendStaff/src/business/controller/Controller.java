@@ -23,15 +23,12 @@ public class Controller {
         }
     }
 
-    /*
-     * public Staff iniciarSesionStaff(String usuario, String contrasenya) {
-     * try {
-     * return this.serviceLocator.getService().iniciarSesionStaff(String usuario,
-     * String contrasenya);
-     * } catch (Exception e) {
-     * return null;
-     * }
-     * }
-     */
+    public Staff iniciarSesionStaff(String usuario, String contrasenya) {
+        try {
+            return this.serviceLocator.getService().iniciarSesionStaff(usuario,contrasenya);
+        } catch (Exception e) {
+            return null;
+        }
+    }
 
 }

@@ -23,6 +23,7 @@ import javax.swing.UIManager;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.SoftBevelBorder;
+import business.clases.*;
 
 public class InicioSesionStaff extends JFrame {
 
@@ -62,19 +63,20 @@ public class InicioSesionStaff extends JFrame {
 				if (passwordTexto.equals("") || textoUsuario.equals("")) {
 					JOptionPane.showMessageDialog(InicioSesionStaff.this, "No dejes ningun campo vacio");
 				} else {
-					/*
-					 * Staff a = controller.InicioSesion(textoUsuario, passwordTexto);
-					 * if (a.getNombre().equals("")) {
-					 * JOptionPane.showMessageDialog(InicioSesionStaff.this,
-					 * "El usuario o la contrasenya son incorrectos");
-					 * InicioSesionStaff ventana = new InicioSesionStaff(controller);
-					 * ventana.setVisible(true);
-					 * InicioSesionStaff.this.dispose();
-					 * } else {
-					 * MenuStaff ventana = new MenuStaff(controller,a);
-					 * ventana.setVisible(true);
-					 * InicioSesionStaff.this.dispose();
-					 */
+
+					Staff a = controller.iniciarSesionStaff(textoUsuario, passwordTexto);
+					if (a.getNombre().equals("")) {
+						JOptionPane.showMessageDialog(InicioSesionStaff.this,
+								"El usuario o la contrasenya son incorrectos");
+						InicioSesionStaff ventana = new InicioSesionStaff(controller);
+						ventana.setVisible(true);
+						InicioSesionStaff.this.dispose();
+					} else {
+						MenuStaff ventana = new MenuStaff(controller, a);
+						ventana.setVisible(true);
+						InicioSesionStaff.this.dispose();
+
+					}
 				}
 			}
 		});

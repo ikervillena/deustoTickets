@@ -22,7 +22,6 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.SoftBevelBorder;
 
-
 public class InicioStaff extends JFrame {
 
 	private JPanel contentPane;
@@ -37,12 +36,13 @@ public class InicioStaff extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel label = new JLabel("");
 		label.setBounds(0, 0, 820, 513);
-		ImageIcon imageIcon = new ImageIcon("C:\\Users\\ALUMNO\\Desktop\\deustoTickets\\deustoTickets\\frontendUsuarios\\resources\\images\\fotofiesta.jpg");
+		ImageIcon imageIcon = new ImageIcon(
+				"C:\\Users\\ALUMNO\\Desktop\\deustoTickets\\deustoTickets\\frontendUsuarios\\resources\\images\\fotofiesta.jpg");
 		Image image = imageIcon.getImage().getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH);
-		
+
 		JButton btnNewButton = new JButton("Inicio Sesion");
 		btnNewButton.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		btnNewButton.setFont(new Font("Stencil", Font.PLAIN, 25));
@@ -52,13 +52,13 @@ public class InicioStaff extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				InicioSesionStaff ventana = new InicioSesionStaff(controller);
 				ventana.setVisible(true);
-				InicioStaff.this.dispose();;
+				InicioStaff.this.dispose();
+				;
 			}
 		});
 		btnNewButton.setBounds(192, 374, 423, 43);
 		contentPane.add(btnNewButton);
-		
-		
+
 		JLabel lblDeustoTickets = new JLabel("Deusto Tickets");
 		lblDeustoTickets.setBackground(new Color(255, 255, 0));
 		lblDeustoTickets.setBorder(UIManager.getBorder("Button.border"));
