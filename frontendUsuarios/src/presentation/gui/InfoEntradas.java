@@ -24,7 +24,6 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JSpinner;
 import java.util.ArrayList;
-import java.util.List;
 import business.clases.*;
 
 public class InfoEntradas extends JFrame {
@@ -180,6 +179,9 @@ public class InfoEntradas extends JFrame {
 						}
 					}
 					ArrayList<EntradaDTO> sarrerak = controller.comprarEntradas(entradas);
+					for (int i = 0; i < sarrerak.size(); i++) {
+						cliente.getEntradas().add(sarrerak.get(i));
+					}
 					DescargaEntrada pantalla = new DescargaEntrada(controller, cliente, evento, sarrerak);
 					pantalla.setVisible(true);
 					InfoEntradas.this.dispose();

@@ -137,7 +137,14 @@ public class InfoCliente extends JFrame {
 
 		for (EntradaDTO entrada : entradas) {
 			Evento evento = entrada.getEvento();
-			if (!eventos.contains(evento)) {
+			boolean esta = false;
+			for (Evento e : eventos) {
+				if (e.getTitulo().equals(evento.getTitulo())) {
+					esta = true;
+					break;
+				}
+			}
+			if (!esta) {
 				eventos.add(evento);
 				entradasPorEvento.add(new ArrayList<>());
 			}
@@ -146,11 +153,13 @@ public class InfoCliente extends JFrame {
 		for (EntradaDTO entrada : entradas) {
 			Evento evento = entrada.getEvento();
 			int indiceEvento = eventos.indexOf(evento);
-			ArrayList<EntradaDTO> entradasEvento = entradasPorEvento.get(indiceEvento);
-			entradasEvento.add(entrada);
+			if (indiceEvento != -1) {
+				entradasPorEvento.get(indiceEvento).add(entrada);
+			}
 		}
 		int altura = 183;
 		for (int i = 0; i < eventos.size(); i++) {
+			System.out.println(eventos.get(i).getTitulo());
 			Evento evento = eventos.get(i);
 			int numero = i;
 			JButton btnNewButton_1 = new JButton(evento.getTitulo());
@@ -159,8 +168,10 @@ public class InfoCliente extends JFrame {
 			btnNewButton_1.setFont(new Font("Stencil", Font.BOLD, 15));
 			btnNewButton_1.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					// ArrayList<Entrada> entradasEvento = entradasPorEvento.get(numero); Aqui
-					// consigo las entradas del evento y las mando para conseguirlas
+					ArrayList<EntradaDTO> entradasEvento = entradasPorEvento.get(numero);
+					DescargaEntrada pantalla = new DescargaEntrada(controller, cliente, evento, entradasEvento);
+					pantalla.setVisible(true);
+					InfoCliente.this.dispose();
 				}
 			});
 			btnNewButton_1.setBounds(480, altura, 281, 40);
@@ -170,6 +181,7 @@ public class InfoCliente extends JFrame {
 
 		JButton btnNewButton_2 = new JButton("BACK");
 		btnNewButton_2.addActionListener(new ActionListener() {
+
 			public void actionPerformed(ActionEvent e) {
 				MenuCliente ventana = new MenuCliente(controller, cliente);
 				ventana.setVisible(true);
