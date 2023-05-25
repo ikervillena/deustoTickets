@@ -77,7 +77,7 @@ public class InfoEventoStaff extends JFrame {
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setForeground(new Color(255, 215, 0));
 		ImageIcon icon = new ImageIcon(
-				"C:\\Users\\ALUMNO\\Desktop\\deustoTickets\\deustoTickets\\frontendUsuarios\\resources\\images\\ENTRADA.png");
+				"..\\resources\\images\\ENTRADA.png");
 		Image img = icon.getImage().getScaledInstance(100, 60, Image.SCALE_SMOOTH);
 		icon = new ImageIcon(img);
 		lblNewLabel_1.setIcon(icon);

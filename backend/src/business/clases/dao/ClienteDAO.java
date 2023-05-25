@@ -17,8 +17,7 @@ public class ClienteDAO {
     public ArrayList<Cliente> getClientes(){
         ArrayList<Cliente> clientes = new ArrayList<>();
         try{
-            PersistenceManagerFactory persistentManagerFactory = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
-            PersistenceManager persistentManager = persistentManagerFactory.getPersistenceManager();
+            PersistenceManager persistentManager = FactoryDAO.getPersistenceManager();
             Transaction transaction = persistentManager.currentTransaction();
     
             try {
@@ -51,8 +50,7 @@ public class ClienteDAO {
     public boolean actualizarCliente(Cliente clienteAntiguo, Cliente clienteNuevo) {
         boolean funciona = false;
         try {
-            PersistenceManagerFactory persistentManagerFactory = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
-            PersistenceManager persistentManager = persistentManagerFactory.getPersistenceManager();
+            PersistenceManager persistentManager = FactoryDAO.getPersistenceManager();
             Transaction transaction = persistentManager.currentTransaction();
     
             try {
@@ -104,8 +102,7 @@ public class ClienteDAO {
         
         try {
             
-            PersistenceManagerFactory persistentManagerFactory = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
-            PersistenceManager persistentManager = persistentManagerFactory.getPersistenceManager();				
+            PersistenceManager persistentManager = FactoryDAO.getPersistenceManager();				
 			Transaction transaction = persistentManager.currentTransaction();
             
 

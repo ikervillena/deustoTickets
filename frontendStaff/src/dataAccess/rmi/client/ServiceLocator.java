@@ -32,7 +32,6 @@ public class ServiceLocator {
             Registry registry = LocateRegistry.getRegistry(((Integer.valueOf(port))));
             //stubServer = (IServer) java.rmi.Naming.lookup(name);
             this.service = (IRemoteFacadeStaff) registry.lookup(URL);
-            System.out.println("* Message coming from the server: '" + service.sayHello() + "'");
 
         } catch (Exception ex) {
             System.err.println("# Error locating remote facade: " + ex);

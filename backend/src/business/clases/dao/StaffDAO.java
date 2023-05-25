@@ -16,8 +16,7 @@ public class StaffDAO {
     public ArrayList<Staff> getStaff(){
         ArrayList<Staff> listaStaff = new ArrayList<>();
         try{
-            PersistenceManagerFactory persistentManagerFactory = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
-            PersistenceManager persistentManager = persistentManagerFactory.getPersistenceManager();
+            PersistenceManager persistentManager = FactoryDAO.getPersistenceManager();
             Transaction transaction = persistentManager.currentTransaction();
     
             try {

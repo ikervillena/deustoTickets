@@ -22,13 +22,6 @@ public class RemoteFacadeStaff extends UnicastRemoteObject implements IRemoteFac
     }
 
     @Override
-    public String sayHello() {
-        cont++;
-        System.out.println(" * Client number: " + cont);
-        return "Hello World! It works correctly";
-    }
-
-    @Override
     public ArrayList<Evento> getEventos() throws IOException, RemoteException {
         return StaffAppService.getEventos();
     }
@@ -36,12 +29,6 @@ public class RemoteFacadeStaff extends UnicastRemoteObject implements IRemoteFac
     @Override
     public Staff iniciarSesionStaff(String usuario, String contrasenya) throws RemoteException {
         return StaffAppService.iniciarSesion(usuario, contrasenya);
-    }
-
-    @Override
-    public boolean comprobarQR(String qr, Evento e) throws RemoteException {
-        // PENDIENTE
-        return false;
     }
 
     @Override

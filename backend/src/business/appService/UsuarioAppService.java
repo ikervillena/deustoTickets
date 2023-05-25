@@ -36,7 +36,6 @@ public class UsuarioAppService {
         boolean b = true;
         ArrayList<Cliente> listaClientes = clientDao.getClientes();
         for (Cliente cl : listaClientes) {
-            System.out.println(cl);
             if (cl.getUsuario().equals(c.getUsuario())) {
                 b = false;
             }
@@ -66,22 +65,6 @@ public class UsuarioAppService {
         }
     }
 
-    public static ArrayList<EntradaDTO> getEntradas(ClienteDTO cliente) throws RemoteException {
-        /*
-         * ArrayList<Entrada> listaEntradas = new ArrayList<Entrada>();
-         * EntradaDAO entradaDAO= new EntradaDAO();
-         * ArrayList<Entrada> todas = entradaDAO.getEntrada();
-         * for (Entrada e: todas){
-         * if(e.getCliente().getUsuario().equals(cliente.getUsuario())){
-         * listaEntradas.add(e);
-         * }
-         * }
-         * return listaEntradas;
-         */
-
-        // PENDIENTE
-        return null;
-    }
 
     public static boolean enviarEntradas(ArrayList<EntradaDTO> entradas, String direccion, boolean porEmail)
             throws RemoteException {

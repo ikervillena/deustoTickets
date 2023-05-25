@@ -16,8 +16,7 @@ public class EntradaDAO {
     public ArrayList<Entrada> getEntrada(){
         ArrayList<Entrada> entradas = new ArrayList<>();
         try{
-            PersistenceManagerFactory persistentManagerFactory = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
-            PersistenceManager persistentManager = persistentManagerFactory.getPersistenceManager();
+            PersistenceManager persistentManager = FactoryDAO.getPersistenceManager();
 			Transaction transaction = persistentManager.currentTransaction();
 
             try {
@@ -48,8 +47,7 @@ public class EntradaDAO {
 
     public void setEntrada(Entrada a){
         try {
-            PersistenceManagerFactory persistentManagerFactory = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
-            PersistenceManager persistentManager = persistentManagerFactory.getPersistenceManager();				
+            PersistenceManager persistentManager = FactoryDAO.getPersistenceManager();				
 			Transaction transaction = persistentManager.currentTransaction();
 
             try {
@@ -76,8 +74,7 @@ public class EntradaDAO {
     public boolean utilizarEntrada(Entrada e){
         boolean funciona = false;
         try {
-            PersistenceManagerFactory persistentManagerFactory = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
-            PersistenceManager persistentManager = persistentManagerFactory.getPersistenceManager();
+            PersistenceManager persistentManager = FactoryDAO.getPersistenceManager();
             Transaction transaction = persistentManager.currentTransaction();
     
             try {

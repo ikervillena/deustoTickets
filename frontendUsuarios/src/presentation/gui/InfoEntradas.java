@@ -103,7 +103,7 @@ public class InfoEntradas extends JFrame {
 		JLabel lbl = new JLabel("New label");
 		lbl.setBounds(450, 208, 297, 227);
 		ImageIcon imageIcon = new ImageIcon(
-				"C:\\Users\\ALUMNO\\Desktop\\deustoTickets\\deustoTickets\\frontendUsuarios\\resources\\images\\estadio.png");
+				"..\\resources\\images\\estadio.png");
 		Image image = imageIcon.getImage().getScaledInstance(lbl.getWidth(), lbl.getHeight(), Image.SCALE_SMOOTH);
 		lbl.setIcon(new ImageIcon(image));
 		contentPane.add(lbl);
@@ -125,8 +125,6 @@ public class InfoEntradas extends JFrame {
 		int altura = 223;
 		ArrayList<Precio> precios = evento.getPrecios();
 		ArrayList<JSpinner> spinners = new ArrayList<>();
-		// int valorSpinner = (int) spinners.get(2).getValue(); Es para conseguir el
-		// valor de los spiners
 		for (int i = 0; i < precios.size(); i++) {
 
 			JLabel lblEntrada = new JLabel(precios.get(i).getNombre());
@@ -169,8 +167,6 @@ public class InfoEntradas extends JFrame {
 						if (valorSpinner != 0) {
 							for (int numero = 0; numero < valorSpinner; numero++) {
 								Date fecha = new Date();
-								System.out.println(precios.get(i).getId());
-								System.out.println(evento.getId());
 								EntradaDTO entrada = new EntradaDTO("", precios.get(i).getNombre(), fecha,
 										precios.get(i), evento, cliente, false);
 								entradas.add(entrada);

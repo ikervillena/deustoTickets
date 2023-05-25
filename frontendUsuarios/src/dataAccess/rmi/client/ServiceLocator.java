@@ -1,10 +1,11 @@
 package dataAccess.rmi.client;
 
-import dataAccess.rmi.server.IRemoteFacadeUsuario;
 
 import java.rmi.Naming;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+
+import dataAccess.rmi.server.IRemoteFacadeUsuario;
 
 //Esta clase implementa el patron de diseño "Service Locator"
 public class ServiceLocator {
@@ -38,7 +39,6 @@ public class ServiceLocator {
             Registry registry = LocateRegistry.getRegistry(((Integer.valueOf(port))));
             // stubServer = (IServer) java.rmi.Naming.lookup(name);
             this.service = (IRemoteFacadeUsuario) registry.lookup(URL);
-            System.out.println("* Message coming from the server: '" + service.sayHello() + "'");
 
         } catch (Exception ex) {
             System.err.println("# Error locating remote facade: " + ex);

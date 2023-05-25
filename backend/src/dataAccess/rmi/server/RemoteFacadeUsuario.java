@@ -24,13 +24,6 @@ public class RemoteFacadeUsuario extends UnicastRemoteObject implements IRemoteF
     }
 
     @Override
-    public String sayHello() {
-        cont++;
-        System.out.println(" * Client number: " + cont);
-        return "Hello World! It works correctly";
-    }
-
-    @Override
     public ArrayList<business.clases.Evento> getEventos() throws RemoteException, IOException {
         return UsuarioAppService.getEventos();
     }
@@ -40,17 +33,6 @@ public class RemoteFacadeUsuario extends UnicastRemoteObject implements IRemoteF
         return UsuarioAppService.getArtistasDeEvento(e);
     }
 
-    @Override
-    public ArrayList<Artista> getArtistas(business.clases.Evento e) throws RemoteException {
-        // PENDIENTE
-        return null;
-    }
-
-    @Override
-    public ArrayList<business.clases.Precio> getPrecios(business.clases.Evento e) throws RemoteException {
-        // PENDIENTE
-        return null;
-    }
 
     @Override
     public boolean enviarEntradas(ArrayList<EntradaDTO> entradas, String direccion, boolean porEmail)
@@ -58,10 +40,6 @@ public class RemoteFacadeUsuario extends UnicastRemoteObject implements IRemoteF
         return UsuarioAppService.enviarEntradas(entradas, direccion, porEmail);
     }
 
-    @Override
-    public ArrayList<EntradaDTO> getEntradas(ClienteDTO cliente) throws RemoteException {
-        return UsuarioAppService.getEntradas(cliente);
-    }
 
     @Override
     public ClienteDTO iniciarSesion(String usuario, String contrasenya) throws RemoteException {

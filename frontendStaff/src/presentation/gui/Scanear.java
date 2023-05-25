@@ -96,7 +96,7 @@ public class Scanear extends JFrame {
 		contentPane.add(panelCamara);
 		panelCamara.setLayout(new BorderLayout());
 
-		webcamPanel = new WebcamPanel(Webcam.getWebcams().get(1));
+		webcamPanel = new WebcamPanel(Webcam.getWebcams().get(0));
 		webcamPanel.setSize(new Dimension(480, 480));
 		webcamPanel.setFPSDisplayed(true);
 		webcamPanel.setDisplayDebugInfo(true);
