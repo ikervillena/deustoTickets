@@ -40,17 +40,18 @@ public class GeneradorEntrada {
         g2d.drawString(infoEntrada.getNombre().toUpperCase(), 551, 153);
 
         // Dibuja el precio en la entrada
-        String precio = String.valueOf(infoEntrada.getPrecio().getPrecio());
+        String precio = String.valueOf(infoEntrada.getPrecio().getPrecio())+ " eur";
         g2d.drawString(precio, 551, 520);
+
 
         // Dibujar la información en la entrada
         font = new Font("Anton", Font.BOLD, 32);
         g2d.setFont(font);
-        // Espacio espacio = infoEntrada.getEvento().getEspacio();
-        // GoogleMapsGateway g = new GoogleMapsGateway();
-        // String informacion = espacio.getNombre() + " - "+
-        // g.getCodigoPostal(espacio.getDireccion());
-        g2d.drawString("PENDIENTE", 551, 303);
+        Espacio espacio = infoEntrada.getEvento().getEspacio();
+        GoogleMapsGateway g = new GoogleMapsGateway();
+        String informacion = espacio.getNombre() + " - "+
+        g.getCodigoPostal(espacio.getDireccion());
+        g2d.drawString(informacion, 551, 303);
 
         // Cargar el código QR generado
         BufferedImage codigoQR = GeneradorQR.generarQR(infoEntrada.getQr());
