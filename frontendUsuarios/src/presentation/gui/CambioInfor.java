@@ -209,6 +209,7 @@ public class CambioInfor extends JFrame {
 				} else {
 					boolean respuesta = controller.actualizarDatos(cliente, clientNuevo);
 					if (!respuesta) {
+					} else {
 						InfoCliente ventana = new InfoCliente(controller, cliente);
 						ventana.setVisible(true);
 						CambioInfor.this.dispose();

@@ -56,6 +56,13 @@ public class MenuStaff extends JFrame {
 		btnNewButton.setBackground(new Color(255, 215, 0));
 		btnNewButton.setForeground(Color.WHITE);
 		btnNewButton.setFont(new Font("Stencil", Font.BOLD, 40));
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				InfoStaff ventana = new InfoStaff(controller, a);
+				ventana.setVisible(true);
+				MenuStaff.this.dispose();
+			}
+		});
 		menuBar.add(btnNewButton);
 
 		ArrayList<Evento> eventos1 = controller.getEventos();

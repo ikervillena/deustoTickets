@@ -55,6 +55,13 @@ public class Scanear extends JFrame {
 		btnNewButton.setBackground(new Color(255, 215, 0));
 		btnNewButton.setForeground(Color.WHITE);
 		btnNewButton.setFont(new Font("Stencil", Font.BOLD, 40));
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				InfoStaff ventana = new InfoStaff(controller, staff);
+				ventana.setVisible(true);
+				Scanear.this.dispose();
+			}
+		});
 		menuBar.add(btnNewButton);
 
 		JLabel lblNewLabel_1 = new JLabel(evento.getTitulo());
@@ -67,7 +74,7 @@ public class Scanear extends JFrame {
 		Image img = icon.getImage().getScaledInstance(100, 60, Image.SCALE_SMOOTH);
 		icon = new ImageIcon(img);
 		lblNewLabel_1.setIcon(icon);
-		lblNewLabel_1.setBounds(187, 93, 423, 63);
+		lblNewLabel_1.setBounds(117, 95, 633, 63);
 		contentPane.add(lblNewLabel_1);
 
 		JButton btnBack = new JButton("BACK");
