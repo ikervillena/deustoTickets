@@ -12,7 +12,7 @@ public class Client {
 
     public static void main(String[] args) throws IOException {
 
-        ServiceLocator serviceLocator = new ServiceLocator();
+        ServiceLocator serviceLocator = ServiceLocator.getInstance();
 
         // args[0] = RMIRegistry IP
         // args[1] = RMIRegistry Port
